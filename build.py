@@ -1,0 +1,732 @@
+#!/usr/bin/env python3
+import json, html
+
+def YT(q):
+    from urllib.parse import quote_plus
+    return "https://www.youtube.com/results?search_query=" + quote_plus(q)
+def POD(q):
+    from urllib.parse import quote_plus
+    return "https://podcasts.apple.com/us/search?term=" + quote_plus(q)
+def W(label, q, direct=None):
+    if direct:
+        return [label, direct, "video"]
+    return [label + " (YouTube search)", YT(q), "search"]
+def P(label, q):
+    return [label + " (podcast search)", POD(q), "search"]
+
+A = []
+def add(id, title, dek, cat, date, body, claim, pushback, proves, notproves, timeline, sources, watch):
+    A.append(dict(id=id, title=title, dek=dek, cat=cat, date=date, body=body, claim=claim,
+                  pushback=pushback, proves=proves, notproves=notproves, timeline=timeline,
+                  sources=sources, watch=watch))
+
+# ---------------- LEAD ----------------
+add("sulawesi", "The Million-Year Sea Crossing: Seven Stone Tools Rewrite When Humans First Sailed",
+ "Seven flakes of stone from a cornfield in Sulawesi say early human relatives crossed deep ocean water more than a million years ago — long before modern humans, and long before anyone was supposed to have a boat.",
+ "History", "Nature, August 2025",
+ ["A field team led by Indonesian archaeologist Budianto Hakim, working with researchers from Griffith University in Australia, dug seven stone artefacts out of a sandstone outcrop in a modern corn field at Calio, in southern Sulawesi. The artefacts are small, sharp-edged flakes struck from river pebbles — the telltale marks of deliberate tool-making, not rocks broken by nature.",
+  "The layers were dated by palaeomagnetic dating of the sandstone itself and by direct dating of a pig fossil found alongside the tools. The result: at least 1.04 million years old, and possibly as old as 1.48 million years. Before this, the oldest evidence on Sulawesi was about 194,000 years old, from Talepu. The new date pushes the island's human story back by roughly 800,000 years.",
+  "Sulawesi sits in Wallacea, the island zone east of mainland Southeast Asia, separated from the mainland by deep-water channels that stayed open even when Ice Age sea levels fell. Walking there was never an option. Somebody crossed water to get there — and did it at roughly the same time as, or earlier than, the tool-makers at Wolo Sege on Flores, dated to at least 1.02 million years ago.",
+  "No fossils were found at Calio, so the tool-makers' species is unknown. The leading candidate is Homo erectus or a close relative. Whether they built rafts on purpose or drifted on floating vegetation after a storm is also unknown — and that distinction is the whole argument now."],
+ "Early human relatives were deliberate seafarers more than a million years ago, building rafts and navigating open water on purpose.",
+ "The tools prove a crossing happened. They do not prove intent, navigation, or boat-building. No boats survive from this period anywhere, and an accidental crossing — a group swept out to sea on vegetation, or stranded after a storm — fits the same evidence. Deliberate seafaring is the exciting reading, not the proven one.",
+ ["Hominins reached Sulawesi at least 1.04 million years ago.",
+  "They crossed deep water that could never be walked, even at low Ice Age sea levels.",
+  "They were making stone tools on Sulawesi at about the same time as on Flores."],
+ ["That they built boats or navigated deliberately.",
+  "Which species made the tools — no fossils were found at Calio.",
+  "That this was a planned migration rather than an accident or a one-off stranding."],
+ [["1.48–1.04 Ma", "Calio tools made and buried in river sediments, southern Sulawesi."],
+  ["1.02 Ma", "Stone tools at Wolo Sege, Flores — the previous Wallacea benchmark."],
+  ["~194 ka", "Tools at Talepu, Sulawesi — the old record for the island, now far surpassed."],
+  ["Aug 2025", "Hakim and colleagues publish the Calio results in Nature."]],
+ [["Hakim et al., 'Hominins on Sulawesi during the Early Pleistocene', Nature (2025)", "https://doi.org/10.1038/s41586-025-09348-6"],
+  ["Southern Cross University — the Sulawesi stone tools (The Conversation, republished)", "https://www.scu.edu.au/news/2025/tc-sulawesi-stone-tools/"],
+  ["Southern Cross University — oldest human presence on Sulawesi", "https://www.scu.edu.au/news/2025/new-research-dates-oldest-human-presence-on-sulawesi-island/"]],
+ [W("The Sulawesi discovery, explained", "Sulawesi stone tools 1 million years Nature"),
+  P("Human origins podcasts", "Sulawesi hominin stone tools"),
+  ["Griffith University / Southern Cross University releases (see Sources)", "https://www.scu.edu.au/news/2025/new-research-dates-oldest-human-presence-on-sulawesi-island/", "article"]])
+
+# ---------------- ORIGINAL HISTORY ----------------
+add("lisbon", "Lisbon, 1755: The Morning Europe's Richest City Vanished",
+ "An earthquake, a tsunami, and a five-day fire, all before lunch on All Saints' Day — and out of the ashes, the science of seismology.",
+ "History", "1 November 1755",
+ ["At about 9:40 on the morning of 1 November 1755, with churches packed for All Saints' Day Mass, a massive earthquake struck off the coast of Portugal. Modern estimates put it at magnitude 8.5 to 9.0. Buildings collapsed, candles toppled onto the wreckage, and fires began that would burn for days — Britannica's account says about six days.",
+  "Roughly forty minutes later, a tsunami rolled up the Tagus estuary and finished what the shaking started. Waves of about 20 feet hit Lisbon and about 65 feet hit Cádiz. Death tolls are disputed: Britannica gives an estimate of 60,000 killed in Lisbon alone, while other modern summaries give a range of roughly 12,000 to 50,000 overall. The Ledger uses the range and flags the disagreement rather than picking one number.",
+  "The rebuild, led by the Marquis of Pombal, gave the world its first earthquake-resistant buildings. Pombal also sent a survey to every parish asking what people felt, where, and when — the first systematic earthquake questionnaire, and the founding move of seismology."],
+ "The Lisbon disaster was divine punishment for a sinful city — the reading many preachers and pamphleteers pushed in 1755.",
+ "The earthquake had a natural, tectonic cause: faulting of the seafloor along plate boundaries in the Atlantic. The theological reading was a moral argument, not an explanation of the mechanism — and Pombal's survey, not prayer, is what produced the science that now saves lives in quake zones.",
+ ["A magnitude ~8.5–9.0 quake, tsunami, and fire destroyed Lisbon on 1 Nov 1755.",
+  "Pombal's parish survey founded systematic seismology.",
+  "The rebuild pioneered earthquake-resistant construction."],
+ ["An exact death toll — estimates range from tens of thousands to 60,000 in Lisbon alone.",
+  "That any single moral cause explains a tectonic event."],
+ [["9:40 a.m., 1 Nov 1755", "Main shock strikes as churches fill for Mass."],
+  ["~40 min later", "Tsunami surges up the Tagus."],
+  ["Days after", "Fires burn across the ruins; Pombal begins the rebuild and the parish survey."]],
+ [["Encyclopaedia Britannica — Lisbon earthquake of 1755", "https://www.britannica.com/event/Lisbon-earthquake-of-1755"]],
+ [W("The Lisbon Tragedy documentary", "Lisbon earthquake 1755 documentary", "https://www.youtube.com/watch?v=kjgOoCvmyOQ"),
+  P("Lisbon earthquake podcasts", "Lisbon earthquake 1755"),
+  W("Lisbon 1755, explained", "Lisbon earthquake tsunami fire 1755")])
+
+add("houdini", "Houdini, 1926: The Man No Lock Could Hold Ran Out of Escapes",
+ "He walked out of handcuffs, straitjackets, and a water torture cell. He could not walk out of a ruptured appendix — and the argument about what killed him has never settled.",
+ "History", "31 October 1926",
+ ["Harry Houdini, born Erik Weisz in Budapest in 1874, spent his life escaping handcuffs, straitjackets, sealed milk cans, and a water torture cell hung upside down. His later years were spent at war with fraudulent mediums who preyed on grieving families.",
+  "On 22 October 1926 in Montreal, after a lecture on exposing fake mediums, McGill student J. Gordon Whitehead asked in Houdini's dressing room whether he could really take any punch to the stomach. Houdini, lying on a couch with a sore ankle, said yes — before he could brace, Whitehead hit him several times in the gut.",
+  "Running a 104-degree fever, Houdini still took the stage in Detroit on 24 October, then collapsed. After two surgeries at Grace Hospital for a ruptured appendix, he died of peritonitis on 31 October 1926, aged 52. He had left his wife Bess a secret code — 'Rosabelle, believe' — promising to send it from the other side if he possibly could. She held séances for ten years. The code never came back in a way she accepted."],
+ "The punches killed Houdini — the version his doctors and his life insurer accepted at the time, with the insurer paying double on an accidental-death claim.",
+ "Modern medical opinion doubts it: he may already have had appendicitis, and the punches may only have masked how serious it was, delaying treatment. No autopsy was ever performed, so the mechanism cannot be proven either way. A third strand — that spiritualists poisoned him — has no supporting evidence and rests on a later biography's speculation.",
+ ["Houdini died of peritonitis from a ruptured appendix on 31 Oct 1926.",
+  "He was punched in the stomach in Montreal nine days earlier.",
+  "No autopsy was performed, so the causal chain is unproven."],
+ ["That the punches ruptured his appendix.",
+  "That spiritualists poisoned him — no evidence supports this."],
+ [["22 Oct 1926", "Punches in the Montreal dressing room."],
+  ["24 Oct 1926", "Final performance in Detroit at 104°F; collapse."],
+  ["31 Oct 1926", "Death in Detroit, aged 52."],
+  ["1936", "Bess ends the séances: 'Ten years is long enough to wait for any man.'"]],
+ [["Smithsonian Magazine — Death proves inescapable for even Houdini", "https://www.smithsonianmag.com/smithsonian-institution/october-31-1926-death-proves-inescapable-for-even-houdini-122032841/"],
+  ["Smithsonian Institution Archives — Houdini escapes the Smithsonian", "https://siarchives.si.edu/blog/houdini-escapes-smithsonian"]],
+ [W("The Suspicious Death of Harry Houdini (100 Years Later)", "Harry Houdini death", "https://www.youtube.com/watch?v=1pRQ4QDy7S0"),
+  P("Houdini podcasts", "Harry Houdini death mystery"),
+  W("Houdini, the escape artist", "Harry Houdini biography documentary")])
+
+add("antikythera", "The Antikythera Mechanism: A Computer From 150 BC",
+ "Pulled from a shipwreck in 1901, a corroded lump of bronze turned out to contain gear wheels of a precision not seen again for a thousand years.",
+ "Deep Past", "Recovered 1901; built c. 2nd century BC",
+ ["Sponge divers off the Greek island of Antikythera recovered a corroded bronze mass from a Roman-era shipwreck in 1901. It sat in the National Archaeological Museum in Athens for two years before anyone noticed it contained gears.",
+  "Radiographic imaging later showed the fragments contained about 30 gear wheels, with dials tracking the Sun and Moon in the zodiac, lunar phases, the 19-year Metonic cycle, and even the timing of the Panhellenic games. Britannica dates its manufacture to around 100 BC, give or take 30 years; other summaries place it in the 2nd century BC. The mechanism is the only known physical survivor of a tradition of mechanical astronomical displays.",
+  "The Antikythera Mechanism Research Project's CT work, published in Nature in the 2000s, mapped the gear train and decoded thousands of Greek characters hidden inside the corrosion."],
+ "The mechanism is evidence of a lost, advanced civilisation — or even of knowledge that should not have existed in the ancient world.",
+ "The mechanism is extraordinary, but it sits inside a documented Greek tradition: Cicero describes similar devices, and the gearing, while sophisticated, is fully mechanical and Greek in design. What is missing is not the technology's origin but its predecessors — no earlier device of this complexity has survived, which is a gap in the record, not proof of a lost civilisation.",
+ ["A geared astronomical calculator existed in the Greek world by c. 100 BC.",
+  "It tracked Sun, Moon, lunar phases, eclipse cycles, and the games cycle.",
+  "Its gearing was unmatched in the surviving record for over a millennium."],
+ ["That it came from a lost advanced civilisation — no evidence supports this over the Greek tradition.",
+  "Its exact original purpose in full — some functions remain reconstructed, not observed."],
+ [["c. 100 BC", "Mechanism built (Britannica's dating, ±30 years)."],
+  ["1901", "Recovered from the Antikythera shipwreck."],
+  ["1902", "Gear noticed in the Athens museum; first study begins."],
+  ["2005–2008", "CT scanning maps the gear train; results published in Nature."]],
+ [["Encyclopaedia Britannica — Antikythera mechanism", "https://www.britannica.com/topic/Antikythera-mechanism"],
+  ["Wikipedia — Antikythera mechanism (overview and references)", "https://en.wikipedia.org/wiki/Antikythera_mechanism"]],
+ [W("Antikythera mechanism, explained", "Antikythera mechanism documentary"),
+  P("Ancient technology podcasts", "Antikythera mechanism"),
+  W("How the ancient computer works", "Antikythera mechanism gears explained")])
+
+add("wow", "The Wow! Signal: 72 Seconds Nobody Can Explain Away",
+ "On 15 August 1977, Ohio State's Big Ear telescope printed out '6EQUJ5'. An astronomer circled it and wrote 'Wow!' It has never repeated.",
+ "History", "15 August 1977",
+ ["Ohio State University's Big Ear radio telescope, running the world's longest-running SETI program, recorded a strong, narrowband radio signal on 15 August 1977 from the direction of Sagittarius. It lasted the full 72-second window a fixed sky point spent in Big Ear's beam, rose and fell the way a distant, fixed source should, and sat near the 1420 MHz neutral-hydrogen line — the frequency physicists had proposed as a natural 'hello' channel.",
+  "Volunteer astronomer Jerry Ehman found it days later while reviewing printouts, circled the intensity sequence '6EQUJ5', and wrote 'Wow!' beside it. The signal appeared in only one of Big Ear's two feed horns, which fits a transient source rather than a steady background object.",
+  "Dozens — by some counts hundreds — of follow-up observations have found nothing. Hypotheses have included reflections from space debris, interstellar scintillation, and hydrogen clouds around comets. None has been confirmed. A 2025 reassessment using unpublished archival Ohio SETI observations (the Arecibo Wow! project) refined its frequency to about 1420.726 MHz, but did not solve it."],
+ "The Wow! signal was a transmission from an extraterrestrial civilisation.",
+ "The signal has the hallmarks researchers would hope for — narrowband, near the hydrogen line, the right rise-and-fall shape — but a single, never-repeated detection cannot confirm an alien origin, and Ehman himself did not think the evidence was strong enough to claim first contact. The honest status, after nearly fifty years, is unexplained: neither proven alien nor proven mundane.",
+ ["A strong narrowband signal was recorded on 15 Aug 1977, lasting 72 seconds.",
+  "It has never recurred despite many follow-up searches.",
+  "No natural or terrestrial explanation has been confirmed."],
+ ["That it was definitely an alien transmission.",
+  "That it was definitely a comet, a satellite, or interference — none of those explanations has been confirmed either."],
+ [["15 Aug 1977", "Big Ear records the signal in Sagittarius."],
+  ["Days later", "Ehman circles '6EQUJ5' and writes 'Wow!'"],
+  ["1977–present", "Follow-up searches find no repeat."],
+  ["2025", "Arecibo Wow! reassessment refines the frequency; the signal stays unexplained."]],
+ [["American Astronomical Society — The Mysterious Wow! Signal", "https://aas.org/posts/news/2018/08/month-astronomical-history"],
+  ["Wikipedia — Wow! signal (overview and references)", "https://en.wikipedia.org/wiki/Wow!_signal"]],
+ [W("The Wow signal, explained", "Wow signal Big Ear 1977 documentary"),
+  P("SETI podcasts", "Wow signal SETI"),
+  W("Could the Wow signal be aliens?", "Wow signal extraterrestrial debate")])
+
+add("cooper", "D.B. Cooper: The Man Who Fell Out of the Sky and Was Never Found",
+ "On 24 November 1971, a calm man in a suit hijacked a Boeing 727, took $200,000, strapped on a parachute, and stepped into a storm over Washington. The FBI closed the active case in 2016 without ever naming him.",
+ "History", "24 November 1971",
+ ["A man calling himself Dan Cooper bought a one-way ticket on Northwest Orient Flight 305 from Portland to Seattle, then handed a stewardess a note saying he had a bomb. In Seattle he traded the passengers for $200,000 in cash and four parachutes, then ordered the plane back into the air toward Mexico — and somewhere over southwest Washington, in a storm, he jumped from the rear stairs with the money and was never seen again.",
+  "The FBI's case, codenamed NORJAK, ran for 45 years. By the five-year anniversary, agents had considered more than 800 suspects and eliminated all but about two dozen. The FBI's own page notes the name 'D.B.' itself appears to be a press myth — the hijacker called himself Dan Cooper, and the FBI questioned a man with the initials D.B. who was not the hijacker.",
+  "The only physical trace ever recovered was a bundle of decaying banknotes, matching the ransom serial numbers, found by a boy on a Columbia River beach in 1980. In July 2016 the FBI redirected the resources allocated to the case to other priorities."],
+ "D.B. Cooper survived, lived under a new identity, and spent the money — or a named suspect (Richard Floyd McCoy, and others) was Cooper.",
+ "Survival is possible but unproven: the jump was into a storm, at night, in a suit, with a parachute that may have been sewn shut (one of the chutes supplied was a training chute). McCoy, a favourite suspect, did commit a similar hijacking months later — but he was eliminated as Cooper on the evidence available, and no suspect has ever been charged. The case is unsolved, not solved by a favourite name.",
+ ["A man hijacked Flight 305 on 24 Nov 1971, took $200,000 and four parachutes, and jumped.",
+  "The FBI investigated for 45 years and closed the active case in 2016.",
+  "Ransom notes were found on a river beach in 1980; nothing else of the money has surfaced."],
+ ["That any named suspect was Cooper.",
+  "That he survived — or that he died in the jump. Both are possible; neither is proven."],
+ [["24 Nov 1971", "Hijacking of Flight 305; the jump over southwest Washington."],
+  ["1980", "Decaying ransom banknotes found on the Columbia River."],
+  ["Jul 2016", "FBI redirects resources; active investigation ends."]],
+ [["FBI — D.B. Cooper Hijacking (official case page)", "https://www.fbi.gov/history/famous-cases/db-cooper-hijacking?redirect_mongo_id=60a591aff26daa001d24c5cf&utm_source=Springbot&utm_medium=Email&utm_campaign=60a591aff26daa001d24c5ce"],
+  ["FBI Vault — D.B. Cooper records", "https://vault.fbi.gov/D-B-Cooper"]],
+ [W("D.B. Cooper, the unsolved skyjacking", "DB Cooper documentary FBI"),
+  P("True crime / unsolved podcasts", "DB Cooper mystery"),
+  W("Who was D.B. Cooper?", "DB Cooper suspects explained")])
+
+add("agincourt", "Agincourt, 1415: The Longbow, the Mud, and the Myth",
+ "On St Crispin's Day 1415, Henry V's exhausted, outnumbered army beat a much larger French force in three hours. The numbers — and the legend — are still argued over.",
+ "History", "25 October 1415",
+ ["Henry V had marched his army from Harfleur toward Calais after a costly siege, weakened by dysentery and a march of more than 200 miles. Near the village of Agincourt on 24 October, a large French force under the Constable Charles d'Albret moved to block the road to Calais.",
+  "On the morning of 25 October — St Crispin's Day — the English, about 6,000 strong with roughly 5,000 archers, faced a French army Britannica puts at roughly 20,000 to 30,000. The French advanced across a narrow, rain-soaked field between two woods. English longbow stakes stopped the cavalry; arrows, mud, and close fighting did the rest. The battle lasted about three hours. English losses are put at around 400; French losses around 6,000, with the Constable among the dead.",
+  "The victory made possible England's conquest of Normandy and the Treaty of Troyes (1420), which named Henry heir to the French crown."],
+ "Agincourt was a triumph of English longbow superiority — a clean technological victory of bow over knight.",
+ "The longbow mattered, but so did the ground, the weather, and French mistakes: a constricted field, heavy rain, and a crowded, disorganised advance that turned the French army's size against itself. Exact army sizes are disputed — older accounts gave the French 50,000 to 150,000, figures modern historians treat as gross exaggerations — so any version that leans on a single ratio should be read with care.",
+ ["On 25 Oct 1415, Henry V's army defeated a larger French army at Agincourt.",
+  "Longbowmen, stakes, mud, and a narrow field shaped the outcome.",
+  "The victory led to the conquest of Normandy and the Treaty of Troyes."],
+ ["Exact army sizes — estimates for the French range widely.",
+  "That the longbow alone won the battle."],
+ [["1415", "Siege of Harfleur; march toward Calais."],
+  ["24 Oct 1415", "French force blocks the road near Agincourt."],
+  ["25 Oct 1415", "Battle: about three hours; English victory."],
+  ["1420", "Treaty of Troyes names Henry heir to the French crown."]],
+ [["Encyclopaedia Britannica — Battle of Agincourt", "https://www.britannica.com/event/Battle-of-Agincourt"]],
+ [W("Agincourt, the battle explained", "Battle of Agincourt documentary"),
+  P("Medieval history podcasts", "Battle of Agincourt 1415"),
+  W("Was Agincourt really a longbow victory?", "Agincourt longbow myth debate")])
+
+# ---------------- ANCIENT WORLD ----------------
+add("hancock", "The Lost Civilisation Claim: Hancock, Carlson, and the Younger Dryas",
+ "Graham Hancock and Randall Carlson argue an advanced civilisation was wiped out about 12,800 years ago — and that its survivors seeded the world's oldest monuments. Mainstream archaeology disagrees. Here is the argument, split into what is proven, what is argued, and what is a leap.",
+ "Deep Past", "The Younger Dryas, c. 12,800 years ago",
+ ["The claim, at its strongest, runs like this: about 12,800 years ago, at the start of the Younger Dryas cold period, a comet or asteroid impact (or airburst) triggered continent-scale fires, megafauna extinctions, and a sudden return to Ice Age cold. An advanced, seafaring civilisation that existed before the impact was destroyed; its survivors, the story goes, passed knowledge to the hunter-gatherers who later built Göbekli Tepe in Turkey and other early monuments.",
+  "Hancock presents the case in books including Magicians of the Gods and in the Netflix series Ancient Apocalypse; Carlson, a geologist, argues the geological side — scablands, flood features, and impact markers. Their sites and talks are the primary sources for the claim itself, and this article reports their argument in their terms before testing it.",
+  "The mainstream position accepts parts of the background and rejects the conclusion: the Younger Dryas cold snap is real, Göbekli Tepe is real and older than farming, and megafauna did die out around this time. What is not accepted is the impact as a proven cause, or any advanced pre-Ice Age civilisation, because the physical evidence for both is disputed and, for the civilisation, absent."],
+ "A lost, advanced civilisation existed before the Younger Dryas and was destroyed by a cosmic impact; its survivors taught the builders of Göbekli Tepe.",
+ "The impact hypothesis (the Younger Dryas Impact Hypothesis) is a real, published scientific proposal — but it remains contested: claimed impact markers such as nanodiamonds and platinum spikes have been challenged, with other teams failing to reproduce them or offering terrestrial explanations. And no site, artefact, or text of an advanced pre-Younger Dryas civilisation has been found. Göbekli Tepe, dated to about 11,600 years ago, post-dates the proposed impact and was built by hunter-gatherers — remarkable, but not evidence of a lost high civilisation.",
+ ["The Younger Dryas cold period began about 12,800 years ago.",
+  "Göbekli Tepe was built by hunter-gatherers about 11,600 years ago — before farming.",
+  "Megafauna extinctions cluster around the end of the Ice Age."],
+ ["That a cosmic impact caused the Younger Dryas — contested, not settled.",
+  "That an advanced civilisation existed before it — no direct evidence has been found."],
+ [["c. 12,800 years ago", "Younger Dryas cold period begins."],
+  ["c. 11,600 years ago", "Göbekli Tepe in use — hunter-gatherer builders."],
+  ["2007", "Younger Dryas Impact Hypothesis published."],
+  ["2020s", "Impact markers debated; no consensus reached."]],
+ [["Graham Hancock — official site", "https://grahamhancock.com/"],
+  ["Randall Carlson — official site", "https://randallcarlson.com/"]],
+ [W("Ancient Apocalypse and the lost civilisation debate", "Graham Hancock Randall Carlson Younger Dryas"),
+  P("Ancient history podcasts", "Younger Dryas impact hypothesis debate"),
+  W("Göbekli Tepe, explained", "Gobekli Tepe hunter gatherers documentary")])
+
+add("fieldguide", "Field Guide to the Other Humans: Who They Were, Where They Lived, What They Were Doing",
+ "For most of human history, we were not alone. At least seven other kinds of humans shared the planet with us or came just before us. This is the roll call.",
+ "Deep Past", "From ~1.9 million years ago to ~40,000 years ago",
+ ["HOMO ERECTUS — Asia and Africa, about 1.9 million to 110,000 years ago. Long-legged, wide-ranging, the first hominin to leave Africa in a big way and the leading candidate for the Sulawesi tool-makers. Made handaxes and flakes, controlled fire, hunted large animals, and crossed water to reach Flores and Sulawesi.",
+  "HOMO HEIDELBERGENSIS — Africa and Europe, about 700,000 to 200,000 years ago. Big-game hunters who took rhinos and hippos with wooden spears, built shelters, and are the likely ancestors of both Neanderthals and us.",
+  "NEANDERTHALS — Europe and western Asia, about 400,000 to 40,000 years ago. Stocky, cold-adapted, buried their dead, painted cave walls, made glue, tools, and jewellery — and interbred with modern humans leaving DNA in people alive today.",
+  "DENISOVANS — Asia, about 400,000 to 30,000 years ago. Known first from DNA in a Siberian cave finger bone, later from fossils including a skull in China identified as Denisovan in 2025. Interbred with modern humans; their DNA is strongest in some Pacific and Southeast Asian populations today.",
+  "HOMO FLORESIENSIS, the 'hobbits' — Flores, Indonesia, until roughly 50,000 years ago. About a metre tall, small-brained, making stone tools and hunting dwarf elephants. Their small size is usually read as island dwarfing from an erectus-like ancestor.",
+  "HOMO LUZONENSIS — Luzon, Philippines, about 709,000 years ago for the tool and butchery evidence, with the species itself dated to roughly 50,000–67,000 years ago from cave fossils. Small-bodied, with a mix of ancient and modern traits; the butchered rhino at Kalinga shows hominins on Luzon hundreds of thousands of years before the fossils.",
+  "HOMO NALEDI — South Africa, about 335,000 to 236,000 years ago. Small-brained with human-like hands and feet, found deep in the Rising Star cave system. Whether they deliberately buried their dead there is claimed by the discovery team and disputed by other researchers — one of the liveliest arguments in the field."],
+ "These other humans were primitive brutes — or, in the opposite direction, that they were fully modern in mind and only lacked our technology.",
+ "The record resists both simplifications. Neanderthals buried, painted, and made complex tools; naledi's burial claim is genuinely disputed, not settled; and small brains did not stop floresiensis or naledi from doing sophisticated things. 'Primitive' is a poor word for animals that survived hundreds of thousands of years in hard places.",
+ ["At least seven other hominin kinds are documented in the fossil and DNA record.",
+  "Neanderthals and Denisovans interbred with modern humans.",
+  "Several kinds overlapped in time with Homo sapiens."],
+ ["That every behaviour claimed for them is settled — naledi burials, for example, are disputed.",
+  "The exact species of the Sulawesi and Luzon tool-makers — no fossils yet."],
+ [["~1.9 Ma", "Homo erectus appears; spreads out of Africa."],
+  ["~709 ka", "Tool-making and rhino butchery on Luzon."],
+  ["~400–40 ka", "Neanderthals in Europe and western Asia."],
+  ["~335–236 ka", "Homo naledi in South Africa."],
+  ["~300 ka", "Homo sapiens appears in Africa."],
+  ["~50 ka", "Floresiensis and the last Neanderthals fade from the record."]],
+ [["HISTORY — 6 Ancient Human Species That Once Shared Our World", "https://www.history.com/articles/ancient-human-species"],
+  ["Smithsonian Human Origins Program (via Associated Press summary)", "https://portside.org/node/32366/printable/print"]],
+ [W("The other humans, explained", "Neanderthal Denisovan Homo naledi documentary"),
+  P("Human evolution podcasts", "other human species Neanderthal Denisovan"),
+  W("Homo naledi and the burial debate", "Homo naledi Rising Star cave burial")])
+
+add("lazar", "CONTESTED — Bob Lazar and Area 51: The Claim That Never Quite Dies",
+ "In 1989, a man calling himself a physicist said he had reverse-engineered alien craft at a site near Area 51. The story made him famous, made a documentary, and has never been corroborated. This article sits in the contested corner on purpose: it is not presented as institutional science.",
+ "Contested", "Claims from 1989; JRE #2479, 3 April 2026",
+ ["Bob Lazar says that in late 1988 and 1989 he worked at a site he calls S-4, near Area 51 in Nevada, where he helped reverse-engineer disc-shaped craft powered by an element he called 115. He says the craft were of non-human origin. His story first broke in a 1989 television interview, and he returned to it in the 2026 documentary S-4: The Bob Lazar Story, released around his April 2026 Rogan appearance with filmmaker Luigi Vendittelli.",
+  "Lazar runs United Nuclear, a scientific-supply business, and that site is the closest thing to an official web presence for him. No personal research site was verified for this article.",
+  "The pushback is substantial and specific: Lazar's claimed education (MIT and Caltech) has not been corroborated by those institutions' records as reported by investigators; his claimed employment at Los Alamos appears in a phone directory but not in personnel records; and no physical evidence, document, or corroborating witness has established the S-4 craft. Believers point to his early, accurate description of element 115's properties before it was synthesised — sceptics reply that the properties he described were generic predictions, not a unique fingerprint."],
+ "Lazar reverse-engineered alien craft at S-4, and the government has hidden the evidence ever since.",
+ "No element of the S-4 story — the craft, the element-115 reactor, the employment — has been corroborated by documents, institutions, or physical evidence, and key biographical claims have not checked out. The story is best understood as an unproven claim with a large cultural footprint, not as a scientific finding.",
+ ["Lazar made the S-4 claims publicly from 1989 onward.",
+  "He appeared on Rogan in April 2026 with a new documentary.",
+  "His education and employment claims have not been corroborated by the institutions named."],
+ ["That alien craft were at S-4, or that Lazar worked on them.",
+  "That element 115 powered them — element 115 (moscovium) as synthesised is highly unstable and nothing like a fuel."],
+ [["1989", "Lazar's S-4 claims first air on television."],
+  ["3 Apr 2026", "Rogan episode #2479 with Lazar and Vendittelli; S-4 documentary released."]],
+ [["United Nuclear (Lazar's business)", "https://www.unitednuclear.com"],
+  ["S4 movie site", "https://S4movie.com"]],
+ [W("Bob Lazar, Area 51, the full story", "Bob Lazar Area 51 documentary"),
+  P("UFO podcasts", "Bob Lazar S4 Area 51"),
+  W("Fact-checking Bob Lazar", "Bob Lazar claims debunked")])
+
+# ---------------- ROGAN SCIENCE (part 1) ----------------
+def rogan(id, name, field, ep, site_label, site_url, body, claim, pushback, proves, notproves, timeline, watch_extra):
+    sources = [[site_label, site_url]] if site_url else []
+    watch = [W("Their Joe Rogan episode (YouTube search)", "Joe Rogan " + name)] + watch_extra
+    add(id, name + " — " + field, "", "Rogan Science", ep, body, claim, pushback, proves, notproves, timeline, sources, watch)
+
+rogan("huberman", "Andrew Huberman", "Neuroscience and human performance", "JRE #2553, 14 Sep 2026",
+ "Huberman Lab — official site", "https://hubermanlab.com",
+ ["Andrew Huberman is a Stanford neuroscientist and host of the Huberman Lab podcast, one of the most-listened-to science shows in the world. On Rogan in September 2026 he was promoting his book Protocols: An Operating Manual for the Human Body, which his site listed as a #1 New York Times bestseller.",
+  "What he posts about, week after week, is protocols: sleep, light exposure, exercise, focus, stress, and supplements, each tied to a named mechanism — dopamine, cortisol, adenosine, circadian clocks — and each given as a concrete routine. The appeal is the format: a lab result, translated into something a listener can do at 6 a.m.",
+  "The criticism, from other neuroscientists and physicians, is about the gap between mechanism and proof: a protocol can be biologically plausible and still unproven in humans at the dose and duration recommended, and supplement advice in particular is often ahead of the clinical evidence."],
+ "Following a neuroscience protocol — light, sleep, cold, supplements — can measurably improve focus, health, and performance.",
+ "Many individual protocols rest on real mechanisms but thin human trials; the strongest evidence in this space is for the boring basics (sleep, exercise, light timing), and supplement claims should be read as hypotheses with a product attached, not as prescriptions.",
+ ["Huberman is a Stanford neuroscientist and a leading science communicator.",
+  "Sleep, exercise, and light timing have strong evidence behind them."],
+ ["That every protocol he recommends is proven in humans at the stated dose.",
+  "That a podcast protocol replaces medical advice."],
+ [["14 Sep 2026", "Rogan episode #2553."],
+  ["Sep 2026", "Protocols published."]],
+ [P("Huberman Lab podcast", "Huberman Lab"),
+  W("Huberman on protocols", "Andrew Huberman protocols explained")])
+
+rogan("rovelli", "Carlo Rovelli", "Theoretical physics — loop quantum gravity", "JRE #2554, 15 Sep 2026",
+ "Rovelli — academic homepage, Aix-Marseille University", "https://www.cpt.univ-mrs.fr/~rovelli/",
+ ["Carlo Rovelli is a theoretical physicist at Aix-Marseille University and one of the founders of loop quantum gravity — the attempt to describe gravity not as a smooth force but as a network of discrete, quantum loops of space itself.",
+  "His wider argument, developed in books including Seven Brief Lessons on Physics, The Order of Time, and On the Equality of All Things (September 2026), is relational: time is not a river flowing past us but an effect of how things change relative to each other, and reality is a web of relations rather than a stage with objects on it.",
+  "Loop quantum gravity is a live research programme, not a confirmed theory. Its main rival, string theory, makes different bets about the deep structure of reality, and neither has yet produced a testable prediction that would settle the argument. Rovelli's popular writing is widely praised; his physics remains, by his own account, unfinished."],
+ "Space and time are not fundamental — they emerge from quantum relations, and time itself is an illusion of perspective.",
+ "Relational quantum mechanics and loop quantum gravity are serious, published research programmes, but they are not established fact. The 'time does not exist' slogan is a popularisation of a technical claim about how time appears in the equations, and rival programmes disagree about what, if anything, replaces it.",
+ ["Rovelli is a leading loop-quantum-gravity theorist.",
+  "His books popularise real, published physics."],
+ ["That loop quantum gravity is proven, or that time 'does not exist' in any everyday sense."],
+ [["15 Sep 2026", "Rogan episode #2554."],
+  ["Sep 2026", "On the Equality of All Things published."]],
+ [P("Physics podcasts", "Carlo Rovelli loop quantum gravity"),
+  W("Rovelli on time", "Carlo Rovelli order of time explained")])
+
+rogan("sinclair", "David Sinclair", "Genetics and the biology of ageing", "JRE, 7 Aug 2026 — ⚠ FINANCIAL STAKE",
+ "David Sinclair — official site", "https://davidasinclair.com",
+ ["David Sinclair is a professor of genetics at Harvard Medical School and author of Lifespan, the book that made 'ageing is a disease we can treat' a mainstream idea. His core claim is the Information Theory of Ageing: ageing is driven less by accumulated damage than by the loss of epigenetic information — the instructions that tell a cell which genes to read — and that information can, in principle, be restored.",
+  "On Rogan on 7 August 2026 he announced the launch of Lifespan Group LLC and Lifespan.com, built around ER-100, Life Biosciences' partial epigenetic reprogramming therapy, whose investigational new drug application was reported as FDA-cleared in January 2026. The therapy aims to reprogram aged cells toward a younger state without fully resetting them into stem cells.",
+  "Flag, stated plainly: Sinclair holds a scientific and financial stake in Life Biosciences. That does not make the science wrong — partial reprogramming has produced striking results in mice — but it does mean his promotion of a company product should be read with the stake in mind, and that human evidence for ER-100 is at an early stage."],
+ "Ageing can be reversed by restoring lost epigenetic information, and partial reprogramming is the path to doing it in humans.",
+ "Partial reprogramming works in mice and is a genuine research frontier. In humans it is unproven, and the distance between a mouse result and a safe human therapy is where most such programmes fail. Sinclair's dual role as researcher and company stakeholder is a reason to demand independent data, not a reason to dismiss the field.",
+ ["Sinclair is a Harvard genetics professor and author of Lifespan.",
+  "Partial epigenetic reprogramming has strong mouse results.",
+  "He announced Lifespan.com on Rogan in August 2026."],
+ ["That ER-100 reverses ageing in humans.",
+  "That ageing is 'solved' — it is not."],
+ [["7 Aug 2026", "Rogan appearance; Lifespan.com announced."],
+  ["Jan 2026", "ER-100 IND reported FDA-cleared."]],
+ [P("Longevity podcasts", "David Sinclair lifespan ageing"),
+  W("Sinclair on epigenetic reprogramming", "David Sinclair epigenetic reprogramming explained")])
+
+rogan("diamond", "Jared Diamond", "Geography, history, and human societies", "JRE #2549, 3 Sep 2026",
+ "Jared Diamond — official site", "https://www.jareddiamond.org",
+ ["Jared Diamond is the Pulitzer-winning author of Guns, Germs, and Steel and Collapse, and the most famous living exponent of the argument that geography, not innate superiority, explains why some societies conquered and others were conquered.",
+  "His thesis, in one line: societies that happened to sit on the right continent, with the right crops, animals, and east-west axis for spreading them, got a head start in food production — and food surpluses paid for soldiers, bureaucracies, and guns. At his Rogan appearance in September 2026, his latest book was Profits, Prophets, Coaches, and Kings, turning the same lens on when individual leaders actually matter against the tide of geography.",
+  "The criticism, long-standing among historians, is that the geography thesis underplays contingency, culture, and human agency — the very things his new book tries to bring back into the frame."],
+ "Geography and environment, more than culture or individual genius, explain the broad shape of human history.",
+ "The geography argument is powerful for the big patterns and weaker for the particulars: it explains why Eurasia had advantages, but not why two neighbours with the same geography diverged, or why a single leader sometimes changed everything. Diamond's own latest work is, in part, an answer to that criticism.",
+ ["Diamond won the Pulitzer for Guns, Germs, and Steel.",
+  "Geography shaped which societies developed food surpluses first."],
+ ["That geography determines everything — Diamond himself argues it does not."],
+ [["3 Sep 2026", "Rogan episode #2549."],
+  ["1997", "Guns, Germs, and Steel published."],
+  ["2005", "Collapse published."]],
+ [P("History podcasts", "Jared Diamond Guns Germs Steel"),
+  W("Diamond on geography and societies", "Jared Diamond geography history explained")])
+
+rogan("mcclellan", "Dan McClellan", "Biblical scholarship and the fight against Bible misinformation", "JRE #2562, 7 Oct 2026",
+ "Dan McClellan — official site", "https://www.maklelan.org",
+ ["Dan McClellan is a biblical scholar specialising in Second Temple Judaism, early Israelite religion, and the cognitive science of religion. He is best known online for short, blunt videos correcting viral claims about the Bible — what the text actually says in Hebrew and Greek, what scholars actually think, and where a popular claim quietly invents its evidence.",
+  "His book The Bible Says So (April 2025) and his podcast Data Over Dogma (co-hosted) make the same case in longer form: the Bible is a collection of ancient texts, written by many people over centuries, and reading it honestly means reading it in its historical context — not as a single, flat rulebook.",
+  "His critics come from two directions: conservative readers who see his corrections as attacks on faith, and other scholars who dispute individual readings. McClellan's own position is that scholarship and faith are different questions, and that bad history should be corrected whether or not it is convenient."],
+ "Most viral claims about what 'the Bible says' are wrong, and the text, read in context, is stranger and more interesting than the slogans.",
+ "McClellan's corrections rest on mainstream textual scholarship, which is itself a field of argued readings — Hebrew and Greek are ambiguous in places, and scholars disagree. His debunks are strongest where a claim has no textual basis at all, and weakest where the text itself is genuinely contested.",
+ ["McClellan is a published biblical scholar; The Bible Says So appeared in April 2025.",
+  "He appeared on Rogan on 7 Oct 2026 (#2562)."],
+ ["That scholarship settles every disputed passage — it does not."],
+ [["Apr 2025", "The Bible Says So published."],
+  ["7 Oct 2026", "Rogan episode #2562."]],
+ [P("Data Over Dogma podcast", "Dan McClellan Data Over Dogma"),
+  W("McClellan on the Bible", "Dan McClellan Bible scholarship explained")])
+
+rogan("everett", "Daniel Everett", "Linguistics — how language began", "JRE, 27 Aug 2026",
+ "Daniel Everett — official site", "https://daneverettbooks.com",
+ ["Daniel Everett spent years living with the Pirahã people of the Amazon, and came away with a claim that shook linguistics: the Pirahã language, he argued, has no recursion — no sentences nested inside sentences — and no words for numbers or colours in the way other languages have them. If true, that challenged the then-dominant idea that recursion is a universal, hard-wired feature of human language.",
+  "His books Don't Sleep, There Are Snakes and How Language Began argue the wider case: language did not arrive as a sudden genetic mutation, but grew gradually out of gesture, culture, and social life — humanity's greatest invention, built slowly, not switched on.",
+  "The Pirahã claims remain fiercely disputed. Other linguists argue Everett misanalysed the language, that recursion is present in forms he missed, and that a single small language cannot overturn a universal claim. Everett replies that his critics have mostly not done the fieldwork. The field has not settled it."],
+ "Language evolved gradually from culture and gesture, and the Pirahã show that even recursion is not universal.",
+ "Everett's fieldwork is real and his challenge mattered, but the Pirahã analysis is contested by linguists who read the same data differently, and the gradual-evolution account competes with nativist accounts that still command wide support. Treat this as a live scientific argument, not a verdict.",
+ ["Everett did extended fieldwork with the Pirahã and wrote two major books on language origins.",
+  "He appeared on Rogan on 27 Aug 2026."],
+ ["That Pirahã lacks recursion — disputed.",
+  "That language origins are settled — they are not."],
+ [["27 Aug 2026", "Rogan appearance."],
+  ["2008", "Don't Sleep, There Are Snakes published."],
+  ["2017", "How Language Began published."]],
+ [P("Linguistics podcasts", "Daniel Everett Piraha language"),
+  W("Everett on language origins", "Daniel Everett how language began")])
+
+rogan("hawass", "Zahi Hawass", "Egyptology — who really built the pyramids", "JRE #2321, 14 May 2025 — earlier than the Nov 2025–Oct 2026 window, included here by request",
+ "Zahi Hawass — official site", "https://hawasszahi.com",
+ ["Zahi Hawass is Egypt's most famous archaeologist: former Minister of Antiquities, excavator at Giza, and the public face of mainstream Egyptology for three decades. His Rogan appearance (episode #2321, May 2025) is included here even though it falls just before the November 2025–October 2026 window, because Hawass is the central mainstream voice in the pyramid debate this site covers.",
+  "His position, stated on his site and in his books, is the mainstream one: the pyramids were built by Egyptians, in the Old Kingdom, by a large, organised workforce of skilled labourers and seasonal workers — not by slaves in the Hollywood sense, and not by a lost civilisation. The evidence he cites includes workers' tombs at Giza, papyri such as the Diary of Merer recording limestone transport, and the quarry and ramp archaeology.",
+  "Hawass is also a polarising gatekeeper figure: critics accuse him of controlling access to Egyptian sites and of dismissing alternative theories without engaging them. His supporters reply that the alternative theories he dismisses — lost civilisations, alien builders — have no evidence to engage with."],
+ "The pyramids were built by Egyptians, by an organised Egyptian workforce, in the Old Kingdom — no lost civilisation required.",
+ "The Egyptian-builder case is supported by tombs, papyri, quarries, and tool marks — the strongest evidence in the debate. What it does not fully settle, in the eyes of critics, is every engineering detail: how exactly the largest blocks were lifted remains reconstructed, not observed, which is the gap alternative theories exploit.",
+ ["Hawass is a former Egyptian Minister of Antiquities and a leading Giza excavator.",
+  "Workers' tombs and the Merer papyrus support an Egyptian workforce."],
+ ["That every engineering step is known — some remain reconstructed."],
+ [["14 May 2025", "Rogan episode #2321."],
+  ["c. 2560 BC", "Great Pyramid of Khufu built (conventional dating)."]],
+ [P("Egyptology podcasts", "Zahi Hawass pyramids"),
+  W("Hawass on who built the pyramids", "Zahi Hawass pyramids built Egyptians")])
+
+rogan("masters", "Michael P. Masters", "Biological anthropology — the 'extratempestrial' hypothesis", "JRE #2428, 18 Dec 2025 — ⚠ CONTESTED",
+ "Michael P. Masters — official site (Identified Flying Objects)", "https://idflyobj.com",
+ ["Michael P. Masters is a professor of biological anthropology at Montana Technological University who studies hominin anatomy and the evolution of the human skull. His public work takes that expertise somewhere unusual: he argues that the beings described in UFO encounters could be us — humans from the far future, evolved into the big-headed, small-bodied form reported by witnesses, travelling back in time.",
+  "The argument, laid out in Identified Flying Objects (2019), The Extratempestrial Model (2022), and Revelation: The Future Human Past (2023), runs: human evolution trends toward larger brains, smaller jaws, and upright, gracile bodies; witnesses consistently describe beings that look like that trend continued; and time travel, while unproven, is not ruled out by physics in the way faster-than-light travel is.",
+  "Flag: the 2019 book was self-published through Masters' own imprint with informal review by three colleagues, not formal academic peer review. And the hypothesis, while internally consistent, is not testable in its current form — it explains the witness reports by positing future humans, but offers no prediction that would distinguish it from the simpler explanation that the reports are misperceptions, hoaxes, or classified aircraft."],
+ "UFO beings are evolved future humans visiting their own past.",
+ "The anatomical trend Masters cites is real, and the hypothesis is more disciplined than most UFO theories. But it is not a scientific finding: it cannot be falsified with current evidence, it was not peer-reviewed in its original form, and the witness reports it explains are themselves unreliable data. Read it as a thought experiment, not a result.",
+ ["Masters is a professor of biological anthropology.",
+  "Human evolution has trended toward larger brains and smaller jaws."],
+ ["That UFO beings are future humans — untestable on current evidence."],
+ [["18 Dec 2025", "Rogan episode #2428."],
+  ["2019", "Identified Flying Objects published (self-published)."],
+  ["2022", "The Extratempestrial Model published."]],
+ [P("UFO / anthropology podcasts", "Michael Masters extratempestrial"),
+  W("Masters on future humans and UFOs", "Michael Masters extratempestrial hypothesis")])
+
+rogan("biondi", "Filippo Biondi", "Satellite radar and the pyramids beneath the pyramids", "JRE #2443, 23 Jan 2026 — ⚠ CONTESTED",
+ "Filippo Biondi — HarmonicSAR", "https://www.harmonicsar.com",
+ ["Filippo Biondi is a telecommunications and signal-processing engineer whose team uses synthetic-aperture radar (SAR) and Doppler tomography to look inside structures from orbit. In March 2025 his team claimed something extraordinary: vast structures — shafts, chambers, and a spiral — beneath the Khafre pyramid at Giza, detected by analysing satellite radar data.",
+  "The claim exploded online, was amplified by Rogan in January 2026, and was immediately challenged. Egyptologists and radar specialists pointed out that SAR, at the wavelengths used, cannot resolve structures hundreds of metres underground with the precision claimed, and that the 'structures' were more plausibly artefacts of the processing method.",
+  "Flag, stated carefully: the team's earlier 2022 paper using the same method on the Great Pyramid was reported in August 2026 as retracted; that retraction report was itself search-reported and has not been independently confirmed for this article. The Khafre claim itself has not been peer-reviewed. This article therefore treats the claim as contested and unproven, not as a discovery."],
+ "Satellite radar has revealed a vast hidden complex beneath the Khafre pyramid.",
+ "The method cannot plausibly deliver the resolution claimed at that depth, the result has not passed peer review, and independent experts have not reproduced it. Until a peer-reviewed paper and an independent replication exist, this is a claim about a radar analysis, not a discovery about a pyramid.",
+ ["Biondi's team made the Khafre claim in March 2025 and discussed it on Rogan in January 2026.",
+  "SAR is a real remote-sensing method."],
+ ["That structures exist beneath Khafre as described.",
+  "That the earlier paper's retraction is confirmed — that report is itself unverified here."],
+ [["Mar 2025", "Khafre claim announced."],
+  ["23 Jan 2026", "Rogan episode #2443."],
+  ["Aug 2026", "Earlier method paper reported as retracted (report unconfirmed)."]],
+ [P("Pyramid podcasts", "Filippo Biondi Khafre pyramid radar"),
+  W("Biondi on the Khafre radar claim", "Filippo Biondi Giza radar", "https://www.youtube.com/watch?v=isby5iL5i1s")])
+
+rogan("vankerkwyk", "Ben van Kerkwyk", "Independent researcher — ancient engineering", "JRE #2417, 25 Nov 2025 — INDEPENDENT RESEARCHER",
+ "UnchartedX — official site", "https://www.unchartedx.com",
+ ["Ben van Kerkwyk runs UnchartedX, a video-essay and research project on ancient sites, megalithic engineering, and what he calls the mysteries of the past. His work focuses on precision: the machining marks on Egyptian granite, the tolerances of stone boxes in the Serapeum, the engineering questions mainstream tours tend to skip.",
+  "His argument is narrower than Hancock's and, for that reason, harder to dismiss out of hand: whatever built these objects had tools and methods we have not fully reconstructed, and archaeology has sometimes settled for 'ramps and copper chisels' where the stonework suggests something more capable.",
+  "Flag: van Kerkwyk is an independent researcher, not an institutional scientist, and his work is not peer-reviewed. Mainstream archaeologists reply that the precision he highlights is achievable with known ancient methods — abrasives, pounding, and time — and that 'we don't fully know how' is not evidence of lost technology."],
+ "Some ancient stonework shows a precision that known ancient methods cannot explain.",
+ "The precision is real and worth explaining. The inference — that it requires lost technology — does not follow: experimental archaeology has reproduced comparable precision with stone, sand, and abrasive methods, and no workshop, tool, or text of a lost technology has been found.",
+ ["Van Kerkwyk documents real machining marks and tolerances on ancient stone.",
+  "He appeared on Rogan on 25 Nov 2025."],
+ ["That the precision requires lost technology."],
+ [["25 Nov 2025", "Rogan episode #2417."]],
+ [P("Ancient engineering podcasts", "UnchartedX Ben van Kerkwyk"),
+  W("Van Kerkwyk on ancient precision", "UnchartedX ancient engineering")])
+
+rogan("tommywood", "Tommy Wood", "Neuroscience — dementia prevention and the stimulated brain", "JRE #2450, 6 Feb 2026",
+ "Dr Tommy Wood — official site", "https://www.drtommywood.com",
+ ["Tommy Wood is a physician-neuroscientist whose work sits at the intersection of brain health, traumatic brain injury, and elite-athlete performance. His framework, set out in The Stimulated Mind (March 2026) and on his site, is stimulus, supply, and support: the brain needs the right amount of stimulation (not too little, not too much), a supply of nutrients and oxygen, and support from sleep, exercise, and social life.",
+  "On dementia, his message is prevention over cure: most dementia risk is shaped decades before symptoms, by vascular health, hearing, sleep, exercise, and cognitive engagement — levers that are individually modest and collectively large.",
+  "The pushback is the usual one for prevention science: the individual levers have good observational evidence but few long randomised trials proving that a combined protocol prevents dementia, and 'brain stimulation' products and programmes routinely overclaim on the back of real but modest findings."],
+ "Dementia risk can be substantially reduced by managing stimulation, supply, and support decades before symptoms.",
+ "The risk factors Wood names are well supported observationally; a proven, packaged prevention protocol is not. His framework is a sensible synthesis of the evidence, not a prescription with trial proof behind every element.",
+ ["Wood is a physician-neuroscientist; The Stimulated Mind appeared in March 2026.",
+  "Vascular health, sleep, exercise, and hearing are established dementia risk factors."],
+ ["That any single programme is proven to prevent dementia."],
+ [["6 Feb 2026", "Rogan episode #2450."],
+  ["Mar 2026", "The Stimulated Mind published."]],
+ [P("Brain health podcasts", "Tommy Wood dementia prevention"),
+  W("Wood on dementia prevention", "Tommy Wood stimulated mind brain")])
+
+# ---------------- ROGAN SCIENCE (part 2) ----------------
+rogan("masterjohn", "Chris Masterjohn", "Nutritional science — mitochondria", "JRE #2420, 29 Nov 2025",
+ "Chris Masterjohn, PhD — official site", "https://www.chrismasterjohn-phd.com",
+ ["Chris Masterjohn is a nutritional scientist whose work centres on mitochondria — the energy factories of the cell — and on what happens when they run short of the nutrients they need. His Substack posts in 2026, including 'The Five Mitochondrial Strategies' (October 2026), lay out his framework: nutrient deficiency, energy budget, exercise, and timing with nature.",
+  "He also hosts the Mastering Nutrition podcast and founded Mitome, a reader-funded project. Disclosure note, stated plainly: his work is reader-funded, which keeps it independent of supplement companies but also means it is not institutional research — it is one scientist's synthesis, published directly to readers.",
+  "The mainstream view agrees mitochondria matter enormously for ageing and metabolic disease, and disagrees mainly about how far the current evidence goes: mitochondrial nutrient strategies are plausible and partly supported, but they are not a proven programme for reversing ageing in healthy people."],
+ "Fixing mitochondrial nutrient shortfalls and energy budgets can restore cellular energy and slow ageing.",
+ "Mitochondrial health is central to ageing and metabolism, and Masterjohn's synthesis is careful. But nutrient strategies in healthy people lack the long randomised trials that would turn a plausible framework into a proven intervention — read it as an informed hypothesis, not a prescription.",
+ ["Masterjohn is a PhD nutritional scientist; his Substack framework is public and dated.",
+  "Mitochondrial dysfunction is well established in ageing research."],
+ ["That his strategies are proven to reverse ageing in humans."],
+ [["29 Nov 2025", "Rogan episode #2420."],
+  ["3 Oct 2026", "'The Five Mitochondrial Strategies' published on Substack."]],
+ [P("Mastering Nutrition podcast", "Chris Masterjohn mitochondria"),
+  W("Masterjohn on mitochondria", "Chris Masterjohn mitochondrial health")])
+
+rogan("kokotajlo", "Daniel Kokotajlo", "AI researcher and forecaster — AI 2027", "JRE #2551, 9 Sep 2026 — SCENARIO, NOT A PREDICTION",
+ "AI Futures Project — official site", "https://ai-futures.org",
+ ["Daniel Kokotajlo is a former OpenAI governance researcher and executive director of the AI Futures Project. In April 2025 he and co-authors published AI 2027, a detailed scenario forecast: AI systems progress rapidly to superintelligence, and the story branches into a 'race' ending and a 'slowdown' ending, with timelines, capabilities, and political consequences spelled out month by month.",
+  "The project updated its timelines through 2025 and 2026, including revised medians in August 2026, and Kokotajlo discussed the forecast on Rogan in September 2026. The site ai-2027.com carries the full scenario.",
+  "Flag, in the author's own terms and the Ledger's: this is a scenario, not a prediction. Kokotajlo's team presents it as one plausible path used to think through policy choices, not as a forecast with a probability attached to a date. Critics in AI research argue the timeline is too fast, the capability jumps too smooth, and the political modelling too neat; supporters reply that scenario work is meant to be provocative, not precise."],
+ "AI could reach superintelligence around 2027, with a race or a slowdown shaping what happens next.",
+ "AI 2027 is a serious, detailed scenario from researchers who know the field — and it is a scenario. Its timeline is a modelling choice, not a measured result, and the AI research community is split on whether the pace it assumes is realistic.",
+ ["Kokotajlo is a former OpenAI governance researcher; AI 2027 was published in April 2025.",
+  "The project has published timeline updates since."],
+ ["That superintelligence arrives in 2027 — that is a scenario date, not a prediction."],
+ [["Apr 2025", "AI 2027 published."],
+  ["Aug 2026", "Timeline medians revised."],
+  ["9 Sep 2026", "Rogan episode #2551."]],
+ [P("AI podcasts", "Daniel Kokotajlo AI 2027"),
+  W("Kokotajlo on AI 2027", "Daniel Kokotajlo AI 2027", "https://www.youtube.com/watch?v=bHAVw5dMfJM")])
+
+rogan("lisle", "John Lisle", "History of science — the CIA, MKULTRA, and the scientists it used", "JRE #2419, November 2025 — exact day not verified",
+ "University of Texas — Lisle CV (PDF)", "https://minio.la.utexas.edu/colaweb-prod/person_files/0/6178/Lisle CV.pdf",
+ ["John Lisle is a lecturer in the history of science at the University of Texas at Austin. His books The Dirty Tricks Department (2023) and Project Mind Control (2025) trace how American intelligence agencies recruited scientists — chemists, psychologists, physicians — for covert programmes, and what that recruitment did to the scientists and to the science.",
+  "His Rogan discussion centred on MKULTRA, the CIA programme that dosed unwitting subjects with LSD and other drugs in search of mind control, and on the depositions and documents that survived the programme's attempted destruction. Lisle's argument is that MKULTRA's failure mattered as much as its crimes: a programme that produced nothing usable still fed a conspiracy culture, because secrecy left a vacuum that speculation filled.",
+  "Note on verification for this article: Lisle's episode is confirmed as November 2025, episode #2419, but the exact day was not confirmed in the sources checked, so this article gives the month only. His personal website URL was also not confirmed live, so this article links his University of Texas CV instead — the solid, verifiable source."],
+ "The CIA's use of scientists for MKULTRA failed as science and succeeded, unintentionally, at breeding conspiracy culture.",
+ "MKULTRA is documented history — the programme, the dosing, the destruction of records, and the later hearings are all on the record. Where historians argue is about scale and legacy: how much was actually achieved, how many victims there were, and how far the conspiracy culture that followed can fairly be blamed on the programme itself.",
+ ["Lisle is a UT Austin history-of-science lecturer; his two books are published works.",
+  "MKULTRA's existence and its record destruction are documented."],
+ ["Exact victim counts and the full scope of MKULTRA — much of the record was destroyed."],
+ [["2023", "The Dirty Tricks Department published."],
+  ["2025", "Project Mind Control published."],
+  ["Nov 2025", "Rogan episode #2419 (exact day not verified)."]],
+ [P("History podcasts", "John Lisle MKULTRA"),
+  W("Lisle on MKULTRA", "John Lisle Project Mind Control")])
+
+rogan("kara", "Siddharth Kara", "Modern slavery researcher — cobalt, lithium, and the Congo", "JRE #2556, 22 Sep 2026",
+ "University of Nottingham, Rights Lab — Kara profile", "https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/our-team/siddharth-kara/",
+ ["Siddharth Kara is a researcher on modern slavery and human trafficking, a visiting professor at the University of Nottingham's Rights Lab, and the author of Cobalt Red (2023, a Pulitzer finalist) and The Zorg (October 2025). His work is field research: travelling to artisanal mines in the Democratic Republic of the Congo and documenting, in named places and named supply chains, the children and adults digging cobalt and lithium that end up in phones, laptops, and electric cars.",
+  "His argument is that the clean-energy and AI boom runs, in part, on labour that the companies buying the minerals prefer not to see: a supply chain that is formally audited at the top and brutally informal at the bottom, where the digging actually happens.",
+  "Congo specialists' criticism, reported in the research for this article, is that Kara's framing sometimes overstates how much of the cobalt trade is artisanal and understates the role of industrial mining and Congolese actors themselves. Kara's reply, in his books, is that the artisanal share is not the point — the point is that children are digging at all, inside supply chains that claim to be clean."],
+ "The cobalt and lithium in our devices and cars are dug, in part, by children and enslaved labour in the Congo, inside supply chains that claim to be clean.",
+ "Kara's field reporting documents real, named exploitation. The debate among specialists is about proportions and framing — how large the artisanal share is, and who bears responsibility — not about whether the exploitation exists. The Ledger reports the exploitation as documented and the proportions as disputed.",
+ ["Kara is a Rights Lab visiting professor; Cobalt Red was a Pulitzer finalist.",
+  "Children dig cobalt in the Congo; that is documented field reporting."],
+ ["Exact shares of artisanal vs industrial cobalt — disputed among specialists."],
+ [["2023", "Cobalt Red published."],
+  ["14 Oct 2025", "The Zorg published."],
+  ["22 Sep 2026", "Rogan episode #2556."]],
+ [P("Human rights podcasts", "Siddharth Kara Cobalt Red"),
+  W("Kara on cobalt and the Congo", "Siddharth Kara Cobalt Red Congo")])
+
+rogan("campbell", "Thomas Campbell", "Physicist — consciousness as the fundamental reality", "JRE #2541, 18 Aug 2026 — ⚠ CONTESTED",
+ "Thomas Campbell — My Big TOE, official site", "https://www.my-big-toe.com",
+ ["Thomas Campbell is a physicist — he worked on US missile-defence systems — who argues, in his My Big TOE trilogy (Theory of Everything), that consciousness is not produced by the physical world but is the fundamental substrate, and that physical reality is a computed virtual reality rendered for conscious players.",
+  "On Rogan in August 2026 he extended the claim: AI systems, he argued, are already conscious, and remote-viewing tests with AI can probe the virtual-reality model. His site carries the books, lectures, and the experimental programme he proposes.",
+  "Flag: this is contested, and the contest is not close in mainstream physics. Campbell's model is not a published, peer-reviewed theory of everything, it makes no testable prediction that distinguishes it from standard physics, and the remote-viewing and AI-consciousness claims rest on experiments that have not been replicated under controlled conditions. What is interesting about Campbell is not that he has solved physics but that a working physicist is willing to argue, in public, that consciousness comes first."],
+ "Consciousness is fundamental; physical reality is a virtual reality computed for it.",
+ "Campbell's model is a philosophical proposal dressed in physics language, not a tested theory. Mainstream physics does not accept that reality is computed, that AI is already conscious, or that remote viewing works — and Campbell's experiments have not produced the controlled, replicated evidence that would change that. Read him as a provocateur with a physics background, not as a source of findings.",
+ ["Campbell is a physicist by training and author of the My Big TOE trilogy.",
+  "He appeared on Rogan on 18 Aug 2026 (#2541)."],
+ ["That reality is a computed virtual reality, or that AI is conscious."],
+ [["18 Aug 2026", "Rogan episode #2541."],
+  ["2003–2005", "My Big TOE trilogy published."]],
+ [P("Consciousness podcasts", "Thomas Campbell My Big TOE"),
+  W("Campbell on consciousness and reality", "Thomas Campbell My Big TOE virtual reality")])
+
+rogan("zachbush", "Zach Bush", "Physician — soil, glyphosate, and the microbiome", "JRE #2529, 22 Jul 2026 — ⚠ FINANCIAL STAKE",
+ "Zach Bush, MD — official site", "https://www.zachbushmd.com",
+ ["Zach Bush is a physician trained in internal medicine, endocrinology, and hospice care, and the founder of Seraphic Group and Farmer's Footprint, a project promoting regenerative agriculture. His central argument links three things most medicine keeps separate: chemical agriculture (above all glyphosate), the soil microbiome, and the human microbiome — and through them, the rise in chronic and metabolic disease.",
+  "On his site and in his talks, he argues that glyphosate damages the tight junctions of the gut, that degraded soil produces degraded food, and that regenerative farming — rebuilding soil biology — is a medical intervention, not just an environmental one.",
+  "Flag, stated plainly: Bush sells ION*, a supplement built on the same microbiome theory he promotes, so his commercial interest and his medical argument point the same way. And his framing — which critiques germ theory and modern medicine in broad terms — is his position, not a consensus: glyphosate's health effects are genuinely debated, but the claim that it is a primary driver of chronic disease is not established, and regenerative agriculture's health benefits, while plausible, are not proven as medicine."],
+ "Chemical agriculture is damaging human health through the soil and gut microbiomes, and regenerative farming is the medical fix.",
+ "Soil health matters, the microbiome matters, and glyphosate exposure is a legitimate research question. What is not established is Bush's causal chain — that glyphosate is a primary driver of chronic disease, or that regenerative food is medicine. And his supplement business means his claims should be checked against independent evidence, not taken on his say-so.",
+ ["Bush is a physician (internal medicine, endocrinology, hospice) and founder of Farmer's Footprint.",
+  "He appeared on Rogan on 22 Jul 2026 (#2529)."],
+ ["That glyphosate is a primary cause of chronic disease.",
+  "That ION* or regenerative food is proven medicine."],
+ [["22 Jul 2026", "Rogan episode #2529."]],
+ [P("Health podcasts", "Zach Bush glyphosate microbiome"),
+  W("Bush on soil and health", "Zach Bush soil glyphosate health")])
+
+rogan("jacobsen", "Rowan Jacobsen", "Science writer — in defence of sunlight", "JRE #2516, 18 Jun 2026 — journalist, not a lab scientist",
+ "Rowan Jacobsen — official site", "https://www.rowanjacobsen.com",
+ ["Rowan Jacobsen is a science journalist and author who writes on food and nature for Harper's, Scientific American, and Smithsonian. His 2026 book In Defense of Sunlight argues a counterintuitive case: that moderate sun exposure is associated with lower rates of many diseases, and that the public-health message on sun — avoid it, always, with sunscreen — has overshot.",
+  "His argument is epidemiological: populations with more sun exposure show lower all-cause mortality in several large studies, even after accounting for skin cancer, and the mechanisms (vitamin D, nitric oxide release, circadian effects) are plausible. He does not argue for sunburn; he argues for moderation, and for distinguishing a tan from a burn.",
+  "Flag: Jacobsen is a journalist, not a lab scientist, and his book is a synthesis of other people's studies. Dermatologists' pushback is that the epidemiological association is confounded — healthier, more active, wealthier people get more sun — and that skin cancer is a proven, dose-dependent harm, while the mortality benefit is an association, not a trial result."],
+ "Moderate sun exposure is, on balance, good for you — and the avoid-the-sun message has done more harm than good.",
+ "The association Jacobsen cites is real in observational studies, and the mechanisms are plausible. But association is not causation, the studies are confounded by lifestyle, and skin cancer risk from UV is proven. The honest summary is: some sun is probably fine and possibly beneficial; a lot of sun is harmful; nobody has run the trial that settles the middle.",
+ ["Jacobsen is an established science journalist; In Defense of Sunlight appeared in 2026.",
+  "He appeared on Rogan on 18 Jun 2026 (#2516)."],
+ ["That sun exposure is proven to extend life.",
+  "That sunscreen should be abandoned — Jacobsen does not argue this."],
+ [["18 Jun 2026", "Rogan episode #2516."],
+  ["2026", "In Defense of Sunlight published."]],
+ [P("Health podcasts", "Rowan Jacobsen sunlight"),
+  W("Jacobsen on sunlight and health", "Rowan Jacobsen In Defense of Sunlight")])
+
+rogan("thaller", "Michelle Thaller", "Astrophysics and science communication", "JRE #2506, 28 May 2026",
+ "Dr Michelle Thaller — official site", "https://www.drmichellethaller.com",
+ ["Michelle Thaller is an astrophysicist and science communicator who spent years at NASA — on the Spitzer Space Telescope, at JPL, and at Goddard — before retiring from the agency in 2024. (Older NASA pages still list her agency title; this article describes her as former NASA.)",
+  "What she posts and talks about is cosmic scale done properly: what the Big Bang actually means and what it does not, why the most common misconceptions about black holes are wrong, what the Webb telescope is really seeing, and how seriously to take claims of signs of life elsewhere.",
+  "Her Rogan appearance in May 2026 ranged across exactly that territory — the size and age of the universe, the limits of what telescopes can show, and why 'we found life' headlines almost always overstate the data."],
+ "The universe is stranger, older, and larger than intuition suggests — and most headlines about it overstate what we actually know.",
+ "Thaller's popularisation is mainstream astrophysics, clearly explained. The arguments in her field are about interpretation at the edges — what a given Webb spectrum does or does not imply — not about the foundations she teaches.",
+ ["Thaller is a former NASA astrophysicist (Spitzer, JPL, Goddard).",
+  "She appeared on Rogan on 28 May 2026 (#2506)."],
+ ["That any 'sign of life' claim from Webb data is settled — none is."],
+ [["28 May 2026", "Rogan episode #2506."],
+  ["2024", "Thaller retires from NASA."]],
+ [P("Astronomy podcasts", "Michelle Thaller Webb telescope"),
+  W("Thaller on the cosmos", "Michelle Thaller universe explained")])
+
+rogan("radin", "Dean Radin", "Parapsychology and consciousness research", "JRE #2513, 11 Jun 2026",
+ "Dean Radin — official site", "https://www.deanradin.com",
+ ["Dean Radin is chief scientist at the Institute of Noetic Sciences and the most prominent working parapsychologist in the United States. His research programme tests whether mind affects matter: presentiment experiments, random-number-generator studies, and, most recently, a 2026 preregistered retrocausal interferometer test run with both human and AI observers.",
+  "He also works on what he calls Cognigenics — an intranasal RNA-interference therapy for dementia. His claim, reported in the research for this article, is that it doubled memory and cut anxiety by about 100% in mice. That is his claim, from his own reporting, not an established finding, and this article labels it as such.",
+  "Mainstream psychology and neuroscience regard parapsychology's positive results as artefacts of small samples, publication bias, and flexible analysis — and note that the field's most famous effects have shrunk or vanished under preregistration and replication. Radin's reply is that preregistration is exactly what his recent work does, and that the effects, while small, persist. The field has not convinced the mainstream."],
+ "Mind can affect matter, and consciousness phenomena are real, measurable effects.",
+ "Radin's experiments are real experiments, and his recent preregistered work is the right response to the replication criticism. But the effects remain small, contested, and unreplicated by independent labs at scale, and the Cognigenics mouse claim is unestablished. This is a fringe field with a serious practitioner, not a settled science.",
+ ["Radin is chief scientist at the Institute of Noetic Sciences.",
+  "He appeared on Rogan on 11 Jun 2026 (#2513)."],
+ ["That mind-matter effects are established, or that Cognigenics works in humans."],
+ [["11 Jun 2026", "Rogan episode #2513."],
+  ["2026", "Preregistered retrocausal interferometer test (Zenodo)."]],
+ [P("Consciousness podcasts", "Dean Radin noetic sciences"),
+  W("Radin on consciousness research", "Dean Radin parapsychology experiments")])
+
+rogan("danrichards", "Dan Richards", "Independent researcher — DeDunking the Past", "JRE #2563, 8 Oct 2026 — INDEPENDENT RESEARCHER",
+ "DeDunking — YouTube", "https://www.youtube.com/@DeDunking",
+ ["Dan Richards runs DeDunking the Past, a video project that examines lost-civilisation and alternative-history claims — the same territory as Hancock and Carlson, but from a debunking-leaning chair. His videos test specific claims against the archaeological record: a particular carving, a particular date, a particular 'impossible' artefact.",
+  "His position is useful to state precisely, because it is not simply 'mainstream archaeology says no': Richards argues that many alternative claims fail on their own terms — misread dates, misidentified images, quotes taken out of context — and that the interesting part is figuring out which claims survive that treatment and which do not.",
+  "Flag: Richards is an independent researcher, not an institutional scientist, and his channel is advocacy as well as analysis. Mainstream archaeologists would mostly agree with his conclusions while noting that a YouTube debunk is not peer review — and alternative-history supporters accuse him of selective reading. The Ledger's view: judge each video's evidence, not the channel's stance."],
+ "Most lost-civilisation claims fail when checked against the actual evidence — but the checking has to be done claim by claim.",
+ "Richards' method — check the specific claim, not the worldview — is sound, and his individual debunks stand or fall on the documents he cites. The limitation is the format: a video can demolish a claim without proving the mainstream alternative in full, and selection effects (which claims get covered) shape the impression left behind.",
+ ["Richards runs DeDunking the Past and appeared on Rogan on 8 Oct 2026 (#2563)."],
+ ["That every alternative claim is false — each must be checked on its own evidence."],
+ [["8 Oct 2026", "Rogan episode #2563."]],
+ [P("History podcasts", "DeDunking Dan Richards"),
+  W("Richards on lost civilisations", "DeDunking the Past Dan Richards")])
+
+rogan("edgley", "Ross Edgley", "Endurance athlete and sport-science graduate", "JRE #2568, 20 Oct 2026 — athlete, not a lab scientist",
+ "Ross Edgley — official site", "https://www.rossedgley.com",
+ ["Ross Edgley is an endurance athlete and Loughborough sport-science graduate best known for swimming around Great Britain, swimming around Iceland, and swimming the Yukon River. His swims double as citizen science: the Iceland swim carried eDNA and microplastic sampling alongside university researchers, turning an endurance stunt into a moving survey of ocean health.",
+  "What he posts about is the science of fatigue and resilience: what the body does at the edge, how cold, salt, and sleep deprivation interact, and what recovery actually requires. His books The World's Fittest Book and The Art of Resilience turn those swims into training and mindset frameworks.",
+  "Flag: Edgley is an athlete with a sport-science degree, not a lab scientist, and his claims are best read as field experience plus the published science he cites. The citizen-science sampling on his swims is real but opportunistic — useful data, not a controlled study."],
+ "The human body can be trained to endure far more than people assume — and extreme swims can do real science along the way.",
+ "Edgley's feats are documented and his resilience framework is grounded in sport science. The citizen-science data from his swims is genuine but opportunistic, and 'what worked for one athlete on one swim' is not a prescription for anyone else.",
+ ["Edgley swam around Great Britain and Iceland; the Iceland swim included eDNA and microplastic sampling.",
+  "He appeared on Rogan on 20 Oct 2026 (#2568)."],
+ ["That his training framework is clinically proven — it is field experience, not a trial."],
+ [["20 Oct 2026", "Rogan episode #2568."]],
+ [P("Endurance podcasts", "Ross Edgley swim"),
+  W("Edgley on endurance and resilience", "Ross Edgley Great Britain swim")])
+
+# ---------------- HTML GENERATION ----------------
+def esc(s):
+    return html.escape(str(s), quote=True)
+def paras(ps):
+    return "".join("<p>%s</p>" % esc(p) for p in ps)
+def lis(items):
+    return "".join("<li>%s</li>" % esc(i) for i in items)
+def srcs(items):
+    out = []
+    for label, url in items:
+        out.append('<li><a href="%s" target="_blank" rel="noopener">%s</a></li>' % (esc(url), esc(label)))
+    return "".join(out)
+def watch(items):
+    out = []
+    for label, url, kind in items:
+        tag = "▶ video" if kind == "video" else ("🔎 search" if kind == "search" else "🔗 link")
+        out.append('<li><a href="%s" target="_blank" rel="noopener">%s</a> <span class="kind">%s</span></li>' % (esc(url), esc(label), tag))
+    return "".join(out)
+
+cats = [("All", "all"), ("History", "History"), ("Deep Past", "Deep Past"), ("Rogan Science", "Rogan Science"), ("Contested", "Contested")]
+cards = []
+for a in A:
+    flags = ""
+    if "CONTESTED" in a["date"]:
+        flags = '<span class="flag bad">⚠ CONTESTED</span>'
+    elif "INDEPENDENT" in a["date"]:
+        flags = '<span class="flag">INDEPENDENT RESEARCHER</span>'
+    elif "FINANCIAL STAKE" in a["date"]:
+        flags = '<span class="flag bad">⚠ FINANCIAL STAKE</span>'
+    _cats = a["cat"] + (" Contested" if "CONTESTED" in a["date"] else "")
+    cards.append(
+      '<article class="card" data-cats="%s" data-title="%s" onclick="openArt(\'%s\')">'
+      '<div class="kicker">%s · %s</div><h2>%s</h2><p>%s</p><div class="tagrow">%s<span class="tag">◈ Both sides inside · ▶ Watch / Listen</span></div></article>'
+      % (esc(a["cat"]), esc(a["title"].lower() + " " + a["dek"].lower()), esc(a["id"]),
+         esc(a["cat"]), esc(a["date"]), esc(a["title"]), esc(a["dek"]), flags))
+
+readers = []
+index_items = []
+for a in A:
+    readers.append(
+      '<section class="reader" id="art-%s"><button class="back" onclick="goHome()">← Back to the front page</button>'
+      '<div class="kicker">%s · %s</div><h1>%s</h1><p class="dek">%s</p>'
+      '<div class="both"><div class="claim"><h3>◈ The claim, at full strength</h3><p>%s</p></div>'
+      '<div class="push"><h3>◈ The pushback</h3><p>%s</p></div></div>'
+      '<div class="body">%s</div>'
+      '<div class="boxes"><div><h3>✓ What it proves</h3><ul>%s</ul></div><div><h3>✗ What it doesn\'t prove</h3><ul>%s</ul></div></div>'
+      '<h3>Timeline</h3><ul class="tl">%s</ul>'
+      '<h3>Sources</h3><ul class="sources">%s</ul>'
+      '<h3>▶ Watch / Listen</h3><ul class="watch">%s</ul></section>'
+      % (esc(a["id"]), esc(a["cat"]), esc(a["date"]), esc(a["title"]), esc(a["dek"]),
+         esc(a["claim"]), esc(a["pushback"]), paras(a["body"]), lis(a["proves"]), lis(a["notproves"]),
+         "".join("<li><b>%s</b> — %s</li>" % (esc(y), esc(t)) for y, t in a["timeline"]),
+         srcs(a["sources"]), watch(a["watch"])))
+    for label, url in a["sources"]:
+        index_items.append('<li><b>%s:</b> <a href="%s" target="_blank" rel="noopener">%s</a></li>' % (esc(a["title"]), esc(url), esc(label)))
+
+data_json = json.dumps(A)
+html_doc = """<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Scout Ledger — History, Ancient World &amp; Rogan Science</title>
+<style>
+body{font-family:Georgia,serif;background:#f7f2e7;color:#1a1a1a;margin:0}
+header{border-bottom:4px double #1a1a1a;padding:28px 18px 14px;text-align:center;background:#fbf8f0}
+header h1{font-size:clamp(2.2rem,7vw,4.2rem);margin:0;letter-spacing:.02em}
+header p{font-style:italic;color:#555}
+nav{position:sticky;top:0;background:#1a1a1a;color:#fff;padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;z-index:5}
+nav button,nav input{font-family:Georgia,serif;font-size:15px;padding:7px 12px;border:1px solid #fff;background:#1a1a1a;color:#fff;cursor:pointer}
+nav button.on{background:#c0392b;border-color:#c0392b}
+nav input{background:#fff;color:#000;min-width:200px}
+main{max-width:1080px;margin:0 auto;padding:18px}
+.lead{border:3px solid #1a1a1a;padding:20px;background:#fff;margin-bottom:22px;cursor:pointer}
+.lead h2{font-size:clamp(1.6rem,4vw,2.4rem);margin:8px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{border:1px solid #999;background:#fff;padding:16px;cursor:pointer}
+.card:hover{box-shadow:3px 3px 0 #1a1a1a}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c0392b;font-weight:bold}
+.tag{font-size:12px;background:#eee;padding:2px 7px;margin-left:6px}
+.tagrow{margin-top:10px}
+.flag{font-size:12px;background:#c0392b;color:#fff;padding:2px 7px;font-weight:bold}
+.flag.bad{background:#7b241c}
+.reader{display:none;border:1px solid #999;background:#fff;padding:22px;max-width:820px;margin:0 auto}
+.reader h1{font-size:clamp(1.7rem,4vw,2.5rem)}
+.dek{font-size:1.15rem;font-style:italic;color:#444}
+.both{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:700px){.both{grid-template-columns:1fr}}
+.claim{border:2px solid #c0392b;padding:12px;background:#fdedec}
+.push{border:2px solid #148f77;padding:12px;background:#eafaf7}
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.boxes{grid-template-columns:1fr}}
+.boxes>div{border:1px solid #999;padding:12px}
+.tl li,.sources li,.watch li{margin:6px 0}
+.kind{font-size:12px;color:#666}
+.back{font-family:Georgia,serif;font-size:16px;padding:8px 14px;cursor:pointer;margin-bottom:14px}
+footer{max-width:1080px;margin:30px auto;padding:18px;border-top:3px double #1a1a1a}
+footer h2{margin-top:0}
+.note{background:#fff3cd;border:1px solid #d4a017;padding:12px;margin:18px 0}
+</style></head><body>
+<header><h1>The Scout Ledger</h1><p>History, the ancient world, and the scientists Rogan has on — every story with both sides, sources, and something to watch.</p>
+<p><b>How to read this paper:</b> each article states the claim at full strength beside the documented pushback. No winner is picked for you. Flags mark contested claims, independent researchers, and financial stakes. Watch links are direct videos only where verified; otherwise they are labelled searches.</p></header>
+<nav id="nav">
+<button data-f="all" class="on" onclick="filter('all',this)">All</button>
+<button data-f="History" onclick="filter('History',this)">History</button>
+<button data-f="Deep Past" onclick="filter('Deep Past',this)">Deep Past</button>
+<button data-f="Rogan Science" onclick="filter('Rogan Science',this)">Rogan Science</button>
+<button data-f="Contested" onclick="filter('Contested',this)">Contested</button>
+<input id="q" placeholder="Search headlines…" oninput="searchArt(this.value)">
+</nav>
+<main id="home">
+<div class="note"><b>Today's lead story — and a note on accuracy:</b> dates, sites, and episode numbers are given only where they could be verified. Where a detail could not be verified (for example John Lisle's exact episode day, or the reported retraction of Biondi's earlier method paper), the article says so instead of guessing. Zahi Hawass's Rogan episode (May 2025) falls just before the Nov 2025–Oct 2026 window and is included by request, labelled as such.</div>
+<div class="lead" onclick="openArt('sulawesi')"><div class="kicker">Lead story · History · Nature, August 2025</div>
+<h2>The Million-Year Sea Crossing: Seven Stone Tools Rewrite When Humans First Sailed</h2>
+<p>Seven flakes of stone from a cornfield in Sulawesi say early human relatives crossed deep ocean water more than a million years ago — long before modern humans, and long before anyone was supposed to have a boat.</p>
+<p><span class="tag">◈ Both sides inside · ▶ Watch / Listen</span></p></div>
+<div class="grid" id="grid">""" + "".join(cards) + """</div>
+</main>
+<div id="readers" style="max-width:1080px;margin:0 auto;padding:18px">""" + "".join(readers) + """</div>
+<footer><h2>Source Index — every source, every story</h2><ul>""" + "".join(index_items) + """</ul>
+<p>Direct video links are used only where copied verbatim from a verified result; other watch items are labelled searches. No quotes in this paper are invented; where a source is a guest's own site, it is linked as their own account of their work.</p></footer>
+<script>
+function goHome(){document.getElementById('home').style.display='block';document.querySelectorAll('.reader').forEach(function(r){r.style.display='none'});window.scrollTo(0,0)}
+function openArt(id){document.getElementById('home').style.display='none';document.querySelectorAll('.reader').forEach(function(r){r.style.display='none'});var el=document.getElementById('art-'+id);if(el){el.style.display='block';window.scrollTo(0,0)}}
+function filter(cat,btn){document.querySelectorAll('#nav button').forEach(function(b){b.classList.remove('on')});if(btn)btn.classList.add('on');document.querySelectorAll('.card').forEach(function(c){c.style.display=(cat==='all'||(c.dataset.cats||'').split(' ').includes(cat))?'block':'none'});document.getElementById('q').value=''}
+function searchArt(q){q=q.toLowerCase();document.querySelectorAll('.card').forEach(function(c){c.style.display=c.dataset.title.includes(q)?'block':'none'})}
+</script></body></html>
+"""
+open("index.html", "w").write(html_doc)
+print("articles:", len(A))
+print("bytes:", len(html_doc))
