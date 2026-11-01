@@ -36,7 +36,6 @@ IMAGES = {
  "fieldguide": ("images/neanderthal.jpg", "Replica Neanderthal skull — CC0, via Wikimedia Commons"),
  "hawass": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
  "biondi": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
- "lazar": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
