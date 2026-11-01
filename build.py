@@ -20,6 +20,68 @@ def add(id, title, dek, cat, date, body, claim, pushback, proves, notproves, tim
                   pushback=pushback, proves=proves, notproves=notproves, timeline=timeline,
                   sources=sources, watch=watch))
 
+# ---------------- IMAGES (verified, local) ----------------
+# Local files in images/ — all downloaded from Wikimedia Commons (public domain / CC).
+# Credit lines are shown under each photo. Articles without a verified photo get a
+# designed monogram tile instead of a broken or guessed image.
+IMAGES = {
+ "sulawesi": ("images/sulawesi.png", "Topographic map of Sulawesi, Indonesia — Wikimedia Commons, GEBCO / OpenStreetMap contributors"),
+ "lisbon": ("images/lisbon.jpg", "1755 copper engraving of Lisbon in ruins — public domain, via Wikimedia Commons"),
+ "houdini": ("images/houdini.jpg", "Harry Houdini, c. 1899 — Library of Congress, public domain, via Wikimedia Commons"),
+ "antikythera": ("images/antikythera.jpg", "Antikythera mechanism, National Archaeological Museum, Athens — Joy of Museums, via Wikimedia Commons"),
+ "wow": ("images/wow.jpg", "The original Wow! signal printout, 15 Aug 1977 — Big Ear Radio Observatory / NAAPO, via Wikimedia Commons"),
+ "cooper": ("images/cooper.jpg", "FBI composite sketch of D.B. Cooper, 1973 — FBI, public domain, via Wikimedia Commons"),
+ "agincourt": ("images/agincourt.jpg", "Battle of Agincourt, 15th-century miniature — Bibliothèque nationale de France, public domain, via Wikimedia Commons"),
+ "hancock": ("images/gobekli.jpg", "Göbekli Tepe, Şanlıurfa — Teomancimit, via Wikimedia Commons"),
+ "fieldguide": ("images/neanderthal.jpg", "Replica Neanderthal skull — CC0, via Wikimedia Commons"),
+ "hawass": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
+ "biondi": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
+ "lazar": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
+}
+# Fun, category-coloured monogram tiles for articles without a verified photo.
+TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
+TILE_GRAD = {"History": "linear-gradient(135deg,#f59e0b,#ef4444)", "Deep Past": "linear-gradient(135deg,#059669,#0ea5e9)", "Rogan Science": "linear-gradient(135deg,#7c3aed,#db2777)", "Contested": "linear-gradient(135deg,#334155,#f59e0b)"}
+def card_media(a):
+    if a["id"] in IMAGES:
+        f, cr = IMAGES[a["id"]]
+        return '<div class="media"><img src="%s" alt="%s" loading="lazy"><span class="credit">%s</span></div>' % (f, html.escape(a["title"], quote=True), html.escape(cr))
+    em = TILE_EMOJI.get(a["cat"], "📖")
+    gr = TILE_GRAD.get(a["cat"], "linear-gradient(135deg,#0ea5e9,#7c3aed)")
+    init = html.escape(a["title"][:1].upper())
+    return '<div class="media tile" style="background:%s"><span class="tile-emoji">%s</span><span class="tile-init">%s</span><span class="tile-note">Illustrated cover — no verified photo available</span></div>' % (gr, em, init)
+def hero_media(a):
+    if a["id"] in IMAGES:
+        f, cr = IMAGES[a["id"]]
+        return '<figure class="hero-img"><img src="%s" alt="%s"><figcaption>📸 %s</figcaption></figure>' % (f, html.escape(a["title"], quote=True), html.escape(cr))
+    return card_media(a)
+def visual_block(a):
+    # Visual-first box, built ONLY from the article's own timeline / proves / sources.
+    # No new facts are introduced here.
+    n_tl = len(a["timeline"]); n_src = len(a["sources"]); n_pro = len(a["proves"]); n_not = len(a["notproves"])
+    tl = "".join('<div class="tl-step"><span class="dot"></span><b>%s</b><span>%s</span></div>' % (html.escape(y), html.escape(t)) for y, t in a["timeline"])
+    extra = ""
+    if a["id"] == "sulawesi":
+        extra = """<div class="chart"><h4>🕰️ How old is this? (log scale — years ago)</h4>
+        <div class="bar-row"><span>Today</span><div class="bar"><i style="width:2%"></i></div><b>0</b></div>
+        <div class="bar-row"><span>Oldest Sulawesi tools before this find</span><div class="bar"><i style="width:38%"></i></div><b>~194,000 yrs</b></div>
+        <div class="bar-row"><span>Calio tools — at least</span><div class="bar"><i style="width:82%"></i></div><b>1,040,000 yrs</b></div>
+        <div class="bar-row"><span>Calio tools — possibly up to</span><div class="bar"><i style="width:100%"></i></div><b>1,480,000 yrs</b></div>
+        <p class="small">Bars are drawn on a log scale so a million years fits on one screen. Ages are the ones in the article.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale</h4><p>Mainland Southeast Asia (Sunda) &nbsp;→&nbsp; <b>deep water</b> &nbsp;→&nbsp; <b>Sulawesi (Calio)</b> &nbsp;·&nbsp; Flores (Wolo Sege) &nbsp;·&nbsp; Luzon. Walking there was never an option — that is the mystery.</p></div>"""
+    if a["id"] == "fieldguide":
+        extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
+        <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
+        <div class="bar-row"><span>Homo heidelbergensis</span><div class="bar"><i style="width:55%"></i></div><b>~700k – 200k</b></div>
+        <div class="bar-row"><span>Neanderthals</span><div class="bar"><i style="width:45%"></i></div><b>~400k – 40k</b></div>
+        <div class="bar-row"><span>Denisovans</span><div class="bar"><i style="width:45%"></i></div><b>~400k – 30k</b></div>
+        <div class="bar-row"><span>Homo naledi</span><div class="bar"><i style="width:28%"></i></div><b>~335k – 236k</b></div>
+        <div class="bar-row"><span>Homo sapiens</span><div class="bar"><i style="width:32%"></i></div><b>~300k – today</b></div>
+        <p class="small">Bars are illustrative, not to exact scale. Ranges are the ones in the article.</p></div>"""
+    return ('<div class="visual"><div class="cluebar">'
+            '<span>📖 %d story parts</span><span>🕰️ %d moments in time</span><span>🔗 %d sources</span><span>✅ %d proven · ❌ %d not proven</span></div>'
+            '<h3>🧭 Follow the timeline</h3><div class="tl-track">%s</div>%s</div>'
+            % (len(a["body"]), n_tl, n_src, n_pro, n_not, tl, extra))
+
 # ---------------- LEAD ----------------
 add("sulawesi", "The Million-Year Sea Crossing: Seven Stone Tools Rewrite When Humans First Sailed",
  "Seven flakes of stone from a cornfield in Sulawesi say early human relatives crossed deep ocean water more than a million years ago — long before modern humans, and long before anyone was supposed to have a boat.",
@@ -632,26 +694,27 @@ for a in A:
     elif "FINANCIAL STAKE" in a["date"]:
         flags = '<span class="flag bad">⚠ FINANCIAL STAKE</span>'
     _cats = a["cat"] + (" Contested" if "CONTESTED" in a["date"] else "")
+    teaser = a["dek"] if a["dek"] else (a["body"][0] if a["body"] else "")
     cards.append(
       '<article class="card" data-cats="%s" data-title="%s" onclick="openArt(\'%s\')">'
-      '<div class="kicker">%s · %s</div><h2>%s</h2><p>%s</p><div class="tagrow">%s<span class="tag">◈ Both sides inside · ▶ Watch / Listen</span></div></article>'
-      % (esc(a["cat"]), esc(a["title"].lower() + " " + a["dek"].lower()), esc(a["id"]),
-         esc(a["cat"]), esc(a["date"]), esc(a["title"]), esc(a["dek"]), flags))
+      '%s<div class="card-body"><div class="kicker">%s · %s</div><h2>%s</h2><p>%s</p><div class="tagrow">%s<span class="tag">◈ Both sides inside · ▶ Watch / Listen</span></div></div></article>'
+      % (esc(a["cat"]), esc(a["title"].lower() + " " + teaser.lower()), esc(a["id"]), card_media(a),
+         esc(a["cat"]), esc(a["date"]), esc(a["title"]), esc(teaser), flags))
 
 readers = []
 index_items = []
 for a in A:
     readers.append(
       '<section class="reader" id="art-%s"><button class="back" onclick="goHome()">← Back to the front page</button>'
-      '<div class="kicker">%s · %s</div><h1>%s</h1><p class="dek">%s</p>'
-      '<div class="both"><div class="claim"><h3>◈ The claim, at full strength</h3><p>%s</p></div>'
-      '<div class="push"><h3>◈ The pushback</h3><p>%s</p></div></div>'
+      '<div class="kicker">%s · %s</div><h1>%s</h1><p class="dek">%s</p>%s%s'
+      '<h3>⚖️ Both sides — you decide</h3><div class="both"><div class="claim"><h3>◈ The claim, at full strength</h3><p>%s</p></div>'
+      '<div class="push"><h3>◈ The pushback</h3><p>%s</p></div><div class="vs">VS</div></div>'
       '<div class="body">%s</div>'
       '<div class="boxes"><div><h3>✓ What it proves</h3><ul>%s</ul></div><div><h3>✗ What it doesn\'t prove</h3><ul>%s</ul></div></div>'
       '<h3>Timeline</h3><ul class="tl">%s</ul>'
       '<h3>Sources</h3><ul class="sources">%s</ul>'
       '<h3>▶ Watch / Listen</h3><ul class="watch">%s</ul></section>'
-      % (esc(a["id"]), esc(a["cat"]), esc(a["date"]), esc(a["title"]), esc(a["dek"]),
+      % (esc(a["id"]), esc(a["cat"]), esc(a["date"]), esc(a["title"]), esc(a["dek"]), hero_media(a), visual_block(a),
          esc(a["claim"]), esc(a["pushback"]), paras(a["body"]), lis(a["proves"]), lis(a["notproves"]),
          "".join("<li><b>%s</b> — %s</li>" % (esc(y), esc(t)) for y, t in a["timeline"]),
          srcs(a["sources"]), watch(a["watch"])))
@@ -663,58 +726,103 @@ html_doc = """<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Scout Ledger — History, Ancient World &amp; Rogan Science</title>
 <style>
-body{font-family:Georgia,serif;background:#f7f2e7;color:#1a1a1a;margin:0}
-header{border-bottom:4px double #1a1a1a;padding:28px 18px 14px;text-align:center;background:#fbf8f0}
-header h1{font-size:clamp(2.2rem,7vw,4.2rem);margin:0;letter-spacing:.02em}
-header p{font-style:italic;color:#555}
-nav{position:sticky;top:0;background:#1a1a1a;color:#fff;padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;z-index:5}
-nav button,nav input{font-family:Georgia,serif;font-size:15px;padding:7px 12px;border:1px solid #fff;background:#1a1a1a;color:#fff;cursor:pointer}
-nav button.on{background:#c0392b;border-color:#c0392b}
-nav input{background:#fff;color:#000;min-width:200px}
-main{max-width:1080px;margin:0 auto;padding:18px}
-.lead{border:3px solid #1a1a1a;padding:20px;background:#fff;margin-bottom:22px;cursor:pointer}
-.lead h2{font-size:clamp(1.6rem,4vw,2.4rem);margin:8px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.card{border:1px solid #999;background:#fff;padding:16px;cursor:pointer}
-.card:hover{box-shadow:3px 3px 0 #1a1a1a}
-.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c0392b;font-weight:bold}
-.tag{font-size:12px;background:#eee;padding:2px 7px;margin-left:6px}
-.tagrow{margin-top:10px}
-.flag{font-size:12px;background:#c0392b;color:#fff;padding:2px 7px;font-weight:bold}
-.flag.bad{background:#7b241c}
-.reader{display:none;border:1px solid #999;background:#fff;padding:22px;max-width:820px;margin:0 auto}
-.reader h1{font-size:clamp(1.7rem,4vw,2.5rem)}
-.dek{font-size:1.15rem;font-style:italic;color:#444}
-.both{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
-@media(max-width:700px){.both{grid-template-columns:1fr}}
-.claim{border:2px solid #c0392b;padding:12px;background:#fdedec}
-.push{border:2px solid #148f77;padding:12px;background:#eafaf7}
+*{box-sizing:border-box}
+:root{--ink:#17202a;--muted:#5b6b7c;--paper:#fffdf7;--red:#e11d48;--teal:#0d9488;--amber:#f59e0b;--violet:#7c3aed;--line:#e5e0d5}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f4f1ea;color:var(--ink);margin:0;line-height:1.6}
+a{color:#0e7490}
+.masthead{background:linear-gradient(120deg,#0f172a,#7c3aed 55%,#e11d48);color:#fff;padding:10px 18px 26px;text-align:center}
+.masthead .topbar{display:flex;justify-content:space-between;align-items:center;max-width:1180px;margin:0 auto;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+.masthead h1{font-family:Georgia,serif;font-size:clamp(2.4rem,7vw,4.4rem);margin:6px 0 4px;letter-spacing:.01em}
+.masthead p{margin:0 auto;max-width:760px;opacity:.95;font-size:clamp(1rem,2.4vw,1.2rem)}
+.masthead .how{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:12px 16px;margin:16px auto 0;max-width:900px;font-size:.95rem;text-align:left}
+nav{position:sticky;top:0;background:#fff;border-bottom:2px solid var(--line);padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;z-index:5;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+nav button{font:700 15px system-ui,sans-serif;padding:8px 14px;border:2px solid #e5e0d5;border-radius:999px;background:#fff;cursor:pointer}
+nav button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+nav input{font-size:15px;padding:8px 14px;border:2px solid #e5e0d5;border-radius:999px;min-width:220px}
+main{max-width:1180px;margin:0 auto;padding:20px 16px}
+.adventure{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:6px 0 22px}
+.adv{border-radius:16px;padding:16px;color:#fff;cursor:pointer;border:0;text-align:left;font:inherit}
+.adv b{display:block;font-size:1.15rem}.adv span{opacity:.9;font-size:.92rem}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.12);margin-bottom:26px;cursor:pointer;border:1px solid var(--line)}
+.hero-text{padding:26px 28px}.hero-text .badge{background:#fef3c7;color:#92400e;font-weight:800;padding:5px 10px;border-radius:999px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.hero-text h2{font-family:Georgia,serif;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.15;margin:14px 0 8px}
+.hero-text p{color:var(--muted);font-size:1.08rem}
+.hero-img{margin:0;display:flex;flex-direction:column}.hero-img img{width:100%;flex:1;min-height:260px;object-fit:cover;display:block}
+.hero-img figcaption{font-size:.78rem;color:var(--muted);padding:6px 10px;background:#fff}
+.cta{display:inline-block;background:var(--red);color:#fff;font-weight:800;padding:10px 18px;border-radius:999px;margin-top:8px}
+h2.sec{font-family:Georgia,serif;font-size:1.7rem;margin:26px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{border:1px solid var(--line);background:#fff;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.05);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.12)}
+.media{aspect-ratio:16/10;overflow:hidden;position:relative;background:#e5e7eb}
+.media img{width:100%;height:100%;object-fit:cover;display:block}
+.media .credit{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:.72rem;padding:18px 10px 6px}
+.media.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#fff}
+.tile-emoji{font-size:44px}.tile-init{font-family:Georgia,serif;font-size:64px;line-height:1}.tile-note{font-size:.75rem;opacity:.85;padding:0 18px;text-align:center}
+.card-body{padding:16px 16px 18px}
+.kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:800}
+.card h2{font-family:Georgia,serif;font-size:1.22rem;line-height:1.3;margin:8px 0}
+.card p{color:var(--muted);margin:0}
+.tag{font-size:12px;background:#f1f5f9;padding:3px 8px;border-radius:999px;display:inline-block}
+.tagrow{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.flag{font-size:12px;background:var(--red);color:#fff;padding:3px 8px;border-radius:999px;font-weight:800}
+.flag.bad{background:#7f1d1d}
+.reader{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;max-width:860px;margin:0 auto;box-shadow:0 10px 26px rgba(0,0,0,.08)}
+.reader h1{font-family:Georgia,serif;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.2}
+.dek{font-size:1.18rem;color:#334155}
+.visual{background:#fffbeb;border:2px solid #fde68a;border-radius:16px;padding:16px;margin:18px 0}
+.cluebar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.cluebar span{background:#fff;border:1px solid #fde68a;border-radius:999px;padding:4px 10px;font-size:.85rem;font-weight:700}
+.tl-track{display:flex;gap:10px;overflow-x:auto;padding:8px 2px 12px}
+.tl-step{min-width:180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.9rem}
+.tl-step .dot{display:block;width:12px;height:12px;border-radius:50%;background:var(--red);margin-bottom:6px}
+.tl-step b{display:block}.tl-step span{color:var(--muted)}
+.chart{margin-top:14px}.bar-row{display:grid;grid-template-columns:170px 1fr auto;gap:10px;align-items:center;margin:7px 0;font-size:.92rem}
+.bar{background:#f1f5f9;border-radius:999px;height:18px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#0ea5e9,#7c3aed)}
+.mapbox{background:#ecfeff;border:1px solid #a5f3fc;border-radius:12px;padding:12px;margin-top:14px}
+.small{font-size:.82rem;color:var(--muted)}
+.both{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:20px 0}
+@media(max-width:700px){.both{grid-template-columns:1fr}.vs{display:none}}
+.claim{border:2px solid var(--red);border-radius:16px;padding:14px;background:#fff1f2}
+.push{border:2px solid var(--teal);border-radius:16px;padding:14px;background:#f0fdfa}
+.vs{align-self:center;font-weight:900;font-size:1.4rem;color:var(--ink)}
 .boxes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:700px){.boxes{grid-template-columns:1fr}}
-.boxes>div{border:1px solid #999;padding:12px}
-.tl li,.sources li,.watch li{margin:6px 0}
+@media(max-width:700px){.boxes{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.bar-row{grid-template-columns:1fr}.bar-row b{grid-column:1}}
+.boxes>div{border:1px solid var(--line);border-radius:14px;padding:14px;background:#f8fafc}
+.tl li,.sources li,.watch li{margin:7px 0}
 .kind{font-size:12px;color:#666}
-.back{font-family:Georgia,serif;font-size:16px;padding:8px 14px;cursor:pointer;margin-bottom:14px}
-footer{max-width:1080px;margin:30px auto;padding:18px;border-top:3px double #1a1a1a}
-footer h2{margin-top:0}
-.note{background:#fff3cd;border:1px solid #d4a017;padding:12px;margin:18px 0}
+.back{font:700 16px system-ui,sans-serif;padding:9px 16px;cursor:pointer;margin-bottom:14px;border-radius:999px;border:2px solid var(--ink);background:#fff}
+footer{max-width:1180px;margin:34px auto;padding:20px 16px;border-top:3px solid var(--ink)}
+footer ul{columns:2;column-gap:28px}
+@media(max-width:700px){footer ul{columns:1}}
+.note{background:#fff3cd;border:1px solid #d4a017;border-radius:12px;padding:12px 14px;margin:18px 0}
+img{max-width:100%}
 </style></head><body>
-<header><h1>The Scout Ledger</h1><p>History, the ancient world, and the scientists Rogan has on — every story with both sides, sources, and something to watch.</p>
-<p><b>How to read this paper:</b> each article states the claim at full strength beside the documented pushback. No winner is picked for you. Flags mark contested claims, independent researchers, and financial stakes. Watch links are direct videos only where verified; otherwise they are labelled searches.</p></header>
+<header class="masthead"><div class="topbar"><span>🔍 The Scout Ledger</span><span>History · Ancient World · Rogan Science</span></div>
+<h1>The Scout Ledger</h1><p>History, the ancient world, and the scientists Rogan has on — every story with both sides, sources, and something to watch.</p>
+<p class="how"><b>🧭 How to read this paper:</b> each article states the claim at full strength beside the documented pushback. No winner is picked for you. Flags mark contested claims, independent researchers, and financial stakes. Watch links are direct videos only where verified; otherwise they are labelled searches. <b>Look at the pictures and charts first — then dive into the story.</b></p></header>
 <nav id="nav">
 <button data-f="all" class="on" onclick="filter('all',this)">All</button>
 <button data-f="History" onclick="filter('History',this)">History</button>
 <button data-f="Deep Past" onclick="filter('Deep Past',this)">Deep Past</button>
 <button data-f="Rogan Science" onclick="filter('Rogan Science',this)">Rogan Science</button>
 <button data-f="Contested" onclick="filter('Contested',this)">Contested</button>
-<input id="q" placeholder="Search headlines…" oninput="searchArt(this.value)">
+<input id="q" placeholder="🔎 Search headlines…" oninput="searchArt(this.value)">
 </nav>
 <main id="home">
+<div class="adventure">
+<button class="adv" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" onclick="filter('History',null)"><b>🏛️ History adventures</b><span>Big events, mysteries &amp; escapes</span></button>
+<button class="adv" style="background:linear-gradient(135deg,#059669,#0ea5e9)" onclick="filter('Deep Past',null)"><b>🦴 Deep Past</b><span>Other humans, lost worlds &amp; ancient tools</span></button>
+<button class="adv" style="background:linear-gradient(135deg,#7c3aed,#db2777)" onclick="filter('Rogan Science',null)"><b>🔬 Rogan Science</b><span>What Rogan's scientist guests actually say</span></button>
+<button class="adv" style="background:linear-gradient(135deg,#334155,#f59e0b)" onclick="filter('Contested',null)"><b>❓ Contested corner</b><span>Wild claims — both sides, you decide</span></button>
+</div>
 <div class="note"><b>Today's lead story — and a note on accuracy:</b> dates, sites, and episode numbers are given only where they could be verified. Where a detail could not be verified (for example John Lisle's exact episode day, or the reported retraction of Biondi's earlier method paper), the article says so instead of guessing. Zahi Hawass's Rogan episode (May 2025) falls just before the Nov 2025–Oct 2026 window and is included by request, labelled as such.</div>
-<div class="lead" onclick="openArt('sulawesi')"><div class="kicker">Lead story · History · Nature, August 2025</div>
+<div class="hero" onclick="openArt('sulawesi')"><div class="hero-text"><span class="badge">🔥 Today's big discovery</span>
+<div class="kicker" style="margin-top:12px">Lead story · History · Nature, August 2025</div>
 <h2>The Million-Year Sea Crossing: Seven Stone Tools Rewrite When Humans First Sailed</h2>
 <p>Seven flakes of stone from a cornfield in Sulawesi say early human relatives crossed deep ocean water more than a million years ago — long before modern humans, and long before anyone was supposed to have a boat.</p>
-<p><span class="tag">◈ Both sides inside · ▶ Watch / Listen</span></p></div>
+<p><span class="tag">◈ Both sides inside · ▶ Watch / Listen</span> <span class="cta">Read the expedition →</span></p></div>
+<figure class="hero-img"><img src="images/sulawesi.png" alt="Topographic map of Sulawesi, Indonesia"><figcaption>📸 Topographic map of Sulawesi — Wikimedia Commons</figcaption></figure></div>
+<h2 class="sec">🗺️ Pick a story to explore</h2>
 <div class="grid" id="grid">""" + "".join(cards) + """</div>
 </main>
 <div id="readers" style="max-width:1080px;margin:0 auto;padding:18px">""" + "".join(readers) + """</div>
@@ -723,8 +831,8 @@ footer h2{margin-top:0}
 <script>
 function goHome(){document.getElementById('home').style.display='block';document.querySelectorAll('.reader').forEach(function(r){r.style.display='none'});window.scrollTo(0,0)}
 function openArt(id){document.getElementById('home').style.display='none';document.querySelectorAll('.reader').forEach(function(r){r.style.display='none'});var el=document.getElementById('art-'+id);if(el){el.style.display='block';window.scrollTo(0,0)}}
-function filter(cat,btn){document.querySelectorAll('#nav button').forEach(function(b){b.classList.remove('on')});if(btn)btn.classList.add('on');document.querySelectorAll('.card').forEach(function(c){c.style.display=(cat==='all'||(c.dataset.cats||'').split(' ').includes(cat))?'block':'none'});document.getElementById('q').value=''}
-function searchArt(q){q=q.toLowerCase();document.querySelectorAll('.card').forEach(function(c){c.style.display=c.dataset.title.includes(q)?'block':'none'})}
+function filter(cat,btn){document.querySelectorAll('#nav button').forEach(function(b){b.classList.remove('on')});if(btn)btn.classList.add('on');document.querySelectorAll('.card').forEach(function(c){var cs=c.dataset.cats||'';var ok=(cat==='all'||cs===cat||cs.endsWith(' '+cat)||cs.startsWith(cat+' '));c.style.display=ok?'flex':'none'});document.getElementById('q').value=''}
+function searchArt(q){q=q.toLowerCase();document.querySelectorAll('.card').forEach(function(c){c.style.display=c.dataset.title.includes(q)?'flex':'none'})}
 </script></body></html>
 """
 open("index.html", "w").write(html_doc)
