@@ -49,7 +49,7 @@ add("sulawesi", "The Million-Year Sea Crossing: Seven Stone Tools Rewrite When H
 
 # ---------------- ORIGINAL HISTORY ----------------
 add("lisbon", "Lisbon, 1755: The Morning Europe's Richest City Vanished",
- "An earthquake, a tsunami, and a five-day fire, all before lunch on All Saints' Day — and out of the ashes, the science of seismology.",
+ "An earthquake, a tsunami, and a fire that burned for days, all before lunch on All Saints' Day — and out of the ashes, the science of seismology.",
  "History", "1 November 1755",
  ["At about 9:40 on the morning of 1 November 1755, with churches packed for All Saints' Day Mass, a massive earthquake struck off the coast of Portugal. Modern estimates put it at magnitude 8.5 to 9.0. Buildings collapsed, candles toppled onto the wreckage, and fires began that would burn for days — Britannica's account says about six days.",
   "Roughly forty minutes later, a tsunami rolled up the Tagus estuary and finished what the shaking started. Waves of about 20 feet hit Lisbon and about 65 feet hit Cádiz. Death tolls are disputed: Britannica gives an estimate of 60,000 killed in Lisbon alone, while other modern summaries give a range of roughly 12,000 to 50,000 overall. The Ledger uses the range and flags the disagreement rather than picking one number.",
