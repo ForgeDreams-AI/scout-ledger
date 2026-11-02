@@ -67,6 +67,14 @@ def visual_block(a):
         <div class="bar-row"><span>Calio tools — possibly up to</span><div class="bar"><i style="width:100%"></i></div><b>1,480,000 yrs</b></div>
         <p class="small">Bars are drawn on a log scale so a million years fits on one screen. Ages are the ones in the article.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale</h4><p>Mainland Southeast Asia (Sunda) &nbsp;→&nbsp; <b>deep water</b> &nbsp;→&nbsp; <b>Sulawesi (Calio)</b> &nbsp;·&nbsp; Flores (Wolo Sege) &nbsp;·&nbsp; Luzon. Walking there was never an option — that is the mystery.</p></div>"""
+    if a["id"] == "roanoke":
+        extra = """<div class="mapbox"><h4>🗺️ Schematic map — not to scale: where did they go?</h4><p><b>Roanoke Island</b> (the empty settlement) &nbsp;→&nbsp; <b>~50 miles south</b> to <b>Croatoan / Hatteras Island</b>, home of Manteo's people &nbsp;·&nbsp; <b>~50 miles west</b> to <b>Site X / Site Y</b> in Bertie County, on the Chowan River. The leading theory says the colonists split between these two directions — but no single find proves the whole journey.</p></div>
+        <div class="chart"><h4>🔍 The clue board — what was found, and what it is worth</h4>
+        <div class="bar-row"><span>Word carved at the fort</span><div class="bar"><i style="width:100%"></i></div><b>CROATOAN</b></div>
+        <div class="bar-row"><span>Distress cross carved with it?</span><div class="bar"><i style="width:2%"></i></div><b>None</b></div>
+        <div class="bar-row"><span>Bodies or graves found</span><div class="bar"><i style="width:2%"></i></div><b>None</b></div>
+        <div class="bar-row"><span>Signs of a battle</span><div class="bar"><i style="width:2%"></i></div><b>None</b></div>
+        <p class="small">Bars are a visual summary of the article's evidence, not measurements. The empty fort is the mystery: everything else is interpretation.</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -662,6 +670,44 @@ rogan("edgley", "Ross Edgley", "Endurance athlete and sport-science graduate", "
  [["20 Oct 2026", "Rogan episode #2568."]],
  [P("Endurance podcasts", "Ross Edgley swim"),
   W("Edgley on endurance and resilience", "Ross Edgley Great Britain swim")])
+
+# ---------------- NEW: 2 NOV 2026 ----------------
+add("roanoke", "Roanoke, 1590: 115 People Vanish — and Leave Behind a Single Word",
+ "A whole English town — men, women, and children, including a newborn baby — was gone when its governor came back with supplies. No bodies, no battle, no goodbye note. Just one word carved into a wooden post: CROATOAN.",
+ "History", "The empty fort, August 1590",
+ ["It is America's oldest missing-persons mystery, and it starts with a baby. On 18 August 1587, on Roanoke Island off the coast of what is now North Carolina, Eleanor Dare gave birth to Virginia Dare — the first English child born in America. Her grandfather, John White, was the governor of the new colony: about 115 men, women, and children sent by Sir Walter Raleigh to build a permanent English town in the New World.",
+  "This was Raleigh's second try. A first, all-male colony on the same island in 1585 had run short of food and been evacuated in 1586. The 1587 group was different: whole families, meant to stay. They had even been aimed at Chesapeake Bay, further north — but the expedition's pilot, Simon Fernandes, put them ashore on Roanoke instead, and there they stayed, repairing the old settlement's buildings.",
+  "Nine days after Virginia's birth, White sailed back to England for supplies, leaving his daughter and granddaughter behind. Then war with Spain — the year of the Spanish Armada, 1588 — swallowed every available ship, and White could not get back for three years. When he finally landed on Roanoke in August 1590, the town was empty. The houses had been taken down. There were no bodies, no graves, and no signs of a fight.",
+  "There was exactly one clue. Carved into a palisade post was the word CROATOAN, and the letters CRO were cut into a nearby tree. Before White left, he and the colonists had agreed on a code: if they had to move, they would carve where they were going — and if they were in danger, they would carve a Maltese cross above it. There was no cross. White read the word the way it was meant to be read: we have gone to Croatoan, the island about 50 miles south (today's Hatteras Island), home of the friendly Croatoan people and of Manteo, the Croatoan man who had travelled to England and was the colony's great ally. Storms and a lost anchor stopped White from sailing there to look, and he returned to England. He never saw his family again.",
+  "For 400 years the mystery sat there — until archaeology started catching up. In 2012, at the First Colony Foundation's request, the British Museum examined two paper patches stuck on John White's own map of the coast, La Virginea Pars. Under one patch, at the head of Albemarle Sound in what is now Bertie County, was a fort symbol. Digs at the spot it pointed to — called Site X — and a nearby Site Y turned up English pottery of the period, far inland from Roanoke, along the Chowan River. On Hatteras Island itself, diggers found a 16th-century rapier hilt, a slate writing tablet, and other European objects among Croatoan village remains; researchers reported in 2025 that iron-working debris (hammerscale) had been found there too, the kind of waste left by someone actually forging metal, not just trading it.",
+  "Put together, the picture most archaeologists now favour is not one dramatic disappearance but a quiet split: some colonists went south to Croatoan, others went west up the rivers, and over time they married into Algonquian communities and stopped being a separate English town. That is why the colony is 'lost' — not because everyone died on the spot, but because the town itself dissolved into its neighbours."],
+ "The colonists split up and lived on among their Algonquian neighbours — some with the Croatoan on Hatteras Island, others inland on the Chowan River — and that is why no bodies or battlefield were ever found on Roanoke.",
+ "The split-and-assimilate story is the leading theory, not a proven fact. No site has produced a 'smoking gun' — the First Colony Foundation's own dig leader has said so. The Site X pottery types stayed in use into the mid-1600s, so the sherds could come from later traders; the Hatteras finds were recovered in contexts one excavator dates to the mid-to-late 1600s, which would make them heirlooms or trade goods rather than proof of settlers living there. Old reports of grey-eyed Native descendants (explorer John Lawson, 1701) and later DNA projects are suggestive at best and inconclusive. Starvation, disease, and attack elsewhere have not been proven either — but the absence of evidence on Roanoke Island alone does not rule them out.",
+ ["In August 1590, White found the Roanoke settlement deserted, its houses taken down.",
+  "The only clue was CROATOAN (and CRO) — with no distress cross, the agreed sign of danger.",
+  "A fort symbol hidden under a patch on White's map points to Bertie County, where Site X and Site Y yielded period English pottery.",
+  "European objects and reported iron-working debris have been found among Croatoan remains on Hatteras Island."],
+ ["That the colonists definitely survived and assimilated — no settler burial or document confirms it.",
+  "That they were massacred on Roanoke Island — no bodies, graves, or battle signs have been found there.",
+  "That CROATOAN was a mystery message — to White it was a place name and a planned destination, not a riddle."],
+ [["1584", "Raleigh's scouts reach the Carolina coast; Manteo and Wanchese travel to England."],
+  ["1585–1586", "First Roanoke colony; evacuated by Drake in 1586."],
+  ["18 Aug 1587", "Virginia Dare is born on Roanoke Island."],
+  ["Late Aug 1587", "John White sails for England for supplies."],
+  ["1588", "The Spanish Armada war delays every relief ship."],
+  ["Aug 1590", "White returns: empty settlement, CROATOAN carved on a post, no cross."],
+  ["1701", "John Lawson reports Native people speaking of white ancestors — a claim later writers treated cautiously."],
+  ["2012", "British Museum finds the hidden fort symbol on White's map."],
+  ["2015–2019", "Site X and Site Y digs in Bertie County uncover English pottery."],
+  ["2025", "Iron-working debris on Hatteras Island is reported, supporting an English presence there."]],
+ [["U.S. National Park Service — Fort Raleigh National Historic Site", "https://www.nps.gov/articles/ftraleigh.htm"],
+  ["First Colony Foundation — How First Colony Foundation Found the Lost Colony of Roanoke", "https://www.firstcolonyfoundation.org/news/lost-colony-is-found/"],
+  ["First Colony Foundation — Archaeology", "https://www.firstcolonyfoundation.org/archaeology/"],
+  ["Encyclopedia.com — Roanoke Colony (overview)", "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/roanoke-colony"],
+  ["Roanoke Colony (overview and references)", "https://en.wikipedia.org/wiki/Lost_Colony"]],
+ [W("The Lost Colony of Roanoke, explained", "Lost Colony Roanoke CROATOAN documentary"),
+  P("Lost Colony podcasts", "Lost Colony Roanoke mystery"),
+  W("Digging for the Lost Colony", "Roanoke Site X archaeology documentary")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
