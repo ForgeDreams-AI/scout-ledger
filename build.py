@@ -36,6 +36,7 @@ IMAGES = {
  "fieldguide": ("images/neanderthal.jpg", "Replica Neanderthal skull — CC0, via Wikimedia Commons"),
  "hawass": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
  "biondi": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
+ "easter": ("images/moai.jpg", "Ahu Tongariki's 15 moai — Camill1336, via Wikimedia Commons"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -75,6 +76,14 @@ def visual_block(a):
         <div class="bar-row"><span>Bodies or graves found</span><div class="bar"><i style="width:2%"></i></div><b>None</b></div>
         <div class="bar-row"><span>Signs of a battle</span><div class="bar"><i style="width:2%"></i></div><b>None</b></div>
         <p class="small">Bars are a visual summary of the article's evidence, not measurements. The empty fort is the mystery: everything else is interpretation.</p></div>"""
+    if a["id"] == "easter":
+        extra = """<div class="chart"><h4>👥 How many people? The old story vs. the new evidence</h4>
+        <div class="bar-row"><span>Ecocide story: peak population claimed</span><div class="bar"><i style="width:100%"></i></div><b>15,000–30,000</b></div>
+        <div class="bar-row"><span>Rock gardens could feed, at most</span><div class="bar"><i style="width:13%"></i></div><b>~4,000</b></div>
+        <div class="bar-row"><span>What Europeans found (1722)</span><div class="bar"><i style="width:10%"></i></div><b>~3,000</b></div>
+        <div class="bar-row"><span>Survivors left by 1877</span><div class="bar"><i style="width:2%"></i></div><b>~111</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. The crash that really happened came in the 1860s — by ship, not by statue.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale</h4><p><b>Rano Raraku quarry</b> (where ~95% of moai were carved) &nbsp;→&nbsp; <b>ancient roads</b> &nbsp;→&nbsp; <b>ahu platforms around the coast</b>, statues facing inland. The island sits in the south-east Pacific, over 3,500 km from the coast of Chile.</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -708,6 +717,49 @@ add("roanoke", "Roanoke, 1590: 115 People Vanish — and Leave Behind a Single W
  [W("The Lost Colony of Roanoke, explained", "Lost Colony Roanoke CROATOAN documentary"),
   P("Lost Colony podcasts", "Lost Colony Roanoke mystery"),
   W("Digging for the Lost Colony", "Roanoke Site X archaeology documentary")])
+
+# ---------------- HTML GENERATION ----------------
+add("easter", "Easter Island: The Giant Heads That Walked — and the Collapse That Never Happened",
+ "Nearly 1,000 giant stone heads stand on the most remote inhabited island on Earth. For decades the story was that their builders destroyed themselves. New DNA and garden surveys say the real story is stranger — and the real collapse came by ship.",
+ "History", "The statues, c. 1250–1500 · the new evidence, 2024–2025",
+ ["On Rapa Nui — Easter Island, a speck of volcanic rock in the south-east Pacific, over 3,500 km from the coast of Chile — stand some of the most famous statues on Earth. The moai are monolithic human figures carved by the Rapa Nui people between about 1250 and 1500, mostly from the soft volcanic tuff of one quarry, the Rano Raraku crater, where nearly half of them still sit, half-carved into the hillside. More than 900 are known, and statues were still being discovered as recently as 2023.",
+  "The average moai stands about 4 metres tall and weighs around 12.5 tonnes — about twice an adult African elephant. The tallest ever raised, called Paro, reached almost 10 metres and weighed 82 tonnes. The heaviest ever erected, at Ahu Tongariki, weighed 86 tonnes. And still in the quarry wall lies an unfinished giant that would have stood about 21 metres tall. The statues were set on stone platforms called ahu around the island's coast, facing inland toward the villages — they are ancestors, watching over their people. Some wore red stone topknots called pukao. The 'heads' in the famous photos are full bodies: most statues are buried to the shoulders by centuries of soil.",
+  "For a century, the island came with a ready-made moral. In Jared Diamond's Collapse (2005) and countless retellings, the story went like this: Polynesian settlers arrived, cut down every palm tree to roll their giant statues, and their population ballooned to 15,000 or even 30,000 — then starved and collapsed in wars, statue-toppling, and cannibalism, all before Europeans arrived in 1722. Easter Island was humanity's warning label: this is what overusing your resources looks like.",
+  "Then the evidence started answering back. In June 2024, Dylan Davis and colleagues published an island-wide survey of the Rapa Nui's rock gardens — fields mulched with stone to grow sweet potatoes — in Science Advances. Earlier estimates had counted far more garden land than actually exists: the real total is just 0.76 square kilometres, enough to feed at most about 4,000 people — close to the roughly 3,000 that Europeans actually found on the island. There was never room for 15,000.",
+  "Three months later, a second blow landed. In Nature, J. Víctor Moreno-Mayar and colleagues published the genomes of 15 Rapa Nui people who lived between 1670 and 1950. A population crash leaves a scar in DNA — a bottleneck, a sudden loss of diversity. There was none. The genomes showed a stably growing population from the 13th century right through to European contact — and, as a bonus, 6 to 11 percent of the DNA traced to Native American ancestors, evidence of contact with the Americas centuries before Europeans arrived. The same study's authors put it bluntly: there was no dramatic pre-contact collapse.",
+  "The statues have their own twist. Ask Rapa Nui islanders how the moai moved and the answer was always the same: they walked. For years outsiders laughed that off and assumed logs and rollers — which conveniently explained the vanished forest. Then anthropologists Carl Lipo and Terry Hunt took the oral tradition literally. In a 2025 paper in the Journal of Archaeological Science, building on experiments from the early 2010s, they showed that the statues found lying along the ancient roads share a design the platform statues lack: a wide, D-shaped base and a slight forward lean, like the rounded bottom of a bowling pin. Rocked side to side with ropes, a statue walks. Their test proved it: 18 people moved a 4.35-tonne replica 100 metres in 40 minutes, and the team calculated that 40 people could walk a 20-tonne moai 10 kilometres in 15 to 22 days — no forest of rollers required.",
+  "So what really happened to Rapa Nui? The trees did vanish — cleared for farming, and likely helped along by rats that ate the palm seeds — and statue-building did stop, with every standing moai eventually toppled in the island's own conflicts. But the people did not vanish with them. The population crash that nearly ended Rapa Nui came by ship, not by statue: in 1862–1863 Peruvian slave raiders seized around 1,500 islanders — about a third of the population, including the king and many of the elders who could read the rongorongo tablets. The few survivors sent home brought smallpox with them. By 1877, only about 111 Rapa Nui remained. Chile annexed the island in 1888, and the population has been recovering ever since."],
+ "The people of Rapa Nui cut down their whole forest to move giant statues, overpopulated to 15,000 or more, and collapsed into war and starvation before Europeans ever arrived — a self-inflicted 'ecocide' and a warning to humanity.",
+ "The forest did vanish, but the population crash did not happen when the story says it did. Ancient DNA from 15 Rapa Nui shows no pre-contact bottleneck — a stably growing population instead — and the island's rock gardens could never have fed more than about 4,000 people, matching the roughly 3,000 Europeans found in 1722. The near-extinction came in the 1860s, when Peruvian slave raids and smallpox cut the island to about 111 people. The ecocide story gets the ending right and the cause and the century wrong.",
+ ["More than 900 moai were carved at Rano Raraku between about 1250 and 1500, averaging ~4 m and ~12.5 tonnes; the tallest erected, Paro, was almost 10 m.",
+  "The island's rock gardens cover only 0.76 km² — enough to feed at most ~4,000 people, not 15,000+.",
+  "Ancient Rapa Nui genomes (1670–1950) show no pre-contact population bottleneck — the population grew steadily to European contact.",
+  "Moai along the old roads have D-shaped bases and a forward lean, and a 4.35-tonne replica was 'walked' 100 m by 18 people with ropes.",
+  "Peruvian slave raids in 1862–1863 took ~1,500 people; smallpox followed, and by 1877 only about 111 Rapa Nui remained."],
+ ["That the population ever reached 15,000–30,000 — the gardens say it could not.",
+  "That statue-building caused a collapse — construction continued even after European arrival, and the people survived it.",
+  "That aliens moved the statues — the walking experiments show small teams of people could do it with ropes.",
+  "Exactly how the palm forest vanished — clearing, rats, or both, in what proportions, is still debated."],
+ [["c. 1250–1500", "Moai carved at Rano Raraku and set on ahu around the coast."],
+  ["1722", "Europeans first reach Rapa Nui; they find roughly 3,000 inhabitants."],
+  ["1862–1863", "Peruvian slave raids seize ~1,500 Rapa Nui; survivors return with smallpox."],
+  ["1877", "Only about 111 Rapa Nui remain on the island."],
+  ["1888", "Chile annexes Rapa Nui."],
+  ["1995", "Rapa Nui National Park inscribed as a UNESCO World Heritage Site."],
+  ["Jun 2024", "Rock-garden survey (Science Advances): gardens could feed at most ~4,000."],
+  ["Sep 2024", "Ancient genomes (Nature): no pre-contact collapse; contact with the Americas confirmed."],
+  ["2025", "Walking-moai study (Journal of Archaeological Science): road statues designed to rock upright."]],
+ [["Guinness World Records — Highest concentration of moai", "https://www.guinnessworldrecords.com/world-records/774106-highest-concentration-of-moai"],
+  ["Moai (overview and references)", "https://en.m.wikipedia.org/wiki/Moai#History"],
+  ["Phys.org — 'Ecocide' on Easter Island never took place, studies suggest (2024)", "https://phys.org/news/2024-09-ecocide-easter-island.html"],
+  ["Moreno-Mayar et al., 'Ancient Rapanui genomes reveal resilience and pre-European contact with the Americas', Nature (2024)", "https://www.nature.com/articles/s41586-024-07881-4"],
+  ["Davis et al., 'Island-wide characterization of agricultural production challenges the demographic collapse hypothesis for Rapa Nui', Science Advances (2024)", "https://doi.org/10.1126/sciadv.ado1459"],
+  ["Lipo & Hunt, 'The walking moai hypothesis', Journal of Archaeological Science (2025)", "https://doi.org/10.1016/j.jas.2025.106383"],
+  ["HISTORY — What Happened to the People of Easter Island?", "https://www.history.com/articles/easter-island-people-rapanui"]],
+ [W("Easter Island Never Collapsed. Here's the DNA", "Easter Island collapse DNA", "https://www.youtube.com/watch?v=14YESr7CTv0"),
+  W("Why Easter Island's Story Is Not What You Heard", "Easter Island ecocide myth debunked", "https://www.youtube.com/watch?v=D4c1qiBOeBE"),
+  W("How the moai 'walked' (experiment footage)", "walking moai Lipo Hunt experiment"),
+  P("Easter Island podcasts", "Easter Island moai Rapa Nui")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
