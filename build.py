@@ -37,6 +37,7 @@ IMAGES = {
  "hawass": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
  "biondi": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
  "easter": ("images/moai.jpg", "Ahu Tongariki's 15 moai — Camill1336, via Wikimedia Commons"),
+ "tunguska": ("images/tunguska.jpg", "Flattened trees at Tunguska, photographed on the Kulik expeditions — public domain, via Wikimedia Commons"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -84,6 +85,15 @@ def visual_block(a):
         <div class="bar-row"><span>Survivors left by 1877</span><div class="bar"><i style="width:2%"></i></div><b>~111</b></div>
         <p class="small">Bars are drawn to scale from the article's figures. The crash that really happened came in the 1860s — by ship, not by statue.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale</h4><p><b>Rano Raraku quarry</b> (where ~95% of moai were carved) &nbsp;→&nbsp; <b>ancient roads</b> &nbsp;→&nbsp; <b>ahu platforms around the coast</b>, statues facing inland. The island sits in the south-east Pacific, over 3,500 km from the coast of Chile.</p></div>"""
+    if a["id"] == "tunguska":
+        extra = """<div class="chart"><h4>💥 How big was the blast? (log scale — megatons of TNT)</h4>
+        <div class="bar-row"><span>Hiroshima bomb, 1945</span><div class="bar"><i style="width:2%"></i></div><b>~0.015 Mt</b></div>
+        <div class="bar-row"><span>Chelyabinsk airburst, 2013</span><div class="bar"><i style="width:18%"></i></div><b>~0.5 Mt</b></div>
+        <div class="bar-row"><span>Tunguska — low estimate</span><div class="bar"><i style="width:48%"></i></div><b>3 Mt</b></div>
+        <div class="bar-row"><span>Tunguska — often quoted</span><div class="bar"><i style="width:82%"></i></div><b>10–15 Mt</b></div>
+        <div class="bar-row"><span>Tunguska — high estimate</span><div class="bar"><i style="width:100%"></i></div><b>30 Mt</b></div>
+        <p class="small">Bars are drawn on a log scale so a city bomb and a megaton blast fit on one screen. Tunguska's true yield is a range, not one number — that is the honest state of the science.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic — not to scale: what happened in the sky</h4><p>A rock about 50–80 m across streaks in from the <b>south-east</b> &nbsp;→&nbsp; it bursts <b>5–10 km up</b> instead of hitting the ground &nbsp;→&nbsp; the blast flattens a butterfly-shaped <b>2,150 km²</b> of forest &nbsp;→&nbsp; directly underneath, an <b>~8 km zone of trees stays standing</b>, stripped of branches like telegraph poles, because the blast hit them straight from above.</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -760,6 +770,47 @@ add("easter", "Easter Island: The Giant Heads That Walked — and the Collapse T
   W("Why Easter Island's Story Is Not What You Heard", "Easter Island ecocide myth debunked", "https://www.youtube.com/watch?v=D4c1qiBOeBE"),
   W("How the moai 'walked' (experiment footage)", "walking moai Lipo Hunt experiment"),
   P("Easter Island podcasts", "Easter Island moai Rapa Nui")])
+
+# ---------------- DAILY: 4 NOV 2026 ----------------
+add("tunguska", "Tunguska, 1908: The Explosion That Flattened a Forest the Size of a City — and Left No Crater",
+ "At 7:14 on a summer morning, the sky over Siberia split open. A blast a thousand times stronger than Hiroshima flattened 2,150 square kilometres of forest — and when scientists finally reached the spot, 19 years later, there was no crater and no meteorite. Just trees, lying in a giant butterfly pattern, pointing at an empty sky.",
+ "History", "30 June 1908, Siberia",
+ ["On the morning of 30 June 1908, in one of the remotest places on Earth — the taiga forest around the Podkamennaya Tunguska River in central Siberia — witnesses saw a fireball streak across the sky, brighter than the Sun, followed by an explosion so loud it was heard hundreds of kilometres away. People were thrown to the ground, windows broke 65 km away, and seismic instruments across Russia recorded the tremors. For several nights afterwards, skies over Europe and Asia glowed so brightly that people in London could reportedly read a newspaper outdoors at midnight.",
+  "The blast flattened about 2,150 square kilometres of forest — 830 square miles, an area bigger than Greater London — in a butterfly-shaped pattern, with the trees lying radially outward from a central point. The often-quoted figure of 80 million flattened trees is an old estimate from the 1930s; modern researchers note it was an extrapolation, not a count, and it may be far too high. At least three people are thought to have died, according to modern archival research — remarkably few, only because the area was almost empty.",
+  "Here is the mystery that made Tunguska famous: there was no crater. When Russian mineralogist Leonid Kulik finally reached the centre of the devastation in 1927 — 19 years after the blast, guided by local Evenki hunters — he had gone looking for a giant iron meteorite and the hole it should have made. Instead he found something stranger. In a zone about 8 km across at the very centre, the trees were still standing — scorched and stripped of every branch, like telegraph poles. Only further out had the trees been knocked flat. That pattern is the fingerprint of an explosion in the sky, not on the ground: directly underneath the blast, the shock wave came straight down and stripped the trees but could not push them over; further out it arrived at an angle and flattened them.",
+  "The scientific consensus today, stated plainly by NASA, is that a stony asteroid about 50–80 metres across — roughly the length of a football field, travelling at tens of thousands of kilometres per hour — exploded in the air 5–10 km above the forest. Estimates of its energy range from 3 to 30 megatons of TNT, most often quoted at 10–15 megatons. That is roughly 1,000 times the Hiroshima bomb. A mid-air explosion vaporised the object, which is why no large meteorite was ever found — although later expeditions did find microscopic particles consistent with extraterrestrial material in the soil, they could not be conclusively tied to the blast.",
+  "The story did not end in 1908. On 15 February 2013 it happened again, smaller and on camera: a 20-metre asteroid burst over Chelyabinsk, Russia, with about 500 kilotons of energy, shattering windows and injuring about 1,500 people, mostly from flying glass. Chelyabinsk let scientists calibrate the computer models they also use for Tunguska — and it is why NASA set up its Planetary Defense Coordination Office in 2016, and why the DART mission in 2022 tested nudging an asteroid off course. Tunguska is also why 30 June is Asteroid Day, marked every year since 2015."],
+ "It was not an ordinary asteroid at all — a comet that vanished in the sky, an iron rock that grazed the atmosphere and bounced back into space, or something stranger still: Nikola Tesla's experimental death ray, a miniature black hole passing through the Earth, or an alien craft. The missing crater and the missing rock prove the official story does not add up.",
+ "An airburst explains the missing crater without any mystery: a rock that explodes 5–10 km up never reaches the ground, so no crater is expected — and Kulik's standing, stripped trees are exactly what an overhead blast predicts. NASA's position is that most scientists today favour a stony asteroid; a comet remains a published possibility, and the 2020 iron-grazer model (an iron asteroid skimming the atmosphere and returning to space) is a real paper but a minority one, with no way to prove it. The Tesla, black-hole, and UFO versions have no supporting evidence at all — Tesla's Wardenclyffe tower was not firing anything of that power in 1908, and no black-hole or craft signature has ever been found. The honest gap is narrower than the legends: asteroid or comet, and exactly how big — not whether something from space exploded.",
+ ["On 30 June 1908, an object exploded over the Podkamennaya Tunguska River, flattening ~2,150 km² of forest.",
+  "The tree-fall pattern — radial, butterfly-shaped, with an ~8 km zone of standing stripped trees at the centre — proves an airburst, not a ground impact.",
+  "NASA and most scientists today favour a stony asteroid ~50–80 m across, exploding 5–10 km up, with energy in the 3–30 megaton range.",
+  "No crater and no large meteorite have ever been found, despite expeditions from 1927 onward.",
+  "Chelyabinsk in 2013 showed the same kind of airburst on camera, at ~500 kilotons, and helped calibrate the Tunguska models."],
+ ["Whether the object was a stony asteroid or a comet — both remain published possibilities, asteroid favoured.",
+  "Its exact size and energy — estimates span 3–30 megatons, so any single number is a choice, not a measurement.",
+  "That Lake Cheko, ~8 km from the epicentre, is an impact crater — proposed in 2007, disputed ever since.",
+  "That Tesla, a black hole, or aliens caused it — no evidence supports any of these.",
+  "The often-quoted '80 million trees' — an old extrapolation, not a count."],
+ [["30 Jun 1908, ~7:14 a.m.", "Fireball and airburst over the Podkamennaya Tunguska River; forest flattened, skies glow for nights after."],
+  ["1908–1921", "Reports circulate, but no scientist reaches the site; the area is too remote."],
+  ["1921", "Leonid Kulik's first survey trip for the Soviet Academy of Sciences."],
+  ["1927", "Kulik reaches the centre: no crater, standing stripped trees, radial tree-fall mapped."],
+  ["2007", "Italian team proposes Lake Cheko as an impact crater — disputed."],
+  ["15 Feb 2013", "Chelyabinsk airburst (~500 kilotons) filmed by thousands of cameras."],
+  ["2015", "Asteroid Day launched, marked every 30 June in memory of Tunguska."],
+  ["2016", "NASA's Planetary Defense Coordination Office established."],
+  ["2022", "DART mission tests deflecting an asteroid."]],
+ [["NASA — 115 Years Ago: The Tunguska Asteroid Impact Event", "https://www.nasa.gov/history/115-years-ago-the-tunguska-asteroid-impact-event/"],
+  ["Tunguska event (overview and references)", "https://en.wikipedia.org/wiki/Tunguska_event"],
+  ["EarthSky — The Tunguska explosion: June 30, 1908", "https://earthsky.org/space/what-is-the-tunguska-explosion/"],
+  ["Universe Today — the iron asteroid that may have grazed the atmosphere (2020 model)", "https://www.universetoday.com/articles/the-tunguska-explosion-could-have-been-caused-by-an-asteroid-that-still-orbits-the-sun"],
+  ["Boslough & Bruno, 'Misunderstandings about Tunguska', Scientific Reports (2025)", "https://doi.org/10.1038/s41598-025-98362-9"],
+  ["Kulik expedition photograph (public domain)", "https://commons.wikimedia.org/wiki/File:Tunguska_Ereignis-1.jpg"]],
+ [W("Tunguska, 1908 — the Siberian explosion explained", "Tunguska event 1908 documentary"),
+  P("Tunguska podcasts", "Tunguska event 1908 mystery"),
+  W("Chelyabinsk 2013: the airburst on camera", "Chelyabinsk meteor 2013 documentary"),
+  W("Could Tunguska happen again? Planetary defence", "Tunguska asteroid planetary defense NASA")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
