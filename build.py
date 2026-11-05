@@ -38,6 +38,7 @@ IMAGES = {
  "biondi": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
  "easter": ("images/moai.jpg", "Ahu Tongariki's 15 moai — Camill1336, via Wikimedia Commons"),
  "tunguska": ("images/tunguska.jpg", "Flattened trees at Tunguska, photographed on the Kulik expeditions — public domain, via Wikimedia Commons"),
+ "voynich": ("images/voynich.jpg", "The Rosettes foldout (folios 85v–86r) — six panels of circular diagrams — public domain, Beinecke Library scan via Wikimedia Commons"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -94,6 +95,15 @@ def visual_block(a):
         <div class="bar-row"><span>Tunguska — high estimate</span><div class="bar"><i style="width:100%"></i></div><b>30 Mt</b></div>
         <p class="small">Bars are drawn on a log scale so a city bomb and a megaton blast fit on one screen. Tunguska's true yield is a range, not one number — that is the honest state of the science.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic — not to scale: what happened in the sky</h4><p>A rock about 50–80 m across streaks in from the <b>south-east</b> &nbsp;→&nbsp; it bursts <b>5–10 km up</b> instead of hitting the ground &nbsp;→&nbsp; the blast flattens a butterfly-shaped <b>2,150 km²</b> of forest &nbsp;→&nbsp; directly underneath, an <b>~8 km zone of trees stays standing</b>, stripped of branches like telegraph poles, because the blast hit them straight from above.</p></div>"""
+    if a["id"] == "voynich":
+        extra = """<div class="chart"><h4>🔢 How big is the mystery? (log scale — the numbers in the article)</h4>
+        <div class="bar-row"><span>Pages surviving</span><div class="bar"><i style="width:45%"></i></div><b>~240</b></div>
+        <div class="bar-row"><span>Different words</span><div class="bar"><i style="width:75%"></i></div><b>~9,000</b></div>
+        <div class="bar-row"><span>Words in the book</span><div class="bar"><i style="width:87%"></i></div><b>~38,000</b></div>
+        <div class="bar-row"><span>Characters (glyphs)</span><div class="bar"><i style="width:100%"></i></div><b>~170,000</b></div>
+        <div class="bar-row"><span>Words anyone has ever read</span><div class="bar"><i style="width:2%"></i></div><b>0</b></div>
+        <p class="small">Bars are drawn on a log scale so a page count and a glyph count fit on one screen. The last bar is the whole story.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale: the book's 600-year journey</h4><p><b>Central Europe</b> (written, early 1400s) &nbsp;→&nbsp; <b>Prague</b> (Rudolf II's court, c. 1600 — rumoured; Baresch, 1600s) &nbsp;→&nbsp; <b>Rome</b> (Kircher and the Jesuits) &nbsp;→&nbsp; <b>Yale University, USA</b> (1969–today). Six centuries, four cities, zero words read.</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -811,6 +821,47 @@ add("tunguska", "Tunguska, 1908: The Explosion That Flattened a Forest the Size 
   P("Tunguska podcasts", "Tunguska event 1908 mystery"),
   W("Chelyabinsk 2013: the airburst on camera", "Chelyabinsk meteor 2013 documentary"),
   W("Could Tunguska happen again? Planetary defence", "Tunguska asteroid planetary defense NASA")])
+
+# ---------------- DAILY: 5 NOV 2026 ----------------
+add("voynich", "The Voynich Manuscript: The 600-Year-Old Book Nobody on Earth Can Read",
+ "Two hundred and forty pages of calfskin, plants that don't exist, star charts, and women bathing in green pools — written in a language no one has ever read. The world's best codebreakers tried. So did AI. It still hasn't given up a single word.",
+ "History", "Vellum dated 1404–1438 · At Yale since 1969",
+ ["Somewhere in the early 1400s, in a place nobody can name, five scribes sat down with quills, iron gall ink, and the skins of at least fourteen calves, and wrote a book about 240 pages long. It is small enough to hold in one hand — 23.5 by 16.2 centimetres — and it is divided into six sections: plants, star charts, bathing women in pools connected by pipes, circular diagrams, apothecary jars, and recipes. The drawings are vivid and strange: plants that match no known species, zodiac wheels with month names written in Latin script from March to December, and a six-page foldout of interlocking circles called the Rosettes page. The text is written left to right in about 20 to 25 characters that match no alphabet on Earth. It has roughly 38,000 words, about 9,000 of them different from each other — and not one of them has ever been read.",
+  "What we know about the book itself is solid, because the object has been tested. In 2009, researchers at the University of Arizona radiocarbon-dated four samples of its vellum to between 1404 and 1438, with 95 per cent confidence. That single result killed two old stories at once: the book cannot be the work of the 13th-century friar Roger Bacon, as was claimed for centuries, and it cannot be a fake made by the man who gave it its name — the book dealer Wilfrid Voynich bought it in 1912, five hundred years after the skins were made. Protein tests in 2014 confirmed the pages are calfskin, and multispectral scans taken in 2014 were made public in 2024, letting researchers read faded and retouched ink. Yale published the whole manuscript online in 2020, so anyone can turn its pages.",
+  "The book's journey is almost as strange as its contents. The first confirmed owner was Georg Baresch, a 17th-century alchemist in Prague. A letter found inside the covers, written in 1665 or 1666 by the Prague scholar Jan Marek Marci to the Jesuit polymath Athanasius Kircher in Rome, is the first securely documented mention of the book — and it repeats, second-hand, a rumour that the book once belonged to the Holy Roman Emperor Rudolf II, who supposedly paid 600 gold ducats for it. No record of that sale exists. From Rome the book passed into Jesuit hands, was hidden from confiscation in 1870, and was sold in 1912 to Wilfrid Voynich. After his death it passed to his widow Ethel, then to Anne Nill, then to the dealer Hans Kraus, who could not find a buyer and donated it to Yale in 1969, where it is catalogued as Beinecke MS 408.",
+  "Everybody has tried to read it. In the 1940s, America's top wartime codebreaker William Friedman and his team transcribed the whole book onto IBM punch cards and got nowhere; the British codebreaker John Tiltman and the analyst Prescott Currier fared no better. Since then the claims have come in waves: a 2016 computer study suggested the language might be Hebrew written in anagrams — its own authors say they have not deciphered anything; a 2017 claim that it was abbreviated Latin was rejected by medievalists; a 2019 claim that it was a lost 'proto-Romance' language made headlines until the University of Bristol deleted its own press release. In 2026 the cycle repeated with viral stories that AI had decoded it — but a review that October found no paper behind the claims, and a preprint by Matthew Schwartz tested 130 reading hypotheses against held-out pages and found that none of them passed. In the same month, Colin Layfield and Lisa Fagin Davis published a paper arguing the book's pages are bound in the wrong order — a proposal about how the book was put together, not a translation. Six hundred years on, the book's score stands: codebreakers 0, manuscript 1."],
+ "The manuscript is a real book in a real language — a lost tongue, or a lost cipher — and the right key will open it. The statistics prove it: word frequencies follow Zipf's law, the pattern real languages show; different sections use different vocabularies, exactly as chapters of a real book would; and five scribes wrote it, which is how real books get made. The decipherments that 'failed' only failed because the field is too cautious to accept them.",
+ "Zipf's law is a necessary test, not a sufficient one: a fake built with the right tricks can pass it, and in the early 2000s Gordon Rugg showed that a simple cardboard grille could generate text with Voynich-like statistics. Every claimed decipherment so far has collapsed the same way — the letter substitutions are chosen subjectively, the readings don't reproduce, and the 'translations' read like word salad in the target language. The text also has a quirk no known language shares: its grammatical markers never appear in the middle of words. And the newest test, Schwartz's October 2026 preprint, tried 130 reading hypotheses on pages the hypotheses had never seen — and none of them passed. The honest status: the text looks like language, but no one has shown that it is one.",
+ ["The vellum was made between 1404 and 1438 (University of Arizona radiocarbon dating, 2009).",
+  "The book is a genuine 15th-century object — not a modern fake, and not Roger Bacon's.",
+  "About 240 pages survive, in six illustrated sections, written by at least five scribes.",
+  "Its word statistics look language-like — frequencies follow Zipf's law.",
+  "No decipherment has ever been accepted by specialists — not by wartime codebreakers, not by linguists, not by AI."],
+ ["That the text is a real language — it could be a cipher, or a hoax built to look like one.",
+  "That any claimed solution (Hebrew anagrams, abbreviated Latin, proto-Romance, AI) cracked it — none has held up.",
+  "That Rudolf II owned it or paid 600 ducats — the story is a rumour with no record behind it.",
+  "That the plants, star charts, or bathing scenes mean what they look like — the pictures are as unread as the words."],
+ [["1404–1438", "The vellum is made — radiocarbon date of the calfskin pages."],
+  ["c. 1600", "The book surfaces in Prague; a rumour says it was at Emperor Rudolf II's court (unverified)."],
+  ["1665–66", "Jan Marek Marci writes to Athanasius Kircher in Rome — the first securely documented mention."],
+  ["1912", "Book dealer Wilfrid Voynich buys it from a Jesuit collection near Rome."],
+  ["1940s", "William Friedman's codebreaking team transcribes it onto IBM punch cards — no break."],
+  ["1969", "Hans Kraus donates it to Yale; catalogued as Beinecke MS 408."],
+  ["2009", "University of Arizona carbon-dates the vellum to 1404–1438."],
+  ["2019", "Gerard Cheshire's proto-Romance claim; the University of Bristol deletes its press release."],
+  ["2020", "Yale publishes the whole manuscript online."],
+  ["Oct 2026", "Schwartz preprint tests 130 reading hypotheses — none passes; Layfield & Davis argue the pages are bound in the wrong order."]],
+ [["Voynich manuscript (overview and references)", "https://en.wikipedia.org/wiki/Beinecke_MS_408"],
+  ["The Voynich Manuscript — sections, counts, and structure (Wikibooks)", "https://en.wikibooks.org/wiki/The_Voynich_Manuscript/Content"],
+  ["Voynich Manuscript — Radiocarbon Dating Research (voynich.nu)", "https://voynich.nu/extra/carbon.html"],
+  ["Did AI Decode the Voynich Manuscript? Claims Tested (Oct 2026)", "https://www.neuralgrimoire.com/did-ai-decode-the-voynich-manuscript/"],
+  ["Gizmodo — the 2019 proto-Romance claim falls apart", "https://gizmodo.com/sorry-it-looks-like-a-researcher-didn-t-just-crack-the-1834841706"],
+  ["Keidan, 'No, the Voynich manuscript has not been deciphered' (2020)", "https://www.academia.edu/39217683/No_the_Voynich_manuscript_has_not_been_deciphered"],
+  ["Rosettes foldout scan (public domain, Beinecke via Wikimedia Commons)", "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(158).jpg"]],
+ [W("The Voynich Manuscript: The Book No One On Earth Can Read", "Voynich manuscript book no one can read", "https://www.youtube.com/watch?v=ZljKA6nsCXo"),
+  W("The Voynich Manuscript — 600 Years, and No One Can Read It", "Voynich manuscript 600 years documentary", "https://www.youtube.com/watch?v=-Rs0frLztAk"),
+  W("The Voynich Manuscript (The Histocrat documentary)", "Voynich manuscript Histocrat documentary", "https://www.youtube.com/watch?v=UZEHBkBlalc"),
+  P("Voynich manuscript podcasts", "Voynich manuscript mystery")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
