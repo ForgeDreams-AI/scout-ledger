@@ -39,6 +39,7 @@ IMAGES = {
  "easter": ("images/moai.jpg", "Ahu Tongariki's 15 moai — Camill1336, via Wikimedia Commons"),
  "tunguska": ("images/tunguska.jpg", "Flattened trees at Tunguska, photographed on the Kulik expeditions — public domain, via Wikimedia Commons"),
  "voynich": ("images/voynich.jpg", "The Rosettes foldout (folios 85v–86r) — six panels of circular diagrams — public domain, Beinecke Library scan via Wikimedia Commons"),
+ "pompeii": ("images/pompeii.jpg", "Pompeii's Forum with Mount Vesuvius towering above — Qfl247, via Wikimedia Commons (CC BY-SA)"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -104,6 +105,14 @@ def visual_block(a):
         <div class="bar-row"><span>Words anyone has ever read</span><div class="bar"><i style="width:2%"></i></div><b>0</b></div>
         <p class="small">Bars are drawn on a log scale so a page count and a glyph count fit on one screen. The last bar is the whole story.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale: the book's 600-year journey</h4><p><b>Central Europe</b> (written, early 1400s) &nbsp;→&nbsp; <b>Prague</b> (Rudolf II's court, c. 1600 — rumoured; Baresch, 1600s) &nbsp;→&nbsp; <b>Rome</b> (Kircher and the Jesuits) &nbsp;→&nbsp; <b>Yale University, USA</b> (1969–today). Six centuries, four cities, zero words read.</p></div>"""
+    if a["id"] == "pompeii":
+        extra = """<div class="chart"><h4>🗿 The casts, by the numbers (from the article)</h4>
+        <div class="bar-row"><span>Bodies found at Pompeii (by 2003)</span><div class="bar"><i style="width:100%"></i></div><b>~1,044</b></div>
+        <div class="bar-row"><span>Plaster casts ever made</span><div class="bar"><i style="width:10%"></i></div><b>104</b></div>
+        <div class="bar-row"><span>Casts sampled for DNA (2024 study)</span><div class="bar"><i style="width:2%"></i></div><b>14</b></div>
+        <div class="bar-row"><span>Full genomes recovered</span><div class="bar"><i style="width:2%"></i></div><b>5</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. Five genomes were enough to overturn a century of family stories — the casts are plaster, not people, and the people inside them were not who we assumed.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one volcano, three cities, one witness</h4><p><b>Mount Vesuvius</b> &nbsp;→&nbsp; <b>Pompeii</b> (south-east — buried under 4–6 m of ash and pumice) &nbsp;·&nbsp; <b>Herculaneum</b> (west — buried far deeper, under ~20 m) &nbsp;·&nbsp; <b>Misenum, 29 km across the Bay of Naples</b> (where 17-year-old Pliny watched it all, and his uncle sailed from, to his death at Stabiae).</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -862,6 +871,49 @@ add("voynich", "The Voynich Manuscript: The 600-Year-Old Book Nobody on Earth Ca
   W("The Voynich Manuscript — 600 Years, and No One Can Read It", "Voynich manuscript 600 years documentary", "https://www.youtube.com/watch?v=-Rs0frLztAk"),
   W("The Voynich Manuscript (The Histocrat documentary)", "Voynich manuscript Histocrat documentary", "https://www.youtube.com/watch?v=UZEHBkBlalc"),
   P("Voynich manuscript podcasts", "Voynich manuscript mystery")])
+
+# ---------------- DAILY: 6 NOV 2026 ----------------
+add("pompeii", "Pompeii, AD 79: The City a Volcano Froze in Time — and the DNA That Rewrote Who Died There",
+ "In less than a day, Vesuvius buried a whole Roman city under metres of ash. For 150 years we told stories about the plaster casts of its victims — a mother and her child, two sisters dying in an embrace. In 2024, DNA from inside the casts said we had the families wrong. And even the date of the disaster is now argued over.",
+ "History", "AD 79 · DNA rewrites the story, 2024",
+ ["On a morning in AD 79, a 17-year-old named Pliny the Younger looked across the Bay of Naples from Misenum, 29 kilometres from the volcano, and saw a cloud rising from Mount Vesuvius 'like an umbrella pine' — a towering column that spread out flat at the top. It was the first volcanic eruption anyone had ever described in writing, and Pliny's two letters about it, written to the historian Tacitus about 25 years later, are still the only eyewitness account that survives. His uncle, Pliny the Elder — admiral of the Roman fleet, author of 37 books on the natural world — sailed toward the eruption to rescue people, after a message came from a woman named Rectina, trapped at the foot of the mountain. He never came back; he died at Stabiae, across the bay.",
+  "Over Pompeii, the wind carried the cloud straight overhead. Pumice — light volcanic rock — rained down for hours, piling up until roofs caved in. Then, in the early morning of the next day, the eruption changed: superheated surges of gas and ash, hundreds of degrees hot, swept down the mountain and through the streets. A 2010 study found that being caught in such a flow, even 10 kilometres from the volcano, could kill instantly, even inside a building. By the time it was over, Pompeii lay under 4 to 6 metres of ash and pumice, and Herculaneum, to the west, under about 20 metres. Pompeii had been a wealthy city of perhaps 10,000 to 20,000 people. The remains of over 1,500 people have been found at Pompeii and Herculaneum; estimates of the total dead run from 1,500 to as high as 16,000, and the true number will never be known — many escaped, and many bodies are still buried.",
+  "The city then vanished for nearly 1,700 years. Herculaneum was rediscovered in 1738; excavations at Pompeii began on 23 March 1748, and the ruins were only identified as Pompeii in 1763. What the diggers found was extraordinary: a whole Roman town, preserved almost as it stood — bread still in the ovens, election posters on the walls, fast-food counters on the street corners. About a third of the city is still unexcavated today. The most famous finds were the victims themselves. As bodies decayed inside the hardened ash, they left perfect hollow cavities; in 1863 the archaeologist Giuseppe Fiorelli realised he could pour liquid plaster into them and recover the shape of the person who had died there. A little over a hundred casts were made — 104 in total — and for a century and a half, everyone who looked at them told stories about them: here a mother clutching her child, there two sisters dying in each other's arms, there a family of four, huddled together.",
+  "In November 2024, the stories fell apart. An international team — Harvard Medical School, the University of Florence, and the Max Planck Institute for Evolutionary Anthropology — published DNA from the casts in Current Biology. During the restoration of 86 damaged casts in 2015, researchers had collected bone fragments mixed into the plaster from 14 of them; five yielded full or partial genomes. The adult wearing a golden bracelet, holding a child on their lap — long exhibited as a mother and her child — was genetically male, and biologically unrelated to the child. The four people found together in the House of the Golden Bracelet, long assumed to be a family, were all male and unrelated to one another (three were tested; the fourth could not be analysed). The two figures lying in an embrace, long called the 'Two Maidens' and thought to be sisters, or a mother and daughter — at least one of them was male. The DNA also showed something bigger: the victims' ancestry came mainly from recent immigrants from the eastern Mediterranean, a reminder that Pompeii was a cosmopolitan port city, not a closed little town. Two years earlier, in 2022, scientists had sequenced the first full genome of a single Pompeii victim — a man of about 35 from the House of the Blacksmith — proving the DNA could survive at all.",
+  "And the date on the tombstone is argued over too. The traditional date, 24 August AD 79, comes from Pliny's letters — and 95 per cent of the surviving manuscript copies agree on it, including the oldest, from the 9th century. But in 2018, archaeologists found a charcoal inscription in the House of the Garden reading 'XVI K NOV' — 17 October — and pointed to autumn fruits buried in the ash: pomegranates, figs, walnuts, chestnuts. For a while, many came to prefer 24 October. Then the argument turned again: in 2023 researchers wrote the same charcoal message on the same wall, and ten months later it was still intact — charcoal is not as fragile as the October case assumed, so the inscription could be from a year earlier. A 2022 book by the classicist Pedar Foss showed that every date except 24 August has no basis in the manuscript tradition at all, and the park now states that all dates outside August 24 are pure invention. But as the park's own director, Gabriel Zuchtriegel, has pointed out, that does not settle it either: Pliny himself could have been wrong. The manuscript says 24 August. Whether the volcano agrees is still, honestly, open."],
+ "Pompeii is a city frozen in time — a perfect snapshot of Roman life on a single day in AD 79, with the victims' families exactly as the plaster casts show them: mothers clutching children, sisters dying in each other's arms, a family of four huddled together.",
+ "The snapshot is real, but the family stories were our invention. DNA from the casts shows the 'mother' was a man, the 'family of four' were unrelated men, and the 'sisters' included a man — the poses were read through modern eyes, not Roman ones. Even the date is a manuscript reading, not a certainty, and a third of the city is still underground. Pompeii is a snapshot, but the captions were written by us, not by the Romans.",
+ ["Vesuvius erupted in AD 79 and buried Pompeii under 4–6 m of ash and pumice; the eruption type is named Plinian, after Pliny's account.",
+  "More than 1,500 victims' remains have been found at Pompeii and Herculaneum; 104 plaster casts were made from the voids left by decayed bodies.",
+  "DNA from five casts (Current Biology, 7 Nov 2024) contradicts the traditional family stories: the 'mother and child' were an unrelated adult male and child, the presumed family of four were unrelated men, and the embracing pair included a man.",
+  "Pompeiians' ancestry was mainly recent eastern Mediterranean immigrants — a cosmopolitan Roman port city.",
+  "Pliny the Younger's two letters to Tacitus are the only surviving eyewitness account of the eruption."],
+ ["That the casts show real families — the relationships were assigned by modern viewers, and DNA contradicts them.",
+  "That the eruption happened on 24 August — that is the date in 95% of Pliny's manuscripts, but the 2018 charcoal inscription and the autumn finds keep an autumn date alive, and Pliny himself could have been wrong.",
+  "An exact death toll — estimates run from 1,500 to 16,000.",
+  "That the city was 'frozen' unchanged — it had been damaged by an earthquake in AD 62 and was still being repaired, and about a third of it remains unexcavated."],
+ [["AD 62", "A major earthquake damages Pompeii; repairs are still under way 17 years later."],
+  ["24 Aug AD 79 (traditional date)", "Vesuvius erupts; Pliny the Younger watches from Misenum; his uncle sails to the rescue and dies at Stabiae."],
+  ["Into the next day, AD 79", "Pyroclastic surges sweep Pompeii; the city is buried under 4–6 m of ash and pumice."],
+  ["1738", "Herculaneum rediscovered."],
+  ["23 Mar 1748", "Excavations begin at Pompeii; the ruins are only identified as Pompeii in 1763."],
+  ["1863", "Giuseppe Fiorelli pours the first plaster casts."],
+  ["2015", "Restoration of 86 casts; CT scans show none holds a complete skeleton."],
+  ["2018", "Charcoal inscription dated 17 October found in the House of the Garden — the date debate reignites."],
+  ["2022", "First full genome sequenced from a single Pompeii victim (Scientific Reports)."],
+  ["7 Nov 2024", "Ancient DNA from the casts published in Current Biology — the family stories are wrong."],
+  ["Aug–Dec 2024", "A charcoal test and the park director's study push back: the October date rests on shaky ground — though Pliny himself could still have been wrong."]],
+ [["Eruption of Mount Vesuvius in AD 79 (overview and references)", "http://en.wikipedia.org/wiki/Eruption_of_Mount_Vesuvius_in_AD_79"],
+  ["Pilli et al., 'Ancient DNA challenges prevailing interpretations of the Pompeii plaster casts', Current Biology (2024)", "https://www.cell.com/current-biology/fulltext/S0960-9822(24)01361-7"],
+  ["Harvard Medical School — Ancient DNA challenges stories told about Pompeii victims", "https://hms.harvard.edu/news/ancient-dna-challenges-stories-told-about-pompeii-victims?sfnsn=mo"],
+  ["HISTORY — Why the date of Pompeii's destruction is still debated", "https://www.history.com/articles/pompeii-vesuvius-destruction-date"],
+  ["National Geographic — When did Mount Vesuvius erupt? Experts can't seem to agree", "https://www.nationalgeographic.com/history/article/mount-vesuvius-eruption-pompeii"],
+  ["BBC Science Focus — Pompeii disaster victims aren't who we think they are", "https://www.sciencefocus.com/planet-earth/dna-challenges-pompeii-assumptions"],
+  ["Pompeii's Forum with Vesuvius (photo, Qfl247 via Wikimedia Commons)", "https://commons.wikimedia.org/wiki/File:Pompeii%26Vesuvius.JPG"]],
+ [W("The Last Morning in Pompeii (Told in Stone)", "Last Morning in Pompeii Told in Stone", "https://www.youtube.com/watch?v=zMo7RpU9inA"),
+  W("The Victims of Vesuvius (Told in Stone)", "Victims of Vesuvius Told in Stone Pompeii", "https://www.youtube.com/watch?v=1j8Ir2aRoHM"),
+  W("I Witnessed the Vesuvius Eruption (Pompeii, 79 AD)", "Vesuvius eruption Pompeii eyewitness Pliny", "https://www.youtube.com/watch?v=7Bbu7xNMM5w"),
+  P("Pompeii podcasts", "Pompeii Vesuvius eruption 79 AD")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
