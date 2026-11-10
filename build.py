@@ -43,6 +43,7 @@ IMAGES = {
  "earhart": ("images/earhart.jpg", "Amelia Earhart standing under the nose of her Lockheed Electra 10E, 1937 — Underwood & Underwood, public domain, via Wikimedia Commons"),
  "sphinx": ("images/sphinx.jpg", "The Great Sphinx of Giza with Khafre's pyramid behind it, May 2015 — MusikAnimal, via Wikimedia Commons (CC BY-SA 3.0)"),
  "franklin": ("images/franklin.jpg", "John Wilson Carmichael, 'Erebus' and 'Terror' in the Antarctic, 1847 — National Maritime Museum, public domain, via Wikimedia Commons"),
+ "floresiensis": ("images/floresiensis.jpg", "Cast of the LB1 Homo floresiensis skull, Cantonal Museum of Geology, Lausanne — Rama, via Wikimedia Commons (CC BY-SA 3.0 FR)"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -145,6 +146,19 @@ def visual_block(a):
         <div class="bar-row"><span>Sailed 1845 → Terror found 2016</span><div class="bar"><i style="width:100%"></i></div><b>171 yrs</b></div>
         <p class="small">Bars are drawn to scale. Both wrecks were found in the places Inuit oral history had named all along.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one voyage, two wrecks</h4><p><b>Greenhithe, England</b> (sailed 19 May 1845) &nbsp;→&nbsp; <b>Baffin Bay</b> (last seen alive, July 1845) &nbsp;→&nbsp; <b>Beechey Island</b> (first winter, three graves) &nbsp;→&nbsp; <b>King William Island</b> (trapped in ice, Sept 1846; abandoned, Apr 1848) &nbsp;→&nbsp; <b>Back River</b> (where the 105 marched, and vanished). The wrecks: <b>Erebus in Queen Maud Gulf</b> (found 2014) &nbsp;·&nbsp; <b>Terror in Terror Bay</b> (found 2016).</p></div>"""
+    if a["id"] == "floresiensis":
+        extra = """<div class="chart"><h4>📏 How small is small? (heights, from the article)</h4>
+        <div class="bar-row"><span>Giant stork that shared the island</span><div class="bar"><i style="width:100%"></i></div><b>~180 cm</b></div>
+        <div class="bar-row"><span>Average adult today</span><div class="bar"><i style="width:94%"></i></div><b>~170 cm</b></div>
+        <div class="bar-row"><span>LB1, the hobbit (Liang Bua)</span><div class="bar"><i style="width:59%"></i></div><b>~106 cm</b></div>
+        <div class="bar-row"><span>Mata Menge ancestor, 700,000 yrs ago</span><div class="bar"><i style="width:56%"></i></div><b>~100 cm</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. The ancestor was shorter than the hobbit — the shrinking happened early, and it never reversed.</p></div>
+        <div class="chart"><h4>🧠 Brain size (cubic centimetres, from the article)</h4>
+        <div class="bar-row"><span>Modern human</span><div class="bar"><i style="width:100%"></i></div><b>~1,350 cm³</b></div>
+        <div class="bar-row"><span>Chimpanzee</span><div class="bar"><i style="width:30%"></i></div><b>~400 cm³</b></div>
+        <div class="bar-row"><span>LB1, the hobbit</span><div class="bar"><i style="width:28%"></i></div><b>~380 cm³</b></div>
+        <p class="small">Bars are drawn to scale. A brain the size of a chimp's, in a body that made stone tools and hunted dwarf elephants — that is the puzzle of the hobbits.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one island, two fossil sites</h4><p><b>Java</b> (where the ancestors probably came from) &nbsp;→&nbsp; <b>deep water, never a land bridge</b> &nbsp;→&nbsp; <b>Flores</b>: <b>Liang Bua cave</b> in the west (LB1, 100,000–60,000 years ago) &nbsp;·&nbsp; <b>Mata Menge</b>, ~75 km east (jaw, teeth, tiny arm bone, ~700,000 years ago) &nbsp;·&nbsp; <b>Wolo Sege</b> nearby in the So'a Basin (tools at least ~1.02 million years old). One island, one lineage, shrinking for a million years.</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -778,6 +792,54 @@ add("roanoke", "Roanoke, 1590: 115 People Vanish — and Leave Behind a Single W
  [W("The Lost Colony of Roanoke, explained", "Lost Colony Roanoke CROATOAN documentary"),
   P("Lost Colony podcasts", "Lost Colony Roanoke mystery"),
   W("Digging for the Lost Colony", "Roanoke Site X archaeology documentary")])
+
+add("floresiensis", "The Real Hobbits of Flores: A Metre-Tall Human, a Grapefruit Brain, and the Tiny Arm Bone That Settled the Argument",
+ "In 2003, archaeologists digging in a cave on the Indonesian island of Flores pulled out the skeleton of a grown woman barely a metre tall, with a brain the size of a grapefruit. She was a new kind of human — and twenty years of argument later, a bone even smaller than hers may have settled the debate for good.",
+ "Deep Past", "2003–2024 · FLORES, INDONESIA",
+ ["In September 2003, a joint Indonesian-Australian team led by archaeologist Thomas Sutikna and Mike Morwood was digging in Liang Bua, a limestone cave on the Indonesian island of Flores. They were looking for traces of modern humans on their way to Australia. Instead, about six metres down, they found a nearly complete skeleton: an adult woman, judged about 30 years old from her teeth, who stood about 1.06 metres tall — three foot six — and weighed roughly 25 kilograms. Her bones were so fragile they had the consistency of wet blotting paper. The team catalogued her LB1, for Liang Bua 1. When the find was published in the journal Nature on 28 October 2004, the world gave her a nickname borrowed from J. R. R. Tolkien: the hobbit.",
+  "LB1 was strange in ways that went far beyond size. Her brain measured about 380 cubic centimetres — roughly a third of a modern human's, about the size of a chimpanzee's, and smaller than some later estimates of about 417 cubic centimetres. Her skull was low with a heavy brow ridge and no chin. Her feet were long and flat, about 20 centimetres — nearly the size of a modern person's feet, on a body half the height. Yet this tiny-brained human made stone tools, sharp flakes and points struck from local rock, and hunted the island's dwarf elephants — pony-sized Stegodon — leaving butchered bones in the cave. She shared Flores with giant rats, Komodo dragons, and a flightless stork nearly 1.8 metres tall. It was an island out of proportion, and she fit it.",
+  "Flores was never connected to mainland Asia. Deep water separated it even when Ice Age sea levels fell, so her ancestors must have crossed open water to get there — the same puzzle as the million-year-old stone tools on Sulawesi. Stone tools in the So'a Basin on Flores, at a site called Wolo Sege, date to at least about 1.02 million years ago, and the ancestors of the hobbits are thought to have arrived on the island roughly 1.27 to 1 million years ago. Then, cut off from the mainland, they shrank. On islands, big animals often get small and small animals get big — the island rule — and over hundreds of thousands of years a large-bodied ancestor, probably an early Asian Homo erectus, became a metre-tall human.",
+  "The story then got rewritten once. At first the skeleton was dated to only about 18,000 years ago, which meant the hobbits had lived alongside modern humans for tens of thousands of years. In 2016, a team led by Sutikna re-excavated and re-dated the cave, publishing in Nature: the skeletons are between about 100,000 and 60,000 years old, the stone tools run from about 190,000 to 50,000 years ago, and the species seems to have vanished around 50,000 years ago — about the time Homo sapiens first reached the region. Whether the two kinds of human ever actually met on Flores is still an open question.",
+  "For twenty years, the fiercest argument was not about her age but about what she was. Critics said LB1 was not a new species at all, just a modern human with a disease — microcephaly, then Laron syndrome, then, in a 2014 paper, Down syndrome. The rebuttals came back study by study: Dean Falk's team showed in 2005 and 2007 that LB1's brain shape sorts with normal humans, not microcephalics; her wrist bones turned out to be primitive, like an ape's or an early hominin's, not a modern human's; and a 2016 analysis by Karen Baab and colleagues found her brain far smaller than in Down syndrome, her skull shape and chin outside the human range, and her height below the Down syndrome range. The clincher arrived in August 2024, from Mata Menge, a site about 75 kilometres east of Liang Bua: an adult upper-arm bone from about 700,000 years ago, estimated 9 to 16 percent shorter and thinner than LB1's, belonging to an individual only about 100 centimetres tall — the smallest adult arm bone in the entire hominin fossil record. One sick person cannot explain a whole lineage of tiny bones stretching back 700,000 years.",
+  "There is one more thread, and it belongs to folklore. The Nage people of central Flores tell stories of the Ebu Gogo — small, hairy, fast-running people, about 1.5 metres tall, 'grandmothers who eat anything' — and the ethnographer Gregory Forth has suggested the tales could be a memory of real encounters with Homo floresiensis. It is a wonderful idea, and it has little mainstream support: after the 2016 re-dating, the hobbits were gone 50,000 years ago, not 12,000, and the Nage live more than 100 kilometres from Liang Bua, across mountains and jungle, among a different people, the Manggarai. No scientific link between the legend and the bones has ever been shown. The Ebu Gogo remain a story — but they are the reason the hobbits feel so close."],
+ "LB1 was not a new species at all — just a modern human with a disease. Microcephaly, then Laron syndrome, then Down syndrome: pick your diagnosis. One sick woman, found in a cave, mistaken for a whole new kind of human — and a twenty-year 'hobbit' industry built on a misdiagnosis.",
+ "A single sick person cannot explain the record. Falk's brain-shape studies sort LB1 with normal humans, not microcephalics; her wrist bones are primitive, not modern; Baab's 2016 analysis found her brain far smaller than in Down syndrome and her skull shape outside the human range. And the Mata Menge humerus is a different individual, 700,000 years old and 75 kilometres away, even smaller than LB1 — the smallest adult arm bone in the fossil record. Diseases do not run in a straight line for 700,000 years. Most researchers now accept floresiensis as a real species; what is still argued is which ancestor it shrank from — Homo erectus, or something older like Homo habilis.",
+ ["A distinct small-bodied human lived on Flores from at least about 700,000 years ago until about 50,000 years ago.",
+  "Its small size evolved early — the 700,000-year-old Mata Menge ancestor was even smaller than LB1.",
+  "They made stone tools and hunted dwarf Stegodon on an island they could only have reached by crossing water.",
+  "LB1's brain shape and wrist bones do not match a diseased modern human."],
+ ["That they ever met Homo sapiens — the overlap around 50,000 years ago is possible, not proven.",
+  "That the Ebu Gogo legends are memories of real hobbits — no scientific link has been shown.",
+  "Which ancestor they shrank from — Homo erectus is the leading candidate, an earlier Homo is still possible.",
+  "That they controlled fire — possible hearths at Liang Bua are claimed, not settled.",
+  "Why they vanished — climate, volcanoes, competition with modern humans, or something else are all guesses."],
+ [["~1.27–1 Ma", "Erectus-like ancestors reach Flores, crossing deep water that was never a land bridge."],
+  ["~1.02 Ma", "Stone tools at Wolo Sege in the So'a Basin — the oldest tools on Flores."],
+  ["~700 ka", "Mata Menge hominins: jaw, teeth, and a tiny adult arm bone — the smallest in the fossil record."],
+  ["190–50 ka", "Stone tools at Liang Bua cave."],
+  ["100–60 ka", "LB1 and the other Liang Bua skeletons — the hobbits in the cave."],
+  ["~50 ka", "Last tools at Liang Bua; the species disappears, around when Homo sapiens reaches the region."],
+  ["2 Sept 2003", "LB1 found in Liang Bua by the Sutikna–Morwood team."],
+  ["28 Oct 2004", "Brown and colleagues name Homo floresiensis in Nature; the 'hobbit' nickname sticks."],
+  ["2005–2007", "Falk's brain-shape studies and the primitive wrist bones push back on the disease claims."],
+  ["Aug 2014", "Henneberg and colleagues claim LB1 had Down syndrome (PNAS)."],
+  ["Mar–Jun 2016", "Sutikna re-dates the hobbits to 100,000–60,000 years ago (Nature); Baab rejects the Down syndrome diagnosis (PLOS ONE)."],
+  ["6 Aug 2024", "Kaifu and colleagues publish the Mata Menge humerus — an ancestor about 100 cm tall (Nature Communications)."]],
+ [["Brown et al. (2004) — 'A new small-bodied hominin from the Late Pleistocene of Flores, Indonesia', Nature 431: 1055–1061", "https://doi.org/10.1038/nature02999"],
+  ["Sutikna et al. (2016) — 'Revised stratigraphy and chronology for Homo floresiensis at Liang Bua in Indonesia', Nature 532: 366–369", "https://doi.org/10.1038/nature17179"],
+  ["Kaifu et al. (2024) — 'Early evolution of small body size in Homo floresiensis', Nature Communications 15: 6381", "https://doi.org/10.1038/s41467-024-50649-7"],
+  ["Falk et al. (2007) — 'Brain shape in human microcephalics and Homo floresiensis', PNAS 104(7): 2513–2518", "https://pmc.ncbi.nlm.nih.gov/articles/PMC1892980/"],
+  ["Baab et al. (2016) — 'A Critical Evaluation of the Down Syndrome Diagnosis for LB1', PLOS ONE 11(6): e0155731", "https://doi.org/10.1371/journal.pone.0155731"],
+  ["Henneberg et al. (2014) — 'Evolved developmental homeostasis disturbed in LB1… denotes Down syndrome', PNAS 111(33): 11967–11972", "https://doi.org/10.1073/pnas.1407382111"],
+  ["Natural History Museum, London — 'Homo floresiensis: the real-life hobbit?'", "https://www.nhm.ac.uk/discover/homo-floresiensis-hobbit.html"],
+  ["Smithsonian Magazine — 'Fossils Shed New Light on Small Hobbit-Like Humans' (2024)", "http://smithsonianmag.com/smart-news/fossils-shed-new-light-on-small-hobbit-like-humans-that-lived-on-a-remote-island-180984854/?itm_medium=parsely-api&itm_source=related-content"],
+  ["Aeon — 'Investigating Homo floresiensis and the myth of the ebu gogo'", "https://aeon.co/ideas/investigating-homo-floresiensis-and-the-myth-of-the-ebu-gogo"],
+  ["Nature News (2004) — 'Dwarf hominid lived in Indonesia just 18,000 years ago'", "https://www.nature.com/news/2004/041025/full/news041025-3.html"],
+  ["Wikipedia — Homo floresiensis", "https://en.wikipedia.org/wiki/Homo_floresiensis"]],
+ [W("They Found a 3-Foot-Tall Human Species. Then It Got Weirder.", "Homo floresiensis hobbit documentary", "https://www.youtube.com/watch?v=LgQGrQ4V-pQ"),
+  W("The 3-foot-tall humans that hunted dragons for 650,000 years", "Homo floresiensis hobbit story documentary", "https://www.youtube.com/watch?v=0DQjQrGb4zY"),
+  W("Homo floresiensis: The Ancient Hobbit People | Lindsay Nikole", "Homo floresiensis Lindsay Nikole", "https://www.youtube.com/watch?v=xgGqpEXdt1E"),
+  P("Human evolution podcasts", "Homo floresiensis hobbit podcast")])
 
 # ---------------- HTML GENERATION ----------------
 add("easter", "Easter Island: The Giant Heads That Walked — and the Collapse That Never Happened",
