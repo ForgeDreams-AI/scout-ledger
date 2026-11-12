@@ -45,6 +45,7 @@ IMAGES = {
  "franklin": ("images/franklin.jpg", "John Wilson Carmichael, 'Erebus' and 'Terror' in the Antarctic, 1847 — National Maritime Museum, public domain, via Wikimedia Commons"),
  "floresiensis": ("images/floresiensis.jpg", "Cast of the LB1 Homo floresiensis skull, Cantonal Museum of Geology, Lausanne — Rama, via Wikimedia Commons (CC BY-SA 3.0 FR)"),
  "denisovan": ("images/denisovan.jpg", "The mouth of Denisova Cave, Altai Mountains, Siberia — Yuriy59, via Wikimedia Commons (CC BY-SA 3.0)"),
+ "dyatlov": ("images/dyatlov.jpg", "The tent as the searchers found it, 26 February 1959 — Soviet investigators, public domain, via Wikimedia Commons"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -174,6 +175,22 @@ def visual_block(a):
         <div class="bar-row"><span>Han Chinese</span><div class="bar"><i style="width:10%"></i></div><b>~9%</b></div>
         <p class="small">Bars are drawn to scale from the article's figures. The same gene, inherited from Denisovans, is what lets Tibetans live and work where the air is thin.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale: the ghost's empire</h4><p><b>Denisova Cave, Siberia</b> (the finger bone, Denny, the bracelet) &nbsp;→&nbsp; <b>Baishiya Karst Cave, Tibetan Plateau</b> (the Xiahe jaw, 3,280 m up) &nbsp;→&nbsp; <b>Xujiayao, northern China</b> (20 fossils, 1976–79) &nbsp;·&nbsp; <b>Harbin, Manchuria</b> (the Dragon Man skull) &nbsp;→&nbsp; <b>Penghu Channel, Taiwan</b> (a jaw dredged from the sea) &nbsp;→&nbsp; <b>Tam Ngu Hao 2, Laos</b> (a child's tooth in the tropics). From frozen Siberia to tropical Laos — thousands of kilometres, one kind of human.</p></div>"""
+    if a["id"] == "dyatlov":
+        extra = """<div class="chart"><h4>🧊 The nine, by the numbers (from the article)</h4>
+        <div class="bar-row"><span>Set out from Sverdlovsk</span><div class="bar"><i style="width:100%"></i></div><b>10</b></div>
+        <div class="bar-row"><span>Turned back (Yudin, sciatica)</span><div class="bar"><i style="width:10%"></i></div><b>1</b></div>
+        <div class="bar-row"><span>Died on the mountain</span><div class="bar"><i style="width:90%"></i></div><b>9</b></div>
+        <div class="bar-row"><span>Died of hypothermia</span><div class="bar"><i style="width:60%"></i></div><b>6</b></div>
+        <div class="bar-row"><span>Chest trauma (ravine)</span><div class="bar"><i style="width:20%"></i></div><b>2</b></div>
+        <div class="bar-row"><span>Skull fracture (ravine)</span><div class="bar"><i style="width:10%"></i></div><b>1</b></div>
+        <div class="bar-row"><span>Came home</span><div class="bar"><i style="width:2%"></i></div><b>0</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. The last bar is the whole mystery: nine experienced hikers, and not one of them made it back to the tent.</p></div>
+        <div class="chart"><h4>📏 How far did they get? (distances from the article)</h4>
+        <div class="bar-row"><span>Tent → cedar tree</span><div class="bar"><i style="width:100%"></i></div><b>1.5 km</b></div>
+        <div class="bar-row"><span>Cedar → ravine den</span><div class="bar"><i style="width:5%"></i></div><b>75 m</b></div>
+        <div class="bar-row"><span>Snow over the ravine four</span><div class="bar"><i style="width:2%"></i></div><b>~4 m</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. Everything that happened after the tent happened within a mile and a half of it.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one trek, three crime scenes</h4><p><b>Sverdlovsk</b> (set out, 23 Jan) &nbsp;→&nbsp; <b>Ivdel</b> &nbsp;→&nbsp; <b>Vizhay</b> (last village) &nbsp;→&nbsp; <b>Second Northern</b> (Yudin turns back, 28 Jan) &nbsp;→&nbsp; <b>Kholat Syakhl slope</b> (the tent, 1 Feb) &nbsp;→&nbsp; <b>1.5 km downhill: the cedar</b> (two bodies, 27 Feb) &nbsp;→&nbsp; <b>75 m further: the ravine</b> (four bodies, 4 May). The pass was named for Dyatlov afterwards.</p></div>"""
     if a["id"] == "fieldguide":
         extra = """<div class="chart"><h4>🦴 Who lived when? (approximate ranges from the article)</h4>
         <div class="bar-row"><span>Homo erectus</span><div class="bar"><i style="width:100%"></i></div><b>~1.9M – 110k yrs ago</b></div>
@@ -1223,6 +1240,49 @@ add("denisovan", "The Denisovans: The Ghost Humans Found in a Finger Bone — an
  [W("A Finger, a Girl and a Skull: Solving the Denisovan Mystery", "Denisovan mystery finger bone Dragon Man documentary", "https://www.youtube.com/watch?v=NbgfqMR-S8Q"),
   W("Who were the Denisovans?", "Denisovans explained documentary"),
   P("Denisovan podcasts", "Denisovans human evolution")])
+
+add("dyatlov", "Dyatlov Pass, 1959: Nine Hikers Cut Their Way Out of Their Tent — and Never Came Back",
+ "On a frozen slope in the Soviet Urals, nine experienced ski-hikers slashed their tent open from the inside and walked into a −30 °C night in their socks. Sixty years later, snow science finally offered an answer — but the case is still argued over.",
+ "Contested", "CONTESTED — 1–2 February 1959",
+ ["Ten students and graduates from the Ural Polytechnic Institute in Sverdlovsk set out on 23 January 1959 on a Grade III winter ski trek — the hardest Soviet grade — a roughly 300 km route to Mount Otorten in the northern Urals. Their leader was Igor Dyatlov, 23, a radio-engineering student. On 28 January, Yuri Yudin turned back with a flare-up of sciatica. He was the tenth member — and the only survivor.",
+  "On 1 February, in worsening weather, the nine lost their bearings and pitched camp at about five in the afternoon on the exposed eastern slope of Kholat Syakhl — the Mansi name means 'Mountain of the Dead' — instead of dropping 1.5 km to the sheltered forest below. That night, something made all nine cut their tent open from the inside with knives and walk downhill, most of them in socks or barefoot, leaving their boots, coats, and food behind. The temperature was around −30 °C.",
+  "When no telegram arrived by 12 February, a search began. On 26 February, a party led by the student Boris Slobtsov found the tent, half-collapsed under snow and cut open from inside, with eight or nine sets of footprints heading downhill. On 27 February, under a tall cedar about 1.5 km away, Doroshenko and Krivonischenko lay dead beside the remains of a small fire, in their underwear, with branches broken up to 5 m overhead. Dyatlov, Kolmogorova, and Slobodin were found over the following days between the cedar and the tent, spaced out as if heading back uphill. The last four — Dubinina, Zolotaryov, Kolevatov, and Thibeaux-Brignolles — were found on 4 May under about 4 m of snow in a ravine 75 m from the cedar, lying on a platform of branches: a snow den they had built.",
+  "The autopsies, in Ivdel, showed six of the nine died of hypothermia. But the ravine four were different: Dubinina and Zolotaryov had crushed chests — Dubinina with ten ribs broken and bleeding into her heart — and Thibeaux-Brignolles had a skull fracture so severe that bone was driven into his brain. The examiner compared the force to a car crash, yet there were no external wounds to match it. Dubinina was missing her tongue, eyes, and part of her upper lip; Zolotaryov his eyes — the examiner put that down to three months lying in a stream. Some clothing carried beta radiation above background; the radiologist's report attributed it to contamination, and no alpha or gamma radiation was found. On 28 May 1959 the case was closed: the hikers had died from a 'compelling natural force'. The files were sealed, and the area was closed to skiers for three years.",
+  "The modern answer came in two steps. On 1 February 2019 — sixty years to the day — Russia reopened the case, and on 11 July 2020 the Prosecutor General's Office announced the cause: an avalanche. Then, in January 2021, Johan Gaume (EPFL) and Alexander Puzrin (ETH Zurich) published a peer-reviewed model in Communications Earth & Environment: the hikers had cut a shelf into the slope to pitch the tent, and katabatic winds piled snow above it for hours until a small slab — only about 5 m across — released, 7.5 to 13.5 hours after the tent was pitched. Their simulation, built on the same snow physics developed for Disney's Frozen and on crash-test data, showed the slab could break ribs and skulls through bedding without marking the skin — and leave almost no debris behind. Follow-up expeditions in 2021–22, published in 2022, filmed real slab avalanches on the very same slopes. The Dyatlov Foundation still disputes the conclusion, and the scientists themselves say they added plausibility, not a final proof."],
+ "Something unnatural forced them out — a secret weapons test, a fireball or UFO in the sky, infrasound that drove them mad with panic, or an attack by men who left no footprints. A slab of snow cannot explain crushed chests with no mark on the skin, a missing tongue, radiation on the clothes, or why experienced hikers fled into lethal cold instead of digging in. The files were sealed for thirty years for a reason.",
+ "Every oddity has a documented, mundane reading. The 2021 model shows a small slab could cause exactly those injuries — the force of a car crash, delivered through bedding, with no external wound. The footprints walk downhill in an orderly line, not a panicked stampede, and they are only the hikers' own. The tongue and eyes were lost to three months in a stream — the examiner said so at the time. The radiation was beta only, on a few garments, and the radiologist attributed it to contamination. And in 2021–22, expeditions filmed real slab avalanches on the very slopes the 1959 investigators called too gentle. What the avalanche model cannot do is prove it happened that night — no witness survived, and the Dyatlov Foundation still disputes the official conclusion.",
+ ["Nine experienced hikers cut their tent open from the inside and fled into −30 °C cold on the night of 1–2 February 1959.",
+  "Six died of hypothermia; three of the ravine four had massive internal injuries with no matching external wounds.",
+  "A small slab avalanche can produce exactly those injuries — shown by a peer-reviewed model (2021) and by real slab avalanches filmed on the same slopes (2021–22).",
+  "The Soviet case was closed in May 1959 as a 'compelling natural force', and Russia's 2020 reinvestigation concluded avalanche."],
+ ["That a slab avalanche definitely struck the tent that night — the model shows it could have, not that it did.",
+  "That anything unnatural was involved — no weapon, aircraft, or other person has ever been tied to the scene.",
+  "That the radiation or the missing tongue were caused by anything other than contamination and three months in a stream.",
+  "Why the group camped on the exposed slope instead of dropping 1.5 km to the forest."],
+ [["23 Jan 1959", "Ten hikers leave Sverdlovsk on a Grade III winter trek to Mount Otorten."],
+  ["28 Jan 1959", "Yuri Yudin turns back with sciatica — the only survivor."],
+  ["1 Feb 1959, ~5 p.m.", "The nine camp on the exposed slope of Kholat Syakhl instead of the forest 1.5 km below."],
+  ["Night of 1–2 Feb 1959", "The tent is cut open from inside; all nine flee downhill in socks or barefoot."],
+  ["12 Feb 1959", "No telegram arrives; the alarm is raised and a search begins."],
+  ["26 Feb 1959", "Slobtsov's party finds the tent, half-collapsed, cut open from inside."],
+  ["27 Feb 1959", "Doroshenko and Krivonischenko found dead under the cedar, 1.5 km downhill."],
+  ["Feb–Mar 1959", "Dyatlov, Kolmogorova, and Slobodin found between the cedar and the tent."],
+  ["4 May 1959", "The last four found under ~4 m of snow in a ravine, on a platform of branches."],
+  ["28 May 1959", "Case closed: death by a 'compelling natural force'. Files sealed."],
+  ["1 Feb 2019", "Russia reopens the case, sixty years to the day."],
+  ["11 July 2020", "Prosecutor General's Office announces the cause: an avalanche."],
+  ["28 Jan 2021", "Gaume & Puzrin publish the slab-avalanche model in Communications Earth & Environment."],
+  ["2021–22", "Follow-up expeditions film real slab avalanches on the same slopes."]],
+ [["Gaume & Puzrin (2021) — 'Mechanisms of slab avalanche release and impact in the Dyatlov Pass incident in 1959', Communications Earth & Environment 2:10", "https://doi.org/10.1038/s43247-020-00081-8"],
+  ["Puzrin & Gaume (2022) — 'Post-publication careers: follow-up expeditions reveal avalanches at Dyatlov Pass', Communications Earth & Environment 3:63", "https://doi.org/10.1038/s43247-022-00393-x"],
+  ["Wikipedia — Dyatlov Pass incident (overview and references)", "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident"],
+  ["The Dyatlov Pass case files (transcribed 1959 investigation, dyatlovpass.com)", "https://dyatlovpass.com/case-files?lid=1"],
+  ["History Is Now — 'Dead Mountain: The Dyatlov Pass Incident and the Cold War Secrecy That Kept It a Mystery'", "https://www.historyisnowmagazine.com/blog/2026/10/13/dead-mountain-the-dyatlov-pass-incident-and-the-cold-war-secrecy-that-kept-it-a-mystery"],
+  ["The Cold File — 'Nine Who Cut Their Way Into the Cold: The 1959 Dyatlov Pass Incident'", "https://www.thecoldfile.com/articles/1959-dyatlov-pass/"]],
+ [W("Dyatlov Pass: Nine Hikers Fled Their Tent. None Survived. (Beyond The Known 365)", "Dyatlov Pass documentary", "https://www.youtube.com/watch?v=gvDneVfBefo"),
+  W("The Dyatlov Pass Mystery Was Explained by Disney's Frozen Code (The Mind Report)", "Dyatlov Pass Frozen snow physics avalanche", "https://www.youtube.com/watch?v=7lBKQ9t4PBM"),
+  W("The Dyatlov Pass Mystery: Science Finally Explains What Happened (1959) (The History Echoes)", "Dyatlov Pass mystery science explained", "https://www.youtube.com/watch?v=Djk7ziSknUk"),
+  P("Dyatlov Pass podcasts", "Dyatlov Pass incident mystery")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
