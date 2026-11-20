@@ -53,6 +53,7 @@ IMAGES = {
  "terracotta": ("images/terracotta.jpg", "Rows of terracotta soldiers in Pit 1 — Gary Lee Todd, Ph.D., via Wikimedia Commons (CC0)"),
  "gobekli": ("images/gobekli.jpg", "Göbekli Tepe, Şanlıurfa — Teomancimit, via Wikimedia Commons"),
  "naledi": ("images/naledi.jpg", "Reconstructed Homo naledi skull, made from casts of two specimens — Martinvl, via Wikimedia Commons"),
+ "oakisland": ("images/oakisland.jpg", "Oak Island and its wharf, August 1931 — public domain, via Wikimedia Commons"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -292,6 +293,20 @@ def visual_block(a):
         <div class="bar-row"><span>More individuals in the Lesedi Chamber</span><div class="bar"><i style="width:2%"></i></div><b>3</b></div>
         <p class="small">Bars are drawn to scale from the article's figures. One cave chamber, one species, fifteen people — the richest single-species fossil haul ever found in Africa.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale: the squeeze to the stars</h4><p><b>Johannesburg</b> &nbsp;→&nbsp; <b>~50 km north-west</b> &nbsp;→&nbsp; <b>the Cradle of Humankind</b> &nbsp;→&nbsp; <b>Rising Star Cave</b> &nbsp;→&nbsp; <b>80 m in</b>, down a <b>12 m drop</b>, through a passage <b>25–50 cm wide</b> &nbsp;→&nbsp; <b>the Dinaledi Chamber ('Chamber of Stars')</b> &nbsp;·&nbsp; nearby, the <b>Lesedi Chamber</b>. The bones lie in total darkness, in a room almost no adult can reach.</p></div>"""
+    if a["id"] == "oakisland":
+        extra = """<div class="chart"><h4>⛏️ How deep did they dig? (feet down — from the article)</h4>
+        <div class="bar-row"><span>The three boys gave up</span><div class="bar"><i style="width:13%"></i></div><b>~30 ft</b></div>
+        <div class="bar-row"><span>The inscribed stone</span><div class="bar"><i style="width:38%"></i></div><b>90 ft</b></div>
+        <div class="bar-row"><span>Dunfield's 70-ton crane, 1965–66</span><div class="bar"><i style="width:57%"></i></div><b>134 ft</b></div>
+        <div class="bar-row"><span>Borehole 10-X camera, 1971</span><div class="bar"><i style="width:100%"></i></div><b>235 ft</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. The camera went deeper than any digger ever has — and still found no treasure.</p></div>
+        <div class="chart"><h4>💀 Six deaths, one prophecy (from the article)</h4>
+        <div class="bar-row"><span>1861 — boiler bursts</span><div class="bar"><i style="width:14%"></i></div><b>1</b></div>
+        <div class="bar-row"><span>1897 — Kaiser falls</span><div class="bar"><i style="width:14%"></i></div><b>1</b></div>
+        <div class="bar-row"><span>1965 — the Restall tragedy</span><div class="bar"><i style="width:57%"></i></div><b>4</b></div>
+        <div class="bar-row"><span>The curse says seven must die</span><div class="bar"><i style="width:100%"></i></div><b>7</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. Six have died. The prophecy has no verified 1800s source — but the deaths are real.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one small island, four hot spots</h4><p><b>Mahone Bay, Nova Scotia</b> &nbsp;→&nbsp; causeway &nbsp;→&nbsp; <b>Oak Island (140 acres)</b>: <b>the Money Pit</b> on the east end (where it all started) &nbsp;·&nbsp; <b>Smith's Cove</b> on the north shore (the supposed flood-tunnel drains, and the coconut fibre) &nbsp;·&nbsp; <b>the swamp</b> (the U-shaped structure and the stone road) &nbsp;·&nbsp; <b>Nolan's Cross</b> (the boulder formation on the south side). Everything on this map fits inside a mile.</p></div>"""
     return ('<div class="visual"><div class="cluebar">'
             '<span>📖 %d story parts</span><span>🕰️ %d moments in time</span><span>🔗 %d sources</span><span>✅ %d proven · ❌ %d not proven</span></div>'
             '<h3>🧭 Follow the timeline</h3><div class="tl-track">%s</div>%s</div>'
@@ -1011,6 +1026,57 @@ add("dancing", "The Dancing Plague of 1518: The City That Danced Until It Droppe
   W("The Town That Danced Itself to Death | The Dancing Plague of 1518", "dancing plague 1518 documentary", "https://www.youtube.com/watch?v=74_YCtZVuhs"),
   P("Dancing plague of 1518 podcasts", "Dancing Plague 1518 Strasbourg podcast")])
 
+
+add("oakisland", "Oak Island: The Money Pit That Has Swallowed Millions, Six Lives — and a Future President's Summer",
+ "In 1795, a teenager found a strange dip in the ground under an old oak tree on a tiny island in Nova Scotia. Two hundred and thirty years later, people are still digging — companies, a future president, millionaires and a TV crew — and the treasure has never been found.",
+ "Contested", "1795 – today · 230 years of digging",
+ ["In the summer of 1795, a teenager named Daniel McGinnis was exploring Oak Island, a small, wooded island in Mahone Bay off the south shore of Nova Scotia, when he found a circular dip in the ground beneath an old oak tree, with a ship's tackle block hanging from a branch above it. He came back with two friends, John Smith and Anthony Vaughan, and started digging. A few feet down they hit a layer of flagstones, and then — so the story goes — oak log platforms every ten feet, down to about thirty feet, where they gave up. That is the founding story of the Money Pit, the longest treasure hunt in North American history. There is one problem with it: nobody wrote it down until 1857, more than sixty years later, when the first published account appeared in the Liverpool Transcript. No eyewitness record of 1795 survives, and the boys' own digging cannot be checked against anything.",
+  "About 1803 or 1804, a group called the Onslow Company took up the dig with real money behind it. Their diggers reported more layers of oak logs, plus charcoal, putty and coconut fibre — fibre from a plant that does not grow anywhere near cold Nova Scotia. At about ninety feet they hit a flat stone carved with strange symbols. Later writers claimed the symbols had been decoded to read 'Forty feet below, two million pounds are buried' — though another version of the translation says 'Ten feet below two million lies buried'. The stone itself is long lost, and there is no reliable record of what, if anything, was carved on it. Soon after, the pit flooded with seawater to within about thirty feet of the surface, and no amount of bailing could keep up. In 1849, the Truro Company drilled into the pit and reported bringing up 'metal in pieces' and links of a gold chain from about ninety-eight feet down — and in 1896 or 1897 a scrap of sheepskin parchment was reportedly brought up too. None of these objects was ever preserved or independently verified; the gold chain and the parchment exist only in the reports of men who needed investors.",
+  "The flooding became the heart of the legend. Treasure hunters said the pit was protected by a booby trap: tunnels dug from the shore at Smith's Cove, on the island's north side, that would flood the shaft the moment anyone dug too deep. Diggers there reported layers of coconut fibre and beach stone arranged like a filter, and in 1898 they poured red dye into the pit and said it appeared in the sea at Smith's Cove — taken as proof of a tunnel. But no flood tunnel has ever been traced from the pit to the sea. The science says there may never have been one: Oak Island sits on glacial till over soluble anhydrite and limestone, rock that dissolves into sinkholes and underground cavities connected to the sea. A 1995 study by the Woods Hole Oceanographic Institution concluded the flooding could be explained naturally, with no engineered tunnels at all. A natural sinkhole, slowly filled with debris and logs over centuries, could account for the dip in the ground, the platforms, and the flood.",
+  "The hunt has also killed people — six of them, by the usual count. In late 1861 a steam pump's boiler burst and scalded a worker to death; the death itself only enters the record five years later, secondhand. On 26 March 1897 a worker named Maynard Kaiser fell to his death when a hoisting rope slipped. The worst day came on 17 August 1965, when Robert Restall, who had lived on the island with his family for six years chasing the pit, was overcome by hydrogen sulfide fumes in a shaft; his eighteen-year-old son climbed in after him, then two more men followed, and all four died — a fifth man was pulled out alive. The legend says seven men must die before the treasure is found, which means, by the count, one more death is owed. But the curse itself has no verified written record from the 1800s; the earliest references to it appear in 1970s treasure-hunting literature. The deaths are real. The prophecy looks like folklore invented afterwards. Among the diggers was a future president: in 1909, a young Franklin D. Roosevelt joined the Old Gold Salvage group's expedition to the island — the photograph is in the US National Archives — and he followed the mystery until his death in 1945, even planning a visit in 1939 that never happened. Another island figure was Samuel Ball, a formerly enslaved man who became one of Nova Scotia's biggest landowners, owning nine lots on Oak Island.",
+  "The steel age of the hunt came in the 1960s. In 1965 a causeway was built to the mainland so heavy machinery could cross, and Robert Dunfield brought in a 70-ton crane that dug the pit down to 134 feet. In 1971, a borehole called 10-X was drilled to 235 feet, and a camera lowered into it was said to have shown chests, a human body and tools in a flooded cavern. The images were murky and unclear, and when divers went down the borehole in 2016 they found nothing. Dan Blankenship, who bought much of the island in the 1960s and dug for half a century, died on 17 March 2019, aged 95, still without the treasure.",
+  "The hunt's latest chapter belongs to two brothers from Michigan. Rick Lagina read about the Money Pit as a thirteen-year-old in 1965, and in 2006 he and his brother Marty bought a majority stake in the island. Since January 2014 their search has been filmed for the History Channel series The Curse of Oak Island. What they have actually found is modest, but it is real: a Spanish copper coin from 1652, seventeenth-century Britannia coins, a gold-plated brooch dating to as early as the fourteenth century — the first confirmed gold found on the island — and a lead cross whose lead comes from ore mined before the fifteenth century. In 2022, water tests in the Money Pit area picked up traces of gold. Core samples from the island's swamp show a major saltwater intrusion in the late 1300s or early 1400s, which one Acadia University researcher has said was likely human manipulation — though he did not rule out an enormous storm. So people were doing things on Oak Island centuries before 1795. What they were doing, and whether anything valuable is still down there, is the question that has now outlived every digger who ever asked it."],
+ "An engineered treasure vault lies at the bottom of the Money Pit — built by pirates, Templars, or a royal house — protected by flood tunnels and a curse, and the centuries-old coins, the lead cross, the gold traces and the pre-1795 workings prove people were on this island long before the boys found the pit. The treasure is real; only the last few feet of mud and seawater stand between the diggers and it.",
+ "The founding story was first written down in 1857, more than sixty years after 1795, and the early accounts came from companies selling shares. The 90-foot stone is lost and its famous translation cannot be checked — two different versions circulate. No flood tunnel has ever been traced; a 1995 Woods Hole study and the island's soluble limestone and sinkholes explain the flooding naturally. The gold chain and the parchment were never preserved or independently verified. The lead cross's lead only dates the ore it was made from, not the cross. And the 'seven must die' curse has no verified 1800s source — it looks like folklore invented later. Six men really died; the treasure is still unproven.",
+ ["A deep shaft was dug on Oak Island's east end, and people have been digging there since at least the early 1800s.",
+  "The pit really does flood with seawater, again and again, whenever diggers get deep.",
+  "Coins and objects from the 1300s to the 1600s have been found on the island — people were there centuries before 1795.",
+  "Six men died searching: one in 1861, one in 1897, and four on 17 August 1965.",
+  "Franklin D. Roosevelt really dug there in 1909 — the photograph is in the US National Archives.",
+  "The Laginas' finds are real objects, dated by labs — including the first confirmed gold on the island, a 14th-century brooch."],
+ ["That any treasure exists, or ever did — nothing valuable has ever been brought up and verified.",
+  "That the 90-foot stone said anything — it is lost, and the two translations disagree.",
+  "That flood tunnels exist — none has ever been traced from the pit to the sea.",
+  "That the lead cross is Templar — its lead only dates the ore, not the cross.",
+  "That the curse is real — no 1800s source for the seven-deaths prophecy has been found.",
+  "That Borehole 10-X showed chests or a body — the images were unclear, and divers found nothing there in 2016."],
+ [["1795", "Daniel McGinnis, John Smith and Anthony Vaughan find the depression under the oak (story first published 1857)."],
+  ["1803–04", "The Onslow Company digs to ~90 ft: oak platforms, coconut fibre, the inscribed stone — then the pit floods."],
+  ["1849", "The Truro Company's drill reportedly brings up gold links from ~98 ft down."],
+  ["1857", "First published account of the Money Pit appears in the Liverpool Transcript."],
+  ["1861", "First death: a steam pump boiler bursts and scalds a worker."],
+  ["1896–97", "A parchment fragment is reportedly brought up; on 26 Mar 1897 Maynard Kaiser falls to his death."],
+  ["1909", "A young Franklin D. Roosevelt joins the Old Gold Salvage expedition to Oak Island."],
+  ["1965", "A causeway is built for heavy machinery; on 17 Aug the Restall tragedy kills four men; Dunfield's 70-ton crane digs the pit to 134 ft."],
+  ["1971", "Borehole 10-X is drilled to 235 ft; a camera is said to show chests and a body — the images are unclear."],
+  ["1995", "The Woods Hole Oceanographic Institution study concludes the flooding may be natural."],
+  ["2006", "Rick and Marty Lagina buy a majority stake in the island."],
+  ["Jan 2014", "The Curse of Oak Island premieres on the History Channel."],
+  ["2018", "The lead cross is reported as made from pre-15th-century lead."],
+  ["2022", "Water tests in the Money Pit area pick up traces of gold."],
+  ["2026", "The dig continues — still no treasure confirmed."]],
+ [["Wikipedia — Oak Island mystery (overview, excavations, deaths, theories)", "https://en.wikipedia.org/wiki/Oak_Island_mystery"],
+  ["Wikipedia — Oak Island (geography, geology, history, owners)", "https://en.wikipedia.org/wiki/Oak_Island"],
+  ["Historian — The Oak Island Money Pit: History of a Treasure Hunt", "https://historian.info/articles/the-oak-island-money-pit"],
+  ["The Curse of Oak Island — A Hunt with no End (expedition chronology)", "https://thecurseofoakisland.com/hunt/a-hunt-with-no-end"],
+  ["Scholastic Scope — What's Buried on Oak Island?", "https://scope.scholastic.com/issues/2024-25/050125/whats-buried-on-oak-island-.html?language=english"],
+  ["Nova Scotia Archives — Photograph of the Money Pit", "https://archives.novascotia.ca/photocollection/archives/?ID=7685"],
+  ["US National Archives (via Wikimedia Commons) — Franklin D. Roosevelt at Oak Island, 1909", "https://commons.wikimedia.org/wiki/File:Photograph_of_Franklin_D._Roosevelt_and_Others_at_Oak_Island_in_Nova_Scotia_-_NARA_-_196803.jpg"],
+  ["The Half Known — Two Hundred Years, Six Deaths, and a Hole Nobody Can Empty", "https://thehalfknown.com/mysteries/oak-island-money-pit"]],
+ [W("Oak Island Money Pit: the complete story — 230 years, six deaths, no treasure (documentary)", "Oak Island Money Pit documentary", "https://www.youtube.com/watch?v=yiFN62tQlxQ"),
+  W("The Curse of Oak Island: STRIKING GOLD in the Money Pit (Season 9) | History", "Curse of Oak Island striking gold Money Pit", "https://www.youtube.com/watch?v=rmd4PfSfE8w"),
+  W("The Curse of Oak Island: MASSIVE FIND Confirms Money Pit Location (Season 9) | History", "Curse of Oak Island massive find Money Pit location", "https://www.youtube.com/watch?v=vuh15D4IjAo"),
+  P("Oak Island podcasts", "Oak Island Money Pit mystery")])
 
 # ---------------- HTML GENERATION ----------------
 add("easter", "Easter Island: The Giant Heads That Walked — and the Collapse That Never Happened",
