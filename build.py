@@ -59,6 +59,7 @@ IMAGES = {
  "pyramid": ("images/giza.jpg", "The pyramids of Giza — Morhaf Kamal Aljanee, via Wikimedia Commons"),
  "shroud": ("images/shroud.jpg", "Full-length photograph of the Shroud of Turin — Giuseppe Enrie, 1931, public domain, via Wikimedia Commons"),
  "phoenix": ("images/phoenix.jpg", "The Sierra Estrella mountains, south-west of Phoenix — above them the 10 p.m. lights appeared on 13 March 1997. Photo: formulanone, via Wikimedia Commons (CC BY-SA 2.0)"),
+ "tambora": ("images/tambora.jpg", "Aerial view of the caldera of Mount Tambora, Sumbawa, Indonesia, 2011 — Jialiang Gao, via Wikimedia Commons (CC BY-SA 3.0)"),
 }
 # Fun, category-coloured monogram tiles for articles without a verified photo.
 TILE_EMOJI = {"History": "🏛️", "Deep Past": "🦴", "Rogan Science": "🔬", "Contested": "❓"}
@@ -383,6 +384,18 @@ def visual_block(a):
         <div class="bar-row"><span>The V, as witnesses estimated — up to</span><div class="bar"><i style="width:100%"></i></div><b>~1 mile (1,600 m)</b></div>
         <p class="small">Bars are drawn to scale from the article's figures. If the witnesses were right about the size, it was no formation of jets — that is the whole argument in one picture.</p></div>
         <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one night, two events, 300 miles</h4><p><b>Henderson, Nevada</b> (7:55 p.m., first report) &nbsp;→&nbsp; <b>Paulden</b> (8:15 p.m.) &nbsp;→&nbsp; <b>Prescott Valley</b> (the Ley family — five lights become a carpenter's square) &nbsp;→&nbsp; <b>Phoenix</b> (~8:30 p.m. — over Squaw Peak and Sky Harbor, where Kurt Russell reported it) &nbsp;→&nbsp; <b>Tucson</b> (~8:45 p.m., past Davis-Monthan AFB). Then, at 10 p.m., a second event in one place: <b>a row of lights hangs over the Sierra Estrella, south-west of Phoenix</b>, above the <b>Barry Goldwater Range</b> where the flares were dropped.</p></div>"""
+    if a["id"] == "tambora":
+        extra = """<div class="chart"><h4>🌡️ How cold did it get? (°C below normal — from the article)</h4>
+        <div class="bar-row"><span>Global average temperature drop</span><div class="bar"><i style="width:23%"></i></div><b>0.4–0.7 °C</b></div>
+        <div class="bar-row"><span>Land temperature drop (Berkeley Earth)</span><div class="bar"><i style="width:33%"></i></div><b>~1 °C</b></div>
+        <div class="bar-row"><span>Western Europe &amp; North America — cooling</span><div class="bar"><i style="width:100%"></i></div><b>at least 3 °C</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. Half a degree sounds small — but it was enough to freeze a summer.</p></div>
+        <div class="chart"><h4>⛰️ The mountain that lost a third of itself (metres high)</h4>
+        <div class="bar-row"><span>Tambora before the eruption</span><div class="bar"><i style="width:100%"></i></div><b>~4,300 m</b></div>
+        <div class="bar-row"><span>Tambora after the eruption</span><div class="bar"><i style="width:66%"></i></div><b>2,850 m</b></div>
+        <div class="bar-row"><span>Height blown off the top</span><div class="bar"><i style="width:33%"></i></div><b>~1,400 m</b></div>
+        <p class="small">Bars are drawn to scale from the article's figures. The eruption column rose about 43 km — roughly five times higher than a cruising airliner flies — and the summit was replaced by a caldera 6–7 km across.</p></div>
+        <div class="mapbox"><h4>🗺️ Schematic map — not to scale: one mountain, a whole planet</h4><p><b>Sumbawa, Indonesia</b> (Tambora blows, April 1815) &nbsp;→&nbsp; a sulfur veil wraps the whole planet &nbsp;→&nbsp; <b>New England</b> (snow in June) &nbsp;·&nbsp; <b>Lake Geneva, Switzerland</b> (rain traps the writers — Frankenstein is born) &nbsp;·&nbsp; <b>Yunnan, China</b> (famine) &nbsp;·&nbsp; <b>Ireland</b> (typhus) &nbsp;·&nbsp; <b>India</b> (cholera spreads from the Ganges). The mountain was in Indonesia. The summer vanished everywhere.</p></div>"""
     return ('<div class="visual"><div class="cluebar">'
             '<span>📖 %d story parts</span><span>🕰️ %d moments in time</span><span>🔗 %d sources</span><span>✅ %d proven · ❌ %d not proven</span></div>'
             '<h3>🧭 Follow the timeline</h3><div class="tl-track">%s</div>%s</div>'
@@ -2147,6 +2160,46 @@ add("phoenix", "The Phoenix Lights, 1997: A Silent V Crossed Arizona — and Ten
   W("Why Thousands of People Saw the Same Thing Over Phoenix — And Still Disagree What It Was", "Phoenix Lights thousands saw same thing", "https://www.youtube.com/watch?v=UJN1tv2FIKg"),
   W("Black Triangles: Belgium, Phoenix & Hudson Valley — What Was Recorded, What Was Explained", "Black triangles Belgium Phoenix Hudson Valley documentary", "https://www.youtube.com/watch?v=GGf15VW8Akc"),
   P("Phoenix Lights podcasts", "Phoenix Lights podcast")])
+
+add("tambora", "The Year Without a Summer, 1816: One Volcano Stole a Summer — and Gave the World Frankenstein",
+ "A mountain in Indonesia blew its top in April 1815. A year later it snowed in June in New England, crops failed on three continents — and a rainy week in Switzerland produced Frankenstein and the first vampire story.",
+ "History", "1816 · The Year Without a Summer",
+ ["On 5 April 1815, Mount Tambora — a volcano on the island of Sumbawa, in what is now Indonesia — began to erupt. The booms were heard in Makassar, 380 km away, in Batavia (now Jakarta), 1,260 km away, and in Ternate, 1,400 km away. Five days later, on the evening of 10 April, came the climactic explosion: three columns of fire merged, and the mountain tore itself apart. It was the largest eruption in recorded history — a VEI 7, the most recent confirmed VEI-7 eruption — throwing up a column of ash and gas about 43 km high and ejecting roughly 150 cubic kilometres of ash, pumice and rock. When it was over, the mountain had lost about 1,400 metres of height, from around 4,300 metres to 2,850, leaving a caldera 6–7 km wide where the summit had been. The small kingdoms of Tambora and Pekat were buried under metres of ash. Around 11,000–12,000 people were killed directly; famine and disease in the months after took tens of thousands more. The most-cited total is at least 71,000 dead — and some estimates run past 90,000.",
+  "The eruption's real weapon was invisible: about 60 million tonnes of sulfur shot into the stratosphere — six times what Mount Pinatubo released in 1991 — where it turned into a fine veil of sulfate droplets that spread around the whole planet and bounced a little sunlight back into space. The veil reflected only about half a percent of the sunlight reaching Earth, but that was enough. Average global temperatures fell by 0.4–0.7 °C, and one analysis put the drop in land temperatures at about 1 °C. The summer of 1816 was the coldest European summer on record between 1766 and 2000, and the 1810s became the coldest decade in 500 years. Tambora was the biggest single cause of the cold — but it may not have acted alone: a mystery eruption in 1808, other eruptions in 1812–1814, and a quiet sun in the Dalton Minimum had already cooled the planet before Tambora blew.",
+  "In New England, farmers called it 'eighteen hundred and froze to death'. May frosts killed crops in upstate New York and New England; on 6 June, snow fell in Albany, New York, and Dennysville, Maine; frosts struck in July and August, lake and river ice was seen as far south as north-western Pennsylvania in July, and frost was reported in Virginia on 20 and 21 August. U.S. grain prices at least quadrupled, and oat prices rose almost eightfold. Families sold up and headed west, and historians credit the cold summer with pushing settlement into the Midwest. Europe had it worse: endless cold rain — in Switzerland it rained on 130 of the 152 days between April and August — failed harvests, food riots, and the worst famine of the century. In Ireland a typhus epidemic killed more than 60,000 people. In China, crop failures in Yunnan brought famine, and in India the disrupted monsoon helped spread a cholera outbreak from the Ganges that would eventually kill millions.",
+  "The most famous thing the cold summer ever did happened indoors. In June 1816, on the shore of Lake Geneva in Switzerland, Lord Byron was renting the Villa Diodati. Trapped inside by three days of unseasonable rain, Byron, his physician John Polidori, the poet Percy Bysshe Shelley, 18-year-old Mary Godwin (later Mary Shelley), and her stepsister Claire Clairmont read ghost stories aloud — and Byron dared them each to write one of their own. Mary dreamed of a scientist bringing a creature to life, and began Frankenstein, published on 1 January 1818. Polidori, building on a fragment of Byron's, wrote The Vampyre, the first modern vampire story. One volcano, one rainy week, two monsters that never left us.",
+  "The cold summer left stranger footprints, too. In 1817, German inventor Karl Drais rode out of Mannheim on a wooden two-wheeler you pushed along with your feet — the Laufmaschine, the first bicycle. Historians argue the oat shortage and the starving horses of 1816 pushed him to it: the evidence is circumstantial but persuasive — his machines were described at the time as a way to 'lower the price of oats and hay'. And in the skies, the veil turned sunsets blood-red for up to three years. The painter J. M. W. Turner was among the artists who caught them, and scientists later showed the red-to-green ratios in hundreds of sunset paintings track the amount of volcanic aerosol in the air — the old masters, it turns out, were keeping a climate record without knowing it."],
+ "One volcano stole a whole summer — and the chain of proof is perfect. Tambora blew in April 1815, a sulfur veil wrapped the planet, temperatures fell, and 1816 froze: snow in June, famine on three continents, Frankenstein by a lakeside fire. No other explanation ties the mountain, the cold, the famine and the monsters together. Tambora did it — all of it.",
+ "Tambora was the biggest cause, but it was not the only one. A mystery eruption in late 1808 — the second-largest sulfur event in 200 years — had already cooled the planet, and its volcano has never been identified. Other eruptions in 1812–1814 added more dust, and the sun itself was in the Dalton Minimum, a decades-long quiet spell. A 2019 study found Tambora made the European cold 30 to 100 times more likely — but weather patterns alone explain part of it, and the cooling was uneven: some places were cold and wet, others cold and dry. The bicycle link is circumstantial too: Drais never said Tambora inspired him. Tambora lit the fuse; it did not act alone.",
+ ["Mount Tambora erupted in April 1815 — VEI 7, the largest eruption in recorded history, heard 2,600 km away.",
+  "Its sulfur veil cooled the planet by 0.4–0.7 °C; the summer of 1816 was Europe's coldest on record between 1766 and 2000.",
+  "Snow fell in New England in June 1816, frosts struck in July and August, and harvests failed across the Northern Hemisphere.",
+  "Frankenstein and The Vampyre were both begun during the rainy June of 1816 at the Villa Diodati."],
+ ["That Tambora alone caused all the cold — a mystery eruption in 1808, other eruptions, and the Dalton Minimum also played a part.",
+  "That Drais invented the bicycle because of Tambora — the link is circumstantial; Drais never said so.",
+  "That the red sunsets in paintings prove the veil — the correlation is strong, but paintings are art, not instruments.",
+  "An exact death toll for Tambora — estimates run from about 71,000 to about 92,000 or more."],
+ [["Dec 1808", "A mystery eruption — the second-biggest sulfur event in 200 years — cools the planet. No volcano has ever been identified."],
+  ["1812", "Tambora wakes after centuries of quiet and starts rumbling."],
+  ["5 Apr 1815", "The first great eruption; the booms are heard 1,400 km away in Ternate."],
+  ["10–11 Apr 1815", "The climactic explosion. The mountain loses about 1,400 m of height and a caldera 6–7 km wide is left behind."],
+  ["6 Jun 1816", "Snow falls in Albany, New York, and Dennysville, Maine — in June."],
+  ["Jun 1816", "Three days of rain trap Byron, Polidori, the Shelleys and Claire Clairmont indoors at the Villa Diodati; the ghost-story dare is made."],
+  ["Jul–Aug 1816", "Frosts and ice across New England; harvests fail in Europe, China and North America."],
+  ["12 Jun 1817", "Karl Drais rides his Laufmaschine out of Mannheim — the first bicycle."],
+  ["1 Jan 1818", "Frankenstein is published in London — 500 copies on the cheapest paper."]],
+ [["Oppenheimer, 'Climatic, environmental and human consequences of the largest known historic eruption: Tambora volcano (Indonesia) 1815', Progress in Physical Geography (2003)", "https://www.researchgate.net/publication/233720521_Climatic_environmental_and_human_consequences_of_the_largest_known_historic_eruption_Tambora_volcano_Indonesia_1815"],
+  ["Wikipedia — Year Without a Summer", "https://en.wikipedia.org/wiki/Year_Without_a_Summer"],
+  ["Wikipedia — 1808 mystery eruption", "https://en.wikipedia.org/wiki/1808_mystery_eruption"],
+  ["Encyclopaedia Britannica — The Haunted Summer of 1816", "https://www.britannica.com/event/Haunted-Summer-of-1816"],
+  ["University of Reading — Floods, Famine, Frosts … and Frankenstein", "https://blogs.reading.ac.uk/weather-and-climate-at-reading/2014/floods-famine-frosts-and-frankenstein/"],
+  ["Zerefos et al., 'Atmospheric effects of volcanic eruptions as seen by famous artists', Atmospheric Chemistry and Physics (2007)", "https://acp.copernicus.org/preprints/7/5145/2007/acpd-7-5145-2007-print.pdf"],
+  ["New Scientist — Brimstone and bicycles (the draisine and Tambora)", "https://www.newscientist.com/article/1875703-brimstone-and-bicycles/"],
+  ["Schurer et al., 'Disentangling the causes of the 1816 European year without a summer', Environmental Research Letters (2019)", "https://doi.org/10.1088/1748-9326/ab3a10"]],
+ [W("1816: The Year Without a Summer (How a Volcano Made Frankenstein) — Chronoweird", "Year Without a Summer 1816 Tambora documentary", "https://www.youtube.com/watch?v=ua6SsqzFosg"),
+  W("The Year Without a Summer | Tambora 1815 — Noesantory", "Year Without a Summer Tambora 1815", "https://www.youtube.com/watch?v=c4uGZmQWrqQ"),
+  W("How One Volcano STARVED Europe in 1816", "How one volcano starved Europe 1816", "https://www.youtube.com/watch?v=p2OQyZg91Jw"),
+  P("Year Without a Summer podcasts", "Year Without a Summer Tambora podcast")])
 
 # ---------------- HTML GENERATION ----------------
 def esc(s):
